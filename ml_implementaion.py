@@ -45,7 +45,7 @@ class ProteinAssignmentUsingMultipleML():
         the records of strands and sticks in that folder/
         """
         print("=== Comparing All Algorithms ===")
-        for protein in proteins_list:
+        for protein in proteins_list[:1]:
             if mode == "Helix":
                 if self.generate_protein_helix_stick(protein, csv_path) is not None:
                     mappings = self.read_mapping_topology(protein, csv_path, mode)
@@ -97,13 +97,9 @@ class ProteinAssignmentUsingMultipleML():
             accuracies[name] = accuracy
             print(f"Accuracy: {accuracy:.4f}")
             
-            # Plot 3D visualization for SVM models
-            if 'SVM' in name:
-                self.visualizer.plot_3d_svm_model(X_train, y_train, classifier, protein_name, f"({name})")
-            
-            # Plot cylindrical structures for the first SVM model (to avoid duplicates)
-            if name == 'SVM Linear':
-                self.visualizer.plot_3d_cylindrical_structures(X_train, y_train, protein_name, structure_type)
+            # Plot 3D visualization with cylindrical structures and SVM decision boundaries
+            if 'SVM Linear' in name:
+                self.visualizer.plot_3d_cylindrical_structures_with_svm(X_train, y_train, protein_name, structure_type, classifier)
             
             # # Map predictions for proper evaluation
             # y_test_mapped = np.array([test_to_train_map.get(label, label) for label in y_test])
@@ -261,4 +257,4 @@ if __name__ == "__main__":
     ml_classifier.train_with_all_algorithms(new_protein_list, CSV_DATASET, "Helix")
 
     print("\n\n\n\n*************************Strands RESULTS:**********************")
-    ml_classifier.train_with_all_algorithms(strands_protein_list, CSV_DATASET, "Strand")
+    # ml_classifier.train_with_all_algorithms(strands_protein_list, CSV_DATASET, "Strand")

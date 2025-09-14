@@ -121,7 +121,7 @@ def interactive_protein_viewer():
         
         # Create 3D cylindrical visualization
         print("\n🔬 Creating interactive 3D cylindrical visualization...")
-        visualizer.plot_3d_cylindrical_structures(X_train, y_train, protein_name, "Helix")
+        visualizer.plot_3d_cylindrical_structures_with_svm(X_train, y_train, protein_name, "Helix")
         
         # Interactive menu
         while True:
@@ -144,7 +144,7 @@ def interactive_protein_viewer():
                             new_df = pd.read_csv(new_file, header=None)
                             new_X = new_df.iloc[:, :3].to_numpy()
                             new_y = new_df.iloc[:, 3].to_numpy().astype(int)
-                            visualizer.plot_3d_cylindrical_structures(new_X, new_y, new_protein, "Helix")
+                            visualizer.plot_3d_cylindrical_structures_with_svm(new_X, new_y, new_protein, "Helix")
                         except FileNotFoundError:
                             print(f"❌ Data not found for {new_protein}")
                     else:

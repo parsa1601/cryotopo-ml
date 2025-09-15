@@ -25,7 +25,69 @@ class ProteinAssignmentUsingMultipleML():
         self.svm_rbf = svm.SVC(kernel="rbf")
         self.random_forest = RandomForestClassifier(n_estimators=100, random_state=42)
         self.visualizer = ProteinVisualizer()
-        
+
+    def dtw_distance(self, ts1, ts2):
+        """
+        This function computes the Dynamic Time Warping (DTW) distance between two time series.
+        """
+        n, m = len(ts1), len(ts2)
+        dtw_matrix = np.full((n + 1, m + 1), np.inf)
+        dtw_matrix[0, 0] = 0
+
+        for i in range(1, n + 1):
+            for j in range(1, m + 1):
+                cost = abs(ts1[i - 1] - ts2[j - 1])
+                last_min = np.min([dtw_matrix[i - 1, j], dtw_matrix[i, j - 1], dtw_matrix[i - 1, j - 1]])
+                dtw_matrix[i, j] = cost + last_min
+        return dtw_matrix[n, m]
+
+    def determine_direction_with_dtw(self, model_coords, stick_coords):
+        """
+        This function determines the optimal direction of a stick by comparing it with the model's coordinates using DTW.
+        """
+        # Stick in forward direction
+        forward_distance = self.dtw_distance(model_coords, stick_coords)
+
+        # Stick in backward direction
+        backward_coords = np.flipud(stick_coords)
+        backward_distance = self.dtw_distance(model_coords, backward_coords)
+
+        return 1 if forward_distance <= backward_distance else -1
+
+    def analyze_best_mappings(self, protein_name, best_algorithm, X_train, y_train, X_test, y_test, test_to_train_map):
+        """
+        This function analyzes the best mappings and determines the direction of the sticks.
+        """
+        print(f"\n--- Direction Analysis for {protein_name} using {best_algorithm} ---")
+
+        # Get predictions from the best algorithm
+        if best_algorithm == 'SVM Linear':
+            y_pred = self.svm_linear.predict(X_test)
+        elif best_algorithm == 'SVM RBF':
+            y_pred = self.svm_rbf.predict(X_test)
+        else: # Random Forest
+            y_pred = self.random_forest.predict(X_test)
+
+        # Iterate through unique test labels (sticks)
+        unique_sticks = np.unique(y_test)
+        for stick_label in unique_sticks:
+            # Find the predicted train label for this stick
+            stick_indices = np.where(y_test == stick_label)[0]
+            if len(stick_indices) > 0:
+                predicted_train_label = y_pred[stick_indices[0]]
+
+                # Get the actual train label from the mapping
+                actual_train_label = test_to_train_map.get(stick_label)
+
+                if actual_train_label is not None and predicted_train_label == actual_train_label:
+                    # Extract coordinates for the model and the stick
+                    model_coords = X_train[y_train == actual_train_label]
+                    stick_coords = X_test[y_test == stick_label]
+
+                    # Determine direction
+                    direction = self.determine_direction_with_dtw(model_coords, stick_coords)
+                    print(f"Stick {stick_label} -> Model {actual_train_label}: Direction = {direction}")
+
     def train_with_all_algorithms(self, proteins_list, csv_path, mode: str):
         """
         This function trains and tests the proteins list
@@ -118,6 +180,9 @@ class ProteinAssignmentUsingMultipleML():
         best_algorithm = max(accuracies, key=accuracies.get)
         print(f"Best Algorithm: {best_algorithm} ({accuracies[best_algorithm]:.4f})")
         print("-" * 50)
+
+        # Now, analyze directions using the best algorithm
+        self.analyze_best_mappings(protein_name, best_algorithm, X_train, y_train, X_test, y_test, test_to_train_map)
 
 
 

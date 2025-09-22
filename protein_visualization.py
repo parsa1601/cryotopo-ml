@@ -129,11 +129,6 @@ class ProteinVisualizer:
         print("   Close the plot window to continue...")
         plt.show()
         
-        # Also save the plot
-        svm_suffix = f"_svm_{title_suffix.replace(' ', '_').replace('(', '').replace(')', '')}" if svm_model else ""
-        filename = f"3d_cylinders_{protein_name}_{structure_type.lower()}{svm_suffix}.png"
-        plt.savefig(filename, dpi=300, bbox_inches='tight')
-        print(f"3D cylindrical plot also saved as: {filename}")
     
     def _plot_decision_boundaries(self, ax, X_train, svm_model):
         """
@@ -179,7 +174,7 @@ class ProteinVisualizer:
                 zz = np.clip(zz, z_min, z_max)
                 
                 # Plot each hyperplane with different color and transparency
-                ax.plot_surface(xx, yy, zz, alpha=0.2, color=color, label=f'Boundary {i+1}')
+                ax.plot_surface(xx, yy, zz, alpha=0.2, color=color, label=f'Hyperplane {i+1}')
         
         print(f"Plotted {max_hyperplanes} hyperplanes for classification")
 

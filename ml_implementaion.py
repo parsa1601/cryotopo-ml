@@ -17,7 +17,7 @@ CSV_DATASET = "Archive/"
 
 
 class ProteinAssignmentUsingMultipleML:
-    def __init__(self):
+    def __init__(self, report_file="direction_analysis_report.txt"):
         """
         Initializing 3 classifiers to use all of them!
         """
@@ -25,13 +25,18 @@ class ProteinAssignmentUsingMultipleML:
         self.svm_rbf = svm.SVC(kernel="rbf")
         self.random_forest = RandomForestClassifier(n_estimators=100, random_state=42)
         self.visualizer = ProteinVisualizer()
+        self.report_file = report_file
 
-        # Track overall direction detection statistics
         self.overall_direction_stats = {
             "total_directions": 0,
             "correct_directions": 0,
             "protein_results": [],
         }
+
+    def print_and_save(self, message):
+        print(message)
+        with open(self.report_file, "a", encoding="utf-8") as f:
+            f.write(message + "\n")
 
     def dtw_distance(self, ts1, ts2):
         """
@@ -46,7 +51,7 @@ class ProteinAssignmentUsingMultipleML:
             for j in range(1, m + 1):
                 # Calculate Euclidean distance between 3D points
                 diff = ts1[i - 1] - ts2[j - 1]
-                cost = np.sqrt(np.sum(diff**2))  # Euclidean distance
+                cost = np.sqrt(np.sum(diff**2))
                 last_min = np.min(
                     [
                         dtw_matrix[i - 1, j],
@@ -85,7 +90,9 @@ class ProteinAssignmentUsingMultipleML:
         This function analyzes the best mappings and determines the direction of the sticks.
         Also calculates and reports direction detection accuracy.
         """
-        print(f"\n--- Direction Analysis for {protein_name} using {best_algorithm} ---")
+        self.print_and_save(
+            f"\n--- Direction Analysis for {protein_name} using {best_algorithm} ---"
+        )
 
         # Get predictions from the best algorithm
         if best_algorithm == "SVM Linear":
@@ -95,12 +102,10 @@ class ProteinAssignmentUsingMultipleML:
         else:  # Random Forest
             y_pred = self.random_forest.predict(X_test)
 
-        # Direction detection accuracy tracking
         correct_directions = 0
         total_directions = 0
         direction_results = []
 
-        # Iterate through unique test labels (sticks)
         unique_sticks = np.unique(y_test)
         for stick_label in unique_sticks:
             # Find the predicted train label for this stick
@@ -119,7 +124,6 @@ class ProteinAssignmentUsingMultipleML:
                     model_coords = X_train[y_train == actual_train_label]
                     stick_coords = X_test[y_test == stick_label]
 
-                    # Determine direction using DTW
                     detected_direction = self.determine_direction_with_dtw(
                         model_coords, stick_coords
                     )
@@ -143,24 +147,24 @@ class ProteinAssignmentUsingMultipleML:
                             }
                         )
 
-                        print(
+                        self.print_and_save(
                             f"Stick {stick_label} -> Model {actual_train_label}: Detected={detected_direction}, Actual={actual_direction}, Correct={is_correct}"
                         )
 
-        # Calculate and report direction detection accuracy
         if total_directions > 0:
             direction_accuracy = (correct_directions / total_directions) * 100
-            print("\n--- Direction Detection Results ---")
-            print(f"Total directions analyzed: {total_directions}")
-            print(f"Correctly detected directions: {correct_directions}")
-            print(f"Direction detection accuracy: {direction_accuracy:.2f}%")
+            self.print_and_save("\n--- Direction Detection Results ---")
+            self.print_and_save(f"Total directions analyzed: {total_directions}")
+            self.print_and_save(f"Correctly detected directions: {correct_directions}")
+            self.print_and_save(
+                f"Direction detection accuracy: {direction_accuracy:.2f}%"
+            )
 
-            # Update overall statistics
             self.update_overall_direction_stats(
                 protein_name, correct_directions, total_directions, direction_accuracy
             )
         else:
-            print("\nNo direction information available for analysis.")
+            self.print_and_save("\nNo direction information available for analysis.")
             # Still track proteins with no direction data
             self.update_overall_direction_stats(protein_name, 0, 0, 0.0)
 
@@ -269,11 +273,9 @@ class ProteinAssignmentUsingMultipleML:
         for name, classifier in algorithms:
             print(f"\n--- {name} Results ---")
 
-            # Train the classifier
             classifier.fit(X_train, y_train)
             y_pred = classifier.predict(X_test)
 
-            # Calculate mapped accuracy
             accuracy = self.calculate_mapped_accuracy(y_test, y_pred, test_to_train_map)
             accuracies[name] = accuracy
             print(f"Accuracy: {accuracy:.4f}")
@@ -282,12 +284,10 @@ class ProteinAssignmentUsingMultipleML:
             # if 'SVM Linear' in name:
             #     self.visualizer.plot_3d_cylindrical_structures_with_svm(X_train, y_train, protein_name, structure_type, classifier)
 
-        # Find best performing algorithm
         best_algorithm = max(accuracies, key=accuracies.get)
         print(f"Best Algorithm: {best_algorithm} ({accuracies[best_algorithm]:.4f})")
         print("-" * 50)
 
-        # Now, analyze directions using the best algorithm
         self.analyze_best_mappings(
             protein_name,
             best_algorithm,
@@ -320,10 +320,8 @@ class ProteinAssignmentUsingMultipleML:
         total = len(y_test)
 
         for true_test_label, pred_train_label in zip(y_test, y_pred):
-            # Get the expected train label for this test label
             expected_train_label = mapping.get(true_test_label, None)
 
-            # Check if prediction matches the expected mapping
             if (
                 expected_train_label is not None
                 and pred_train_label == expected_train_label
@@ -347,15 +345,13 @@ class ProteinAssignmentUsingMultipleML:
             )
             topology_df = pd.read_csv(topology_record, header=None)
 
-        # Read all three columns: train_label, test_label, direction
+        # columns: train_label, test_label, direction
         mapping = topology_df.iloc[:, :2].to_numpy()
 
         # Create direction mapping (test_label -> actual_direction)
         direction_mapping = {}
         for _, row in topology_df.iterrows():
-            if len(row) >= 3 and pd.notna(
-                row.iloc[2]
-            ):  # Check if third column exists and is not NaN
+            if len(row) >= 3 and pd.notna(row.iloc[2]):
                 test_label = int(row.iloc[1])
                 actual_direction = int(row.iloc[2])
                 direction_mapping[test_label] = actual_direction
@@ -450,22 +446,30 @@ class ProteinAssignmentUsingMultipleML:
             overall_accuracy = (
                 stats["correct_directions"] / stats["total_directions"]
             ) * 100
-            print("\n" + "=" * 60)
-            print("OVERALL DIRECTION DETECTION SUMMARY")
-            print("=" * 60)
-            print(f"Total proteins analyzed: {len(stats['protein_results'])}")
-            print(f"Total directions analyzed: {stats['total_directions']}")
-            print(f"Total correct directions: {stats['correct_directions']}")
-            print(f"Overall direction detection accuracy: {overall_accuracy:.2f}%")
-            print("\nPer-protein results:")
-            print("-" * 40)
+            self.print_and_save("\n" + "=" * 60)
+            self.print_and_save("OVERALL DIRECTION DETECTION SUMMARY")
+            self.print_and_save("=" * 60)
+            self.print_and_save(
+                f"Total proteins analyzed: {len(stats['protein_results'])}"
+            )
+            self.print_and_save(
+                f"Total directions analyzed: {stats['total_directions']}"
+            )
+            self.print_and_save(
+                f"Total correct directions: {stats['correct_directions']}"
+            )
+            self.print_and_save(
+                f"Overall direction detection accuracy: {overall_accuracy:.2f}%"
+            )
+            self.print_and_save("\nPer-protein results:")
+            self.print_and_save("-" * 40)
             for result in stats["protein_results"]:
-                print(
+                self.print_and_save(
                     f"{result['protein']}: {result['correct']}/{result['total']} ({result['accuracy']:.2f}%)"
                 )
-            print("=" * 60)
+            self.print_and_save("=" * 60)
         else:
-            print("\nNo direction detection data available for summary.")
+            self.print_and_save("\nNo direction detection data available for summary.")
 
 
 if __name__ == "__main__":
@@ -535,18 +539,23 @@ if __name__ == "__main__":
 
     ml_classifier = ProteinAssignmentUsingMultipleML()
     print("\n\n\n\n*************************HELIX RESULTS:**********************")
+    ml_classifier.print_and_save(
+        "\n\n\n\n*************************HELIX RESULTS:**********************"
+    )
     ml_classifier.train_with_all_algorithms(new_protein_list, CSV_DATASET, "Helix")
     ml_classifier.print_overall_direction_summary()
 
     print("\n\n\n\n*************************Strands RESULTS:**********************")
+    ml_classifier.print_and_save(
+        "\n\n\n\n*************************Strands RESULTS:**********************"
+    )
     # Reset statistics for strand analysis
     ml_classifier.overall_direction_stats = {
         "total_directions": 0,
         "correct_directions": 0,
         "protein_results": [],
     }
-    # ml_classifier.train_with_all_algorithms(strands_protein_list, CSV_DATASET, "Strand")
-    # ml_classifier.print_overall_direction_summary()
-
-    # Print overall direction detection summary
+    ml_classifier.train_with_all_algorithms(strands_protein_list, CSV_DATASET, "Strand")
     ml_classifier.print_overall_direction_summary()
+
+    print(f"\nDirection analysis report has been saved to: {ml_classifier.report_file}")

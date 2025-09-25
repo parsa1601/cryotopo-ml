@@ -3,6 +3,7 @@ import sys
 import numpy as np
 from sklearn import svm
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier
 import pandas as pd
 from protein_visualization import ProteinVisualizer
 
@@ -24,6 +25,7 @@ class ProteinAssignmentUsingMultipleML:
         self.svm_linear = svm.SVC(kernel="linear")
         self.svm_rbf = svm.SVC(kernel="rbf")
         self.random_forest = RandomForestClassifier(n_estimators=100, random_state=42)
+        self.knn = KNeighborsClassifier(n_neighbors=1)
         self.visualizer = ProteinVisualizer()
         self.report_file = report_file
 
@@ -266,6 +268,7 @@ class ProteinAssignmentUsingMultipleML:
             ("SVM Linear", self.svm_linear),
             ("SVM RBF", self.svm_rbf),
             ("Random Forest", self.random_forest),
+            ("Voronoi (1N KNN)", self.knn)
         ]
 
         accuracies = {}

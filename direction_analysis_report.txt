@@ -639,3 +639,640 @@ Per-protein results:
 6EM3: 6/6 (100.00%)
 6UXW: 3/3 (100.00%)
 ============================================================
+
+
+
+
+*************************HELIX RESULTS:**********************
+
+--- Direction Analysis for 1A7D using SVM Linear ---
+Stick 1 -> Model 2: Detected=-1, Actual=-1, Correct=True
+Stick 2 -> Model 3: Detected=-1, Actual=-1, Correct=True
+Stick 3 -> Model 4: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 5: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 4
+Correctly detected directions: 4
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 1HG5 using SVM RBF ---
+
+No direction information available for analysis.
+
+--- Direction Analysis for 1LWB using Voronoi (1N KNN) ---
+
+No direction information available for analysis.
+
+--- Direction Analysis for 1P5X using Voronoi (1N KNN) ---
+
+No direction information available for analysis.
+
+--- Direction Analysis for 1Z1L using SVM Linear ---
+
+No direction information available for analysis.
+
+--- Direction Analysis for 2XVV using Voronoi (1N KNN) ---
+
+No direction information available for analysis.
+
+--- Direction Analysis for 3C91 using SVM Linear ---
+Stick 1 -> Model 1: Detected=1, Actual=1, Correct=True
+Stick 2 -> Model 3: Detected=-1, Actual=-1, Correct=True
+Stick 3 -> Model 4: Detected=-1, Actual=-1, Correct=True
+Stick 4 -> Model 5: Detected=-1, Actual=-1, Correct=True
+Stick 5 -> Model 6: Detected=-1, Actual=-1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 5
+Correctly detected directions: 5
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 3HJL using SVM Linear ---
+
+No direction information available for analysis.
+
+--- Direction Analysis for 3LTJ using SVM RBF ---
+
+No direction information available for analysis.
+
+--- Direction Analysis for 4OXW using SVM Linear ---
+Stick 1 -> Model 1: Detected=1, Actual=1, Correct=True
+Stick 2 -> Model 3: Detected=1, Actual=-1, Correct=False
+Stick 3 -> Model 4: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 5: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 4
+Correctly detected directions: 3
+Direction detection accuracy: 75.00%
+
+--- Direction Analysis for 5M50 using Voronoi (1N KNN) ---
+Stick 1 -> Model 1: Detected=-1, Actual=-1, Correct=True
+Stick 2 -> Model 2: Detected=-1, Actual=-1, Correct=True
+Stick 3 -> Model 3: Detected=-1, Actual=-1, Correct=True
+Stick 4 -> Model 4: Detected=-1, Actual=-1, Correct=True
+Stick 5 -> Model 5: Detected=-1, Actual=-1, Correct=True
+Stick 6 -> Model 6: Detected=1, Actual=1, Correct=True
+Stick 7 -> Model 7: Detected=-1, Actual=-1, Correct=True
+Stick 8 -> Model 8: Detected=1, Actual=1, Correct=True
+Stick 9 -> Model 9: Detected=-1, Actual=-1, Correct=True
+Stick 10 -> Model 10: Detected=1, Actual=1, Correct=True
+Stick 11 -> Model 12: Detected=1, Actual=1, Correct=True
+Stick 12 -> Model 13: Detected=-1, Actual=-1, Correct=True
+Stick 13 -> Model 14: Detected=1, Actual=1, Correct=True
+Stick 14 -> Model 15: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 14
+Correctly detected directions: 14
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 6EM3 using SVM Linear ---
+Stick 1 -> Model 1: Detected=1, Actual=1, Correct=True
+Stick 2 -> Model 2: Detected=1, Actual=1, Correct=True
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 3
+Correctly detected directions: 3
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 1BZ4 using SVM Linear ---
+Stick 1 -> Model 1: Detected=-1, Actual=-1, Correct=True
+Stick 2 -> Model 2: Detected=-1, Actual=-1, Correct=True
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 4: Detected=1, Actual=1, Correct=True
+Stick 5 -> Model 5: Detected=-1, Actual=-1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 5
+Correctly detected directions: 5
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 1HZ4 using SVM Linear ---
+
+No direction information available for analysis.
+
+--- Direction Analysis for 1NG6 using SVM RBF ---
+
+No direction information available for analysis.
+
+--- Direction Analysis for 1XQO using SVM Linear ---
+
+No direction information available for analysis.
+
+--- Direction Analysis for 2OVJ using SVM Linear ---
+
+No direction information available for analysis.
+
+--- Direction Analysis for 2Y4Z using SVM Linear ---
+Stick 1 -> Model 1: Detected=1, Actual=1, Correct=True
+Stick 2 -> Model 2: Detected=1, Actual=1, Correct=True
+Stick 3 -> Model 3: Detected=1, Actual=-1, Correct=False
+Stick 4 -> Model 4: Detected=1, Actual=1, Correct=True
+Stick 5 -> Model 5: Detected=1, Actual=1, Correct=True
+Stick 6 -> Model 6: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 6
+Correctly detected directions: 5
+Direction detection accuracy: 83.33%
+
+--- Direction Analysis for 3FIN using Random Forest ---
+
+No direction information available for analysis.
+
+--- Direction Analysis for 3IEE using SVM RBF ---
+
+No direction information available for analysis.
+
+--- Direction Analysis for 3ODS using SVM Linear ---
+
+No direction information available for analysis.
+
+--- Direction Analysis for 5I1M using Voronoi (1N KNN) ---
+Stick 1 -> Model 1: Detected=-1, Actual=-1, Correct=True
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 4: Detected=1, Actual=1, Correct=True
+Stick 5 -> Model 5: Detected=-1, Actual=-1, Correct=True
+Stick 8 -> Model 8: Detected=1, Actual=1, Correct=True
+Stick 9 -> Model 9: Detected=1, Actual=1, Correct=True
+Stick 10 -> Model 10: Detected=1, Actual=1, Correct=True
+Stick 11 -> Model 11: Detected=-1, Actual=-1, Correct=True
+Stick 12 -> Model 12: Detected=-1, Actual=-1, Correct=True
+Stick 14 -> Model 15: Detected=-1, Actual=-1, Correct=True
+Stick 16 -> Model 17: Detected=-1, Actual=-1, Correct=True
+Stick 17 -> Model 18: Detected=-1, Actual=-1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 12
+Correctly detected directions: 12
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 5O8O using SVM Linear ---
+Stick 1 -> Model 1: Detected=1, Actual=1, Correct=True
+Stick 2 -> Model 2: Detected=-1, Actual=-1, Correct=True
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 3
+Correctly detected directions: 3
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 6F36 using Voronoi (1N KNN) ---
+Stick 1 -> Model 1: Detected=-1, Actual=-1, Correct=True
+Stick 2 -> Model 2: Detected=-1, Actual=-1, Correct=True
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 4: Detected=1, Actual=1, Correct=True
+Stick 5 -> Model 7: Detected=-1, Actual=-1, Correct=True
+Stick 6 -> Model 8: Detected=1, Actual=1, Correct=True
+Stick 8 -> Model 10: Detected=1, Actual=1, Correct=True
+Stick 10 -> Model 12: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 8
+Correctly detected directions: 8
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 1FLP using SVM Linear ---
+Stick 1 -> Model 1: Detected=-1, Actual=-1, Correct=True
+Stick 2 -> Model 2: Detected=-1, Actual=-1, Correct=True
+Stick 3 -> Model 4: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 5: Detected=1, Actual=1, Correct=True
+Stick 5 -> Model 6: Detected=-1, Actual=-1, Correct=True
+Stick 6 -> Model 7: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 6
+Correctly detected directions: 6
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 1ICX using SVM RBF ---
+Stick 1 -> Model 1: Detected=1, Actual=1, Correct=True
+Stick 2 -> Model 2: Detected=1, Actual=1, Correct=True
+Stick 3 -> Model 5: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 6: Detected=1, Actual=-1, Correct=False
+
+--- Direction Detection Results ---
+Total directions analyzed: 4
+Correctly detected directions: 3
+Direction detection accuracy: 75.00%
+
+--- Direction Analysis for 1OZ9 using SVM Linear ---
+Stick 1 -> Model 1: Detected=1, Actual=-1, Correct=False
+Stick 2 -> Model 2: Detected=1, Actual=1, Correct=True
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 4: Detected=1, Actual=1, Correct=True
+Stick 5 -> Model 5: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 5
+Correctly detected directions: 4
+Direction detection accuracy: 80.00%
+
+--- Direction Analysis for 1YD0 using SVM Linear ---
+Stick 1 -> Model 1: Detected=1, Actual=1, Correct=True
+Stick 2 -> Model 2: Detected=1, Actual=-1, Correct=False
+Stick 3 -> Model 4: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 5: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 4
+Correctly detected directions: 3
+Direction detection accuracy: 75.00%
+
+--- Direction Analysis for 2XB5 using SVM RBF ---
+
+No direction information available for analysis.
+
+--- Direction Analysis for 3ACW using SVM Linear ---
+
+No direction information available for analysis.
+
+--- Direction Analysis for 3HBE using SVM RBF ---
+
+No direction information available for analysis.
+
+--- Direction Analysis for 3IXV using Voronoi (1N KNN) ---
+
+No direction information available for analysis.
+
+--- Direction Analysis for 4CHV using Voronoi (1N KNN) ---
+Stick 1 -> Model 1: Detected=1, Actual=1, Correct=True
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 4: Detected=-1, Actual=-1, Correct=True
+Stick 5 -> Model 5: Detected=-1, Actual=-1, Correct=True
+Stick 8 -> Model 8: Detected=-1, Actual=-1, Correct=True
+Stick 9 -> Model 9: Detected=-1, Actual=-1, Correct=True
+Stick 11 -> Model 11: Detected=1, Actual=1, Correct=True
+Stick 12 -> Model 12: Detected=-1, Actual=-1, Correct=True
+Stick 13 -> Model 13: Detected=1, Actual=1, Correct=True
+Stick 14 -> Model 14: Detected=-1, Actual=-1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 10
+Correctly detected directions: 10
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 4UE4 using SVM Linear ---
+Stick 1 -> Model 1: Detected=-1, Actual=-1, Correct=True
+Stick 2 -> Model 2: Detected=-1, Actual=-1, Correct=True
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 5: Detected=1, Actual=1, Correct=True
+Stick 5 -> Model 6: Detected=-1, Actual=-1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 5
+Correctly detected directions: 5
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 5KBU using Random Forest ---
+Stick 1 -> Model 1: Detected=-1, Actual=-1, Correct=True
+Stick 2 -> Model 2: Detected=1, Actual=1, Correct=True
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 4: Detected=-1, Actual=-1, Correct=True
+Stick 5 -> Model 6: Detected=-1, Actual=-1, Correct=True
+Stick 6 -> Model 7: Detected=1, Actual=1, Correct=True
+Stick 7 -> Model 8: Detected=-1, Actual=-1, Correct=True
+Stick 8 -> Model 9: Detected=1, Actual=1, Correct=True
+Stick 9 -> Model 10: Detected=-1, Actual=-1, Correct=True
+Stick 10 -> Model 11: Detected=1, Actual=1, Correct=True
+Stick 11 -> Model 14: Detected=-1, Actual=-1, Correct=True
+Stick 12 -> Model 15: Detected=-1, Actual=-1, Correct=True
+Stick 13 -> Model 16: Detected=-1, Actual=-1, Correct=True
+Stick 14 -> Model 18: Detected=1, Actual=1, Correct=True
+Stick 15 -> Model 20: Detected=-1, Actual=-1, Correct=True
+Stick 16 -> Model 21: Detected=-1, Actual=-1, Correct=True
+Stick 17 -> Model 22: Detected=1, Actual=1, Correct=True
+Stick 19 -> Model 24: Detected=-1, Actual=-1, Correct=True
+Stick 20 -> Model 25: Detected=1, Actual=1, Correct=True
+Stick 21 -> Model 26: Detected=-1, Actual=-1, Correct=True
+Stick 22 -> Model 27: Detected=-1, Actual=-1, Correct=True
+Stick 23 -> Model 28: Detected=-1, Actual=-1, Correct=True
+Stick 24 -> Model 29: Detected=1, Actual=1, Correct=True
+Stick 25 -> Model 30: Detected=-1, Actual=-1, Correct=True
+Stick 26 -> Model 31: Detected=1, Actual=1, Correct=True
+Stick 27 -> Model 32: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 26
+Correctly detected directions: 26
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 5UZB using SVM Linear ---
+Stick 1 -> Model 2: Detected=1, Actual=1, Correct=True
+Stick 2 -> Model 3: Detected=-1, Actual=-1, Correct=True
+Stick 3 -> Model 4: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 5: Detected=1, Actual=1, Correct=True
+Stick 5 -> Model 6: Detected=1, Actual=1, Correct=True
+Stick 6 -> Model 9: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 6
+Correctly detected directions: 6
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 6UXW using Random Forest ---
+Stick 1 -> Model 1: Detected=1, Actual=1, Correct=True
+Stick 5 -> Model 6: Detected=-1, Actual=-1, Correct=True
+Stick 6 -> Model 7: Detected=-1, Actual=-1, Correct=True
+Stick 7 -> Model 8: Detected=-1, Actual=-1, Correct=True
+Stick 8 -> Model 9: Detected=-1, Actual=-1, Correct=True
+Stick 9 -> Model 11: Detected=-1, Actual=-1, Correct=True
+Stick 11 -> Model 13: Detected=-1, Actual=-1, Correct=True
+Stick 12 -> Model 14: Detected=1, Actual=1, Correct=True
+Stick 14 -> Model 17: Detected=1, Actual=1, Correct=True
+Stick 15 -> Model 18: Detected=1, Actual=1, Correct=True
+Stick 17 -> Model 20: Detected=1, Actual=1, Correct=True
+Stick 18 -> Model 21: Detected=1, Actual=1, Correct=True
+Stick 19 -> Model 23: Detected=-1, Actual=-1, Correct=True
+Stick 20 -> Model 24: Detected=1, Actual=1, Correct=True
+Stick 21 -> Model 25: Detected=1, Actual=1, Correct=True
+Stick 22 -> Model 27: Detected=-1, Actual=-1, Correct=True
+Stick 23 -> Model 28: Detected=-1, Actual=-1, Correct=True
+Stick 24 -> Model 29: Detected=1, Actual=1, Correct=True
+Stick 26 -> Model 31: Detected=1, Actual=1, Correct=True
+Stick 27 -> Model 33: Detected=-1, Actual=-1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 20
+Correctly detected directions: 20
+Direction detection accuracy: 100.00%
+
+============================================================
+OVERALL DIRECTION DETECTION SUMMARY
+============================================================
+Total proteins analyzed: 37
+Total directions analyzed: 150
+Total correct directions: 145
+Overall direction detection accuracy: 96.67%
+
+Per-protein results:
+----------------------------------------
+1A7D: 4/4 (100.00%)
+1HG5: 0/0 (0.00%)
+1LWB: 0/0 (0.00%)
+1P5X: 0/0 (0.00%)
+1Z1L: 0/0 (0.00%)
+2XVV: 0/0 (0.00%)
+3C91: 5/5 (100.00%)
+3HJL: 0/0 (0.00%)
+3LTJ: 0/0 (0.00%)
+4OXW: 3/4 (75.00%)
+5M50: 14/14 (100.00%)
+6EM3: 3/3 (100.00%)
+1BZ4: 5/5 (100.00%)
+1HZ4: 0/0 (0.00%)
+1NG6: 0/0 (0.00%)
+1XQO: 0/0 (0.00%)
+2OVJ: 0/0 (0.00%)
+2Y4Z: 5/6 (83.33%)
+3FIN: 0/0 (0.00%)
+3IEE: 0/0 (0.00%)
+3ODS: 0/0 (0.00%)
+5I1M: 12/12 (100.00%)
+5O8O: 3/3 (100.00%)
+6F36: 8/8 (100.00%)
+1FLP: 6/6 (100.00%)
+1ICX: 3/4 (75.00%)
+1OZ9: 4/5 (80.00%)
+1YD0: 3/4 (75.00%)
+2XB5: 0/0 (0.00%)
+3ACW: 0/0 (0.00%)
+3HBE: 0/0 (0.00%)
+3IXV: 0/0 (0.00%)
+4CHV: 10/10 (100.00%)
+4UE4: 5/5 (100.00%)
+5KBU: 26/26 (100.00%)
+5UZB: 6/6 (100.00%)
+6UXW: 20/20 (100.00%)
+============================================================
+
+
+
+
+*************************Strands RESULTS:**********************
+
+--- Direction Analysis for 1ICX using Random Forest ---
+Stick 1 -> Model 1: Detected=1, Actual=-1, Correct=False
+Stick 2 -> Model 2: Detected=1, Actual=-1, Correct=False
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 4: Detected=1, Actual=1, Correct=True
+Stick 5 -> Model 5: Detected=1, Actual=-1, Correct=False
+Stick 6 -> Model 6: Detected=1, Actual=1, Correct=True
+Stick 7 -> Model 7: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 7
+Correctly detected directions: 4
+Direction detection accuracy: 57.14%
+
+--- Direction Analysis for 1OZ9 using SVM Linear ---
+Stick 1 -> Model 1: Detected=1, Actual=-1, Correct=False
+Stick 2 -> Model 2: Detected=1, Actual=-1, Correct=False
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 3
+Correctly detected directions: 1
+Direction detection accuracy: 33.33%
+
+--- Direction Analysis for 1YD0 using Random Forest ---
+Stick 1 -> Model 1: Detected=1, Actual=-1, Correct=False
+Stick 2 -> Model 2: Detected=1, Actual=-1, Correct=False
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 3
+Correctly detected directions: 1
+Direction detection accuracy: 33.33%
+
+--- Direction Analysis for 2Y4Z using SVM Linear ---
+Stick 1 -> Model 1: Detected=1, Actual=-1, Correct=False
+Stick 2 -> Model 2: Detected=1, Actual=-1, Correct=False
+
+--- Direction Detection Results ---
+Total directions analyzed: 2
+Correctly detected directions: 0
+Direction detection accuracy: 0.00%
+
+--- Direction Analysis for 3C91 using Voronoi (1N KNN) ---
+Stick 1 -> Model 1: Detected=-1, Actual=-1, Correct=True
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 4: Detected=1, Actual=1, Correct=True
+Stick 5 -> Model 5: Detected=-1, Actual=-1, Correct=True
+Stick 6 -> Model 6: Detected=1, Actual=1, Correct=True
+Stick 7 -> Model 7: Detected=1, Actual=1, Correct=True
+Stick 8 -> Model 8: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 7
+Correctly detected directions: 7
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 4CHV using Random Forest ---
+Stick 1 -> Model 2: Detected=-1, Actual=-1, Correct=True
+Stick 2 -> Model 3: Detected=-1, Actual=-1, Correct=True
+Stick 3 -> Model 4: Detected=1, Actual=1, Correct=True
+Stick 7 -> Model 8: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 4
+Correctly detected directions: 4
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 4OXW using Voronoi (1N KNN) ---
+Stick 1 -> Model 1: Detected=1, Actual=-1, Correct=False
+Stick 2 -> Model 2: Detected=1, Actual=-1, Correct=False
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 3
+Correctly detected directions: 1
+Direction detection accuracy: 33.33%
+
+--- Direction Analysis for 4R9A using SVM Linear ---
+Stick 1 -> Model 1: Detected=-1, Actual=-1, Correct=True
+Stick 2 -> Model 2: Detected=-1, Actual=-1, Correct=True
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 4: Detected=1, Actual=1, Correct=True
+Stick 5 -> Model 6: Detected=-1, Actual=-1, Correct=True
+Stick 6 -> Model 7: Detected=1, Actual=1, Correct=True
+Stick 7 -> Model 8: Detected=1, Actual=1, Correct=True
+Stick 8 -> Model 9: Detected=1, Actual=1, Correct=True
+Stick 9 -> Model 10: Detected=1, Actual=1, Correct=True
+Stick 10 -> Model 11: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 10
+Correctly detected directions: 10
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 4YOK using Voronoi (1N KNN) ---
+Stick 1 -> Model 1: Detected=1, Actual=-1, Correct=False
+Stick 2 -> Model 3: Detected=1, Actual=-1, Correct=False
+Stick 3 -> Model 4: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 5: Detected=1, Actual=1, Correct=True
+Stick 5 -> Model 6: Detected=1, Actual=-1, Correct=False
+Stick 6 -> Model 7: Detected=1, Actual=1, Correct=True
+Stick 7 -> Model 8: Detected=1, Actual=1, Correct=True
+Stick 8 -> Model 9: Detected=1, Actual=1, Correct=True
+Stick 9 -> Model 10: Detected=1, Actual=1, Correct=True
+Stick 10 -> Model 11: Detected=1, Actual=1, Correct=True
+Stick 12 -> Model 13: Detected=1, Actual=-1, Correct=False
+Stick 13 -> Model 14: Detected=1, Actual=-1, Correct=False
+Stick 14 -> Model 16: Detected=1, Actual=-1, Correct=False
+
+--- Direction Detection Results ---
+Total directions analyzed: 13
+Correctly detected directions: 7
+Direction detection accuracy: 53.85%
+
+--- Direction Analysis for 5KBU using Voronoi (1N KNN) ---
+Stick 1 -> Model 1: Detected=-1, Actual=-1, Correct=True
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+Stick 6 -> Model 6: Detected=1, Actual=1, Correct=True
+Stick 7 -> Model 7: Detected=1, Actual=1, Correct=True
+Stick 8 -> Model 8: Detected=1, Actual=1, Correct=True
+Stick 9 -> Model 9: Detected=1, Actual=1, Correct=True
+Stick 10 -> Model 10: Detected=1, Actual=1, Correct=True
+Stick 11 -> Model 13: Detected=-1, Actual=-1, Correct=True
+Stick 12 -> Model 14: Detected=-1, Actual=-1, Correct=True
+Stick 13 -> Model 15: Detected=-1, Actual=-1, Correct=True
+Stick 18 -> Model 23: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 11
+Correctly detected directions: 11
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 5M50 using SVM Linear ---
+Stick 1 -> Model 1: Detected=-1, Actual=-1, Correct=True
+Stick 2 -> Model 2: Detected=-1, Actual=-1, Correct=True
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+Stick 7 -> Model 7: Detected=1, Actual=1, Correct=True
+Stick 8 -> Model 8: Detected=1, Actual=1, Correct=True
+Stick 9 -> Model 9: Detected=1, Actual=1, Correct=True
+Stick 10 -> Model 10: Detected=1, Actual=1, Correct=True
+Stick 11 -> Model 11: Detected=-1, Actual=-1, Correct=True
+Stick 12 -> Model 12: Detected=-1, Actual=-1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 9
+Correctly detected directions: 9
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 5O8O using SVM Linear ---
+Stick 1 -> Model 1: Detected=-1, Actual=-1, Correct=True
+Stick 2 -> Model 2: Detected=-1, Actual=-1, Correct=True
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 4: Detected=1, Actual=1, Correct=True
+Stick 5 -> Model 5: Detected=-1, Actual=-1, Correct=True
+Stick 6 -> Model 6: Detected=1, Actual=1, Correct=True
+Stick 7 -> Model 7: Detected=1, Actual=1, Correct=True
+Stick 8 -> Model 8: Detected=1, Actual=1, Correct=True
+Stick 9 -> Model 11: Detected=1, Actual=1, Correct=True
+Stick 10 -> Model 12: Detected=1, Actual=1, Correct=True
+Stick 12 -> Model 14: Detected=-1, Actual=-1, Correct=True
+Stick 13 -> Model 15: Detected=-1, Actual=-1, Correct=True
+Stick 14 -> Model 16: Detected=-1, Actual=-1, Correct=True
+Stick 15 -> Model 17: Detected=-1, Actual=-1, Correct=True
+Stick 16 -> Model 18: Detected=-1, Actual=-1, Correct=True
+Stick 17 -> Model 19: Detected=-1, Actual=-1, Correct=True
+Stick 18 -> Model 20: Detected=1, Actual=1, Correct=True
+Stick 19 -> Model 21: Detected=-1, Actual=-1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 18
+Correctly detected directions: 18
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 6EM3 using Voronoi (1N KNN) ---
+Stick 1 -> Model 1: Detected=-1, Actual=-1, Correct=True
+Stick 2 -> Model 2: Detected=-1, Actual=-1, Correct=True
+Stick 3 -> Model 3: Detected=1, Actual=1, Correct=True
+Stick 4 -> Model 4: Detected=1, Actual=1, Correct=True
+Stick 5 -> Model 5: Detected=-1, Actual=-1, Correct=True
+Stick 6 -> Model 6: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 6
+Correctly detected directions: 6
+Direction detection accuracy: 100.00%
+
+--- Direction Analysis for 6UXW using SVM Linear ---
+Stick 2 -> Model 3: Detected=-1, Actual=-1, Correct=True
+Stick 3 -> Model 4: Detected=1, Actual=1, Correct=True
+Stick 8 -> Model 10: Detected=1, Actual=1, Correct=True
+
+--- Direction Detection Results ---
+Total directions analyzed: 3
+Correctly detected directions: 3
+Direction detection accuracy: 100.00%
+
+============================================================
+OVERALL DIRECTION DETECTION SUMMARY
+============================================================
+Total proteins analyzed: 14
+Total directions analyzed: 99
+Total correct directions: 82
+Overall direction detection accuracy: 82.83%
+
+Per-protein results:
+----------------------------------------
+1ICX: 4/7 (57.14%)
+1OZ9: 1/3 (33.33%)
+1YD0: 1/3 (33.33%)
+2Y4Z: 0/2 (0.00%)
+3C91: 7/7 (100.00%)
+4CHV: 4/4 (100.00%)
+4OXW: 1/3 (33.33%)
+4R9A: 10/10 (100.00%)
+4YOK: 7/13 (53.85%)
+5KBU: 11/11 (100.00%)
+5M50: 9/9 (100.00%)
+5O8O: 18/18 (100.00%)
+6EM3: 6/6 (100.00%)
+6UXW: 3/3 (100.00%)
+============================================================

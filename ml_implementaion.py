@@ -1,6 +1,8 @@
 import os
 import sys
 import numpy as np
+import json
+from itertools import product
 from sklearn import svm
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
@@ -18,7 +20,12 @@ CSV_DATASET = "Archive/"
 
 
 class ProteinAssignmentUsingMultipleML:
-    def __init__(self, report_file="direction_analysis_report.txt"):
+    def __init__(
+        self,
+        report_file="direction_analysis_report.txt",
+        use_grid_search=False,
+        best_params_file="best_hyperparameters.json",
+    ):
         """
         Initializing 3 classifiers to use all of them!
         """
@@ -28,6 +35,8 @@ class ProteinAssignmentUsingMultipleML:
         self.knn = KNeighborsClassifier(n_neighbors=1)
         self.visualizer = ProteinVisualizer()
         self.report_file = report_file
+        self.use_grid_search = use_grid_search
+        self.best_params_file = best_params_file
 
         self.overall_direction_stats = {
             "total_directions": 0,
@@ -35,10 +44,197 @@ class ProteinAssignmentUsingMultipleML:
             "protein_results": [],
         }
 
+        # Define parameter grids for grid search
+        self.param_grids = {
+            "SVM Linear": {
+                "C": [0.1, 1, 10, 100],
+                "gamma": ["scale", "auto"],
+                "kernel": ["linear"],
+            },
+            "SVM RBF": {
+                "C": [0.1, 1, 10, 100],
+                "gamma": ["scale", "auto", 0.001, 0.01, 0.1, 1],
+                "kernel": ["rbf"],
+            },
+            "Random Forest": {
+                "n_estimators": [50, 100, 200],
+                "max_depth": [None, 10, 20, 30],
+                "min_samples_split": [2, 5, 10],
+                "min_samples_leaf": [1, 2, 4],
+            },
+        }
+
+        # Track hyperparameter performance across all proteins
+        self.hyperparameter_scores = {
+            "SVM Linear": [],
+            "SVM RBF": [],
+            "Random Forest": [],
+        }
+
+        # Best parameters (will be loaded from file or determined by grid search)
+        self.best_params = self.load_best_parameters() if not use_grid_search else {}
+
     def print_and_save(self, message):
+        """
+        Print message to console and save to report file.
+        This method should ONLY be used for direction detection analysis reports.
+        """
         print(message)
         with open(self.report_file, "a", encoding="utf-8") as f:
             f.write(message + "\n")
+
+    def save_best_parameters(self, best_params):
+        """Save the best hyperparameters to a JSON file"""
+        try:
+            with open(self.best_params_file, "w") as f:
+                json.dump(best_params, f, indent=4)
+            print(f"Best hyperparameters saved to {self.best_params_file}")
+        except Exception as e:
+            print(f"Error saving best parameters: {e}")
+
+    def load_best_parameters(self):
+        """Load the best hyperparameters from JSON file"""
+        try:
+            if os.path.exists(self.best_params_file):
+                with open(self.best_params_file, "r") as f:
+                    params = json.load(f)
+                print(f"Loaded best hyperparameters from {self.best_params_file}")
+                return params
+            else:
+                print(f"No saved parameters file found at {self.best_params_file}")
+                return {}
+        except Exception as e:
+            print(f"Error loading best parameters: {e}")
+            return {}
+
+    def evaluate_hyperparameters(
+        self,
+        classifier,
+        param_grid,
+        X_train,
+        y_train,
+        X_test,
+        y_test,
+        test_to_train_map,
+        algorithm_name,
+        protein_name,
+    ):
+        """
+        Evaluate different hyperparameter combinations for a classifier using our mapped accuracy.
+        Track results across proteins to find globally best parameters.
+        """
+        print(f"\n--- Hyperparameter Search for {algorithm_name} on {protein_name} ---")
+
+        # Generate all parameter combinations
+        param_names = list(param_grid.keys())
+        param_values = list(param_grid.values())
+        param_combinations = list(product(*param_values))
+
+        best_score = -1
+        best_params = None
+        best_estimator = None
+
+        print(f"Testing {len(param_combinations)} parameter combinations...")
+
+        for i, param_combination in enumerate(param_combinations):
+            # Create parameter dictionary
+            params = dict(zip(param_names, param_combination))
+
+            # Create classifier with current parameters
+            current_classifier = classifier.__class__(**params)
+
+            # Train on training data
+            current_classifier.fit(X_train, y_train)
+
+            # Predict on test data
+            y_pred = current_classifier.predict(X_test)
+
+            # Calculate mapped accuracy
+            current_score = self.calculate_mapped_accuracy(
+                y_test, y_pred, test_to_train_map
+            )
+
+            # Track this combination's performance across proteins
+            self.hyperparameter_scores[algorithm_name].append(
+                {
+                    "protein": protein_name,
+                    "params": params.copy(),
+                    "accuracy": current_score,
+                }
+            )
+
+            # Update best if this is better
+            if current_score > best_score:
+                best_score = current_score
+                best_params = params.copy()
+                best_estimator = current_classifier
+
+            if (i + 1) % 10 == 0 or (i + 1) == len(param_combinations):
+                print(
+                    f"Progress: {i + 1}/{len(param_combinations)} combinations tested"
+                )
+
+        print(f"Best parameters for {algorithm_name} on {protein_name}: {best_params}")
+        print(f"Best accuracy for {algorithm_name} on {protein_name}: {best_score:.4f}")
+
+        return best_estimator, best_params, best_score
+
+    def find_globally_best_parameters(self):
+        """
+        Analyze hyperparameter performance across all proteins to find the globally best parameters.
+        """
+        print("\n" + "=" * 60)
+        print("ANALYZING BEST HYPERPARAMETERS ACROSS ALL PROTEINS")
+        print("=" * 60)
+
+        global_best_params = {}
+
+        for algorithm_name in self.hyperparameter_scores:
+            if not self.hyperparameter_scores[algorithm_name]:
+                continue
+
+            print(f"\n--- {algorithm_name} ---")
+
+            # Group by parameter combination and calculate average accuracy
+            param_performance = {}
+            for result in self.hyperparameter_scores[algorithm_name]:
+                param_key = str(sorted(result["params"].items()))
+                if param_key not in param_performance:
+                    param_performance[param_key] = {
+                        "params": result["params"],
+                        "accuracies": [],
+                        "proteins": [],
+                    }
+                param_performance[param_key]["accuracies"].append(result["accuracy"])
+                param_performance[param_key]["proteins"].append(result["protein"])
+
+            # Find the parameter combination with highest average accuracy
+            best_avg_accuracy = -1
+            best_param_combo = None
+
+            for param_key, performance in param_performance.items():
+                avg_accuracy = np.mean(performance["accuracies"])
+                std_accuracy = np.std(performance["accuracies"])
+
+                print(f"Params: {performance['params']}")
+                print(f"  Average accuracy: {avg_accuracy:.4f} ± {std_accuracy:.4f}")
+                print(f"  Tested on {len(performance['proteins'])} proteins")
+
+                if avg_accuracy > best_avg_accuracy:
+                    best_avg_accuracy = avg_accuracy
+                    best_param_combo = performance["params"]
+
+            if best_param_combo:
+                global_best_params[algorithm_name] = best_param_combo
+                print(f"Best parameters for {algorithm_name}: {best_param_combo}")
+                print(f"Average accuracy: {best_avg_accuracy:.4f}")
+
+        # Save the globally best parameters
+        if global_best_params:
+            self.save_best_parameters(global_best_params)
+            self.best_params = global_best_params
+
+        return global_best_params
 
     def dtw_distance(self, ts1, ts2):
         """
@@ -81,6 +277,7 @@ class ProteinAssignmentUsingMultipleML:
         self,
         protein_name,
         best_algorithm,
+        best_classifier,
         X_train,
         y_train,
         X_test,
@@ -96,13 +293,8 @@ class ProteinAssignmentUsingMultipleML:
             f"\n--- Direction Analysis for {protein_name} using {best_algorithm} ---"
         )
 
-        # Get predictions from the best algorithm
-        if best_algorithm == "SVM Linear":
-            y_pred = self.svm_linear.predict(X_test)
-        elif best_algorithm == "SVM RBF":
-            y_pred = self.svm_rbf.predict(X_test)
-        else:  # Random Forest
-            y_pred = self.random_forest.predict(X_test)
+        # Use the best classifier that was already trained
+        y_pred = best_classifier.predict(X_test)
 
         correct_directions = 0
         total_directions = 0
@@ -264,17 +456,70 @@ class ProteinAssignmentUsingMultipleML:
         It trains the model on all 3 algorithms and finally test it.
         Also performs direction detection analysis and reports accuracy.
         """
-        algorithms = [
-            ("SVM Linear", self.svm_linear),
-            ("SVM RBF", self.svm_rbf),
-            ("Random Forest", self.random_forest),
-            ("Voronoi (1N KNN)", self.knn)
-        ]
-
+        algorithms = []
         accuracies = {}
+        best_params_dict = {}
 
+        if self.use_grid_search:
+            # Grid search enabled - optimize hyperparameters
+            algorithms_for_grid_search = [
+                ("SVM Linear", svm.SVC(), "SVM Linear"),
+                ("SVM RBF", svm.SVC(), "SVM RBF"),
+                (
+                    "Random Forest",
+                    RandomForestClassifier(random_state=42),
+                    "Random Forest",
+                ),
+            ]
+
+            # Perform hyperparameter evaluation for each algorithm
+            for name, base_classifier, param_key in algorithms_for_grid_search:
+                if param_key in self.param_grids:
+                    best_classifier, best_params, best_score = (
+                        self.evaluate_hyperparameters(
+                            base_classifier,
+                            self.param_grids[param_key],
+                            X_train,
+                            y_train,
+                            X_test,
+                            y_test,
+                            test_to_train_map,
+                            name,
+                            protein_name,
+                        )
+                    )
+                    algorithms.append((name, best_classifier))
+                    best_params_dict[name] = best_params
+
+            # Add Voronoi without grid search
+            algorithms.append(("Voronoi (1N KNN)", self.knn))
+
+        else:
+            # Use saved best parameters or default parameters
+            if self.best_params:
+                # Create classifiers with best parameters
+                if "SVM Linear" in self.best_params:
+                    self.svm_linear = svm.SVC(**self.best_params["SVM Linear"])
+                if "SVM RBF" in self.best_params:
+                    self.svm_rbf = svm.SVC(**self.best_params["SVM RBF"])
+                if "Random Forest" in self.best_params:
+                    self.random_forest = RandomForestClassifier(
+                        random_state=42, **self.best_params["Random Forest"]
+                    )
+
+            algorithms = [
+                ("SVM Linear", self.svm_linear),
+                ("SVM RBF", self.svm_rbf),
+                ("Random Forest", self.random_forest),
+                ("Voronoi (1N KNN)", self.knn),
+            ]
+
+        # Train and evaluate each algorithm
         for name, classifier in algorithms:
             print(f"\n--- {name} Results ---")
+
+            if self.use_grid_search and name in best_params_dict:
+                print(f"Using optimized parameters: {best_params_dict[name]}")
 
             classifier.fit(X_train, y_train)
             y_pred = classifier.predict(X_test)
@@ -288,12 +533,29 @@ class ProteinAssignmentUsingMultipleML:
             #     self.visualizer.plot_3d_cylindrical_structures_with_svm(X_train, y_train, protein_name, structure_type, classifier)
 
         best_algorithm = max(accuracies, key=accuracies.get)
+        print(
+            f"\nBest Algorithm: {best_algorithm} (Accuracy: {accuracies[best_algorithm]:.4f})"
+        )
+
+        if self.use_grid_search and best_algorithm in best_params_dict:
+            print(
+                f"Best parameters for {best_algorithm}: {best_params_dict[best_algorithm]}"
+            )
+
         print(f"Best Algorithm: {best_algorithm} ({accuracies[best_algorithm]:.4f})")
         print("-" * 50)
+
+        # Get the best classifier object
+        best_classifier = None
+        for name, classifier in algorithms:
+            if name == best_algorithm:
+                best_classifier = classifier
+                break
 
         self.analyze_best_mappings(
             protein_name,
             best_algorithm,
+            best_classifier,
             X_train,
             y_train,
             X_test,
@@ -540,7 +802,7 @@ if __name__ == "__main__":
         "6UXW",
     ]
 
-    ml_classifier = ProteinAssignmentUsingMultipleML()
+    ml_classifier = ProteinAssignmentUsingMultipleML(use_grid_search=False)
     print("\n\n\n\n*************************HELIX RESULTS:**********************")
     ml_classifier.print_and_save(
         "\n\n\n\n*************************HELIX RESULTS:**********************"

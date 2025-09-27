@@ -1,0 +1,18 @@
+{
+    "SVM Linear": {
+        "C": 10,
+        "gamma": "scale",
+        "kernel": "linear"
+    },
+    "SVM RBF": {
+        "C": 10,
+        "gamma": 0.01,
+        "kernel": "rbf"
+    },
+    "Random Forest": {
+        "n_estimators": 200,
+        "max_depth": 30,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1
+    }
+}

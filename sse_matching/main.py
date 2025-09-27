@@ -21,17 +21,16 @@ def main():
     The second list contains proteins with records of Strand
     """
 
-    trainer = ProteinTrainer(csv_path=CSV_DATASET, use_grid_search=False)
+    trainer = ProteinTrainer(csv_path=CSV_DATASET, use_grid_search=True)
     trainer.file_handler.reset_report_file()
 
-    print("\n\n\n\n*************************HELIX RESULTS:**********************")
     trainer.file_handler.print_and_save(
         "\n\n\n\n*************************HELIX RESULTS:**********************"
     )
     trainer.train_with_all_algorithms(HELIX_PROTEIN_LIST, "Helix")
     trainer.print_overall_direction_summary()
+    trainer.find_globally_best_parameters()
 
-    print("\n\n\n\n*************************STRAND RESULTS:**********************")
     trainer.file_handler.print_and_save(
         "\n\n\n\n*************************STRAND RESULTS:**********************"
     )
@@ -39,6 +38,7 @@ def main():
     trainer.reset_direction_stats()
     trainer.train_with_all_algorithms(STRAND_PROTEIN_LIST, "Strand")
     trainer.print_overall_direction_summary()
+    trainer.find_globally_best_parameters()
 
     print(
         f"\nDirection analysis report has been saved to: {trainer.file_handler.report_file}"

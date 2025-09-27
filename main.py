@@ -22,6 +22,7 @@ def main():
     """
 
     trainer = ProteinTrainer(csv_path=CSV_DATASET, use_grid_search=False)
+    trainer.file_handler.reset_report_file()
 
     print("\n\n\n\n*************************HELIX RESULTS:**********************")
     trainer.file_handler.print_and_save(

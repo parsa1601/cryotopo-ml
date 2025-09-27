@@ -22,6 +22,15 @@ class FileHandler:
         with open(self.report_file, "a", encoding="utf-8") as f:
             f.write(message + "\n")
 
+    def reset_report_file(self):
+        """Reset the report file by clearing its contents."""
+        try:
+            with open(self.report_file, "w", encoding="utf-8") as f:
+                f.write("")
+            print(f"Report file {self.report_file} has been reset")
+        except Exception as e:
+            print(f"Error resetting report file: {e}")
+
     def save_best_parameters(self, best_params, best_params_file):
         """Save the best hyperparameters to a JSON file"""
         try:

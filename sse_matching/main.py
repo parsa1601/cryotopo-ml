@@ -21,7 +21,7 @@ def main():
     The second list contains proteins with records of Strand
     """
 
-    trainer = ProteinTrainer(csv_path=CSV_DATASET, use_grid_search=True)
+    trainer = ProteinTrainer(csv_path=CSV_DATASET, use_grid_search=False)
     trainer.file_handler.reset_report_file()
 
     trainer.file_handler.print_and_save(

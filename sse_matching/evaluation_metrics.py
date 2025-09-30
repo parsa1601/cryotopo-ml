@@ -2,7 +2,8 @@
 Evaluation metrics module for calculating accuracy and performance.
 Handles mapping-based accuracy calculations for protein structure analysis.
 """
-
+import numpy as np
+from collections import Counter
 
 class EvaluationMetrics:
     """Handles calculation of evaluation metrics for protein structure analysis."""
@@ -38,3 +39,97 @@ class EvaluationMetrics:
                 correct += 1
 
         return correct / total if total > 0 else 0
+    
+    @staticmethod
+    def calculate_custom_metrics(y_test, y_pred, y_train, test_to_train_map):
+        """
+        Calculates custom TP, TN, FP, FN counts and a confusion matrix.
+
+        This function uses a specific, two-part logic to derive the metrics,
+        separating the evaluation of 'matched' predictions from 'unmatched' labels.
+
+        Calculation Logic:
+        ------------------
+        1.  **True Positives (TP)**:
+            - The function iterates through each prediction in `y_pred`.
+            - A prediction is counted as a TP if its value is a key in `map_dict`
+            AND the corresponding ground truth value in `y_test` at the same
+            index matches the value specified in `map_dict`.
+            - Example: `tp_count += 1` if `y_pred[i] == 2` and `y_test[i] == map_dict[2]`.
+
+        2.  **False Positives (FP)**:
+            - This is the "else" case for the TP calculation.
+            - A prediction is counted as an FP if it fails the TP condition. This
+            includes cases where the predicted value is not a key in `map_dict`
+            or where the `y_test` value does not match the mapping.
+
+        3.  **True Negatives (TN)**:
+            - This logic is based on labels present in `y_train` but not `y_pred`
+            (or vice-versa), known as 'unmatched' labels.
+            - The function iterates through each unique `unmatched_label`.
+            - If an `unmatched_label` is NOT a key in `map_dict` OR its value in
+            `map_dict` is 0, it's considered a "correct rejection."
+            - The `tn_count` is then increased by the total number of times that
+            `unmatched_label` appeared in the `y_train` array.
+
+        4.  **False Negatives (FN)**:
+            - This is the "else" case for the TN calculation.
+            - If an `unmatched_label` IS a key in `map_dict` and its value is not 0,
+            it's considered a "missed case."
+            - The `fn_count` is then increased by the total number of times that
+            `unmatched_label` appeared in the `y_train` array.
+
+        Args:
+            y_test (np.array): The ground truth labels.
+            y_pred (np.array): The predicted labels.
+            y_train (np.array): The training labels.
+            map_dict (dict): A dictionary mapping predicted values to expected true values.
+
+        Returns:
+            tuple: A tuple containing:
+                - dict: A dictionary with the counts for 'tp', 'tn', 'fp', 'fn'.
+                - np.array: The 2x2 confusion matrix [[TN, FP], [FN, TP]].
+        """
+        map_dict = {v: k for k, v in test_to_train_map.items()}
+        # Helper logic to find matched and unmatched labels
+        train_labels = set(np.unique(y_train))
+        pred_labels = set(np.unique(y_pred))
+        unmatched = sorted(list(train_labels.symmetric_difference(pred_labels)))
+
+        # Part 1: Calculate TP and FP based on predictions
+        tp_count = 0
+        fp_count = 0
+        for i in range(len(y_pred)):
+            pred_val = y_pred[i]
+            true_val = y_test[i]
+            if pred_val in map_dict and true_val == map_dict[pred_val]:
+                tp_count += 1
+            else:
+                fp_count += 1
+
+        # Part 2: Calculate TN and FN based on unmatched labels
+        tn_count = 0
+        fn_count = 0
+        train_counts = Counter(y_train)
+
+        for unmatched_label in unmatched:
+            count_in_train = train_counts.get(unmatched_label, 0)
+            if unmatched_label not in map_dict or map_dict.get(unmatched_label) == 0:
+                tn_count += count_in_train
+            else:
+                fn_count += count_in_train
+
+        # Assemble final results
+        metrics = {
+            'tp': tp_count,
+            'tn': tn_count,
+            'fp': fp_count,
+            'fn': fn_count
+        }
+
+        confusion_matrix = np.array([
+            [tn_count, fp_count],
+            [fn_count, tp_count]
+        ])
+
+        return metrics, confusion_matrix

@@ -120,6 +120,8 @@ class ProteinTrainer:
                 except Exception as e:
                     print(f"Error processing protein {protein}: {e}")
 
+        return dict(self.ml_classifiers.final_accuracy_report)
+
     def train_and_evaluation(
         self,
         X_train,
@@ -193,6 +195,8 @@ class ProteinTrainer:
                     y_test,
                     test_to_train_map,
                     self.evaluation_metrics,
+                    structure_type,
+                    protein_name
                 )
             )
 

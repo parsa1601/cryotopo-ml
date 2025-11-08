@@ -1,11 +1,9 @@
-import os
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('Agg') 
-import seaborn as sns
 
-def calculate_combined_metrics(final_accuracy_report):
+def calculate_combined_metrics(final_accuracy_report, best_method="SVM RBF"):
     """
     Calculate combined metrics for each protein by averaging across all methods and structure types.
     
@@ -26,14 +24,14 @@ def calculate_combined_metrics(final_accuracy_report):
         count = 0
         
         for structure_type, methods in structures.items():
-            for method, results in methods.items():
-                if 'confusion_matrix_detailed' in results:
-                    detailed = results['confusion_matrix_detailed']
-                    total_precision += detailed.get('precision', 0)
-                    total_recall += detailed.get('recall', 0)
-                    total_f1 += detailed.get('f1_measure', 0)
-                    total_mismatch_rate += detailed.get('mismatch_rate', 0)
-                    count += 1
+            results = methods[best_method]
+            if 'confusion_matrix_detailed' in results:
+                detailed = results['confusion_matrix_detailed']
+                total_precision += detailed.get('precision', 0)
+                total_recall += detailed.get('recall', 0)
+                total_f1 += detailed.get('f1_measure', 0)
+                total_mismatch_rate += detailed.get('mismatch_rate', 0)
+                count += 1
         
         if count > 0:
             combined_metrics[protein] = {
@@ -125,131 +123,147 @@ def plot_error_rate_line_chart(final_accuracy_report):
     print("Error rate line chart saved as protein_error_rate_line_chart.png")
     plt.close()
 
-def plot_accuracy_charts(final_accuracy_report):
+def calculate_method_metrics(final_accuracy_report, metric='f1_measure'):
     """
-    Generates and saves two line charts (Helix and Strand) for protein classification accuracy.
+    Calculate metrics for each method across all proteins, averaging over structure types.
+    
+    Args:
+        final_accuracy_report (dict): Nested dictionary with structure 
+                                     {protein: {structure_type: {method: {metrics}}}}
+        metric (str): The metric to analyze ('f1_measure', 'precision', 'recall', 'accuracy')
+    
+    Returns:
+        dict: Method-specific data {method: {'values': [avg_per_protein], 'proteins': [proteins], 'avg': float}}
+    """
+    methods = ['SVM Linear', 'SVM RBF', 'Random Forest', 'Voronoi (1N KNN)']
+    method_data = {method: {'values': [], 'proteins': []} for method in methods}
+    
+    for protein, structures in final_accuracy_report.items():
+        # For each method, collect values for all structure_types, then average
+        for method in methods:
+            values = []
+            for structure_type, methods_dict in structures.items():
+                if method in methods_dict:
+                    results = methods_dict[method]
+                    if metric == 'accuracy':
+                        value = results.get('accuracy', 0) * 100  # Convert to percentage
+                    elif 'confusion_matrix_detailed' in results:
+                        value = results['confusion_matrix_detailed'].get(metric, 0)
+                    else:
+                        continue
+                    values.append(value)
+            if values:
+                avg_value = sum(values) / len(values)
+                method_data[method]['values'].append(avg_value)
+                method_data[method]['proteins'].append(protein)
+    
+    # Calculate averages
+    for method in method_data:
+        values = method_data[method]['values']
+        method_data[method]['avg'] = sum(values) / len(values) if values else 0
+    
+    return method_data
+
+
+def print_analytical_report(final_accuracy_report, metric='f1_measure'):
+    """
+    Generate analytical report comparing methods.
+    
+    Args:
+        final_accuracy_report (dict): The complete accuracy report dictionary
+        metric (str): The metric to analyze ('f1_measure', 'precision', 'recall', 'accuracy')
+    
+    Returns:
+        str: Formatted analytical report
+    """
+    method_data = calculate_method_metrics(final_accuracy_report, metric)
+    methods = ['SVM Linear', 'SVM RBF', 'Random Forest', 'Voronoi (1N KNN)']
+    
+    # Calculate averages and sort methods by performance
+    method_averages = [(method, method_data[method]['avg']) for method in methods if method_data[method]['values']]
+    method_averages.sort(key=lambda x: x[1], reverse=True)
+    
+    report = f"\n{'='*60}\n"
+    report += f"ANALYTICAL REPORT - {metric.upper().replace('_', ' ')}\n"
+    report += f"{'='*60}\n\n"
+    
+    # Overall averages
+    report += "AVERAGE PERFORMANCE BY METHOD:\n"
+    report += "-" * 40 + "\n"
+    for i, (method, avg) in enumerate(method_averages, 1):
+        total_cases = len(method_data[method]['values'])
+        report += f"{i}. {method:<20}: {avg:6.2f}% (n={total_cases})\n"
+    print(report)
+
+def plot_accuracy_charts(final_accuracy_report, metric='f1_measure'):
+    """
+    Generates and saves a combined line chart for protein classification metrics.
+    Uses calculate_combined_metrics to combine Helix and Strand results.
 
     Args:
         final_accuracy_report (dict): A 3-level nested dictionary with the structure:
                                       {protein_name: {'Helix'/'Strand': {method: {'accuracy': float}}}}
+        metric (str): The metric to plot ('f1_measure', 'precision', 'recall', 'accuracy')
     """
+    print_analytical_report(final_accuracy_report, metric)
+    combined_metrics = calculate_combined_metrics(final_accuracy_report)
+    
+    if not combined_metrics:
+        print("No data available for combined metrics chart.")
+        return
+    
     # Define the methods and their corresponding colors
     methods = ['SVM Linear', 'SVM RBF', 'Random Forest', 'Voronoi (1N KNN)']
     colors = {'SVM Linear': 'red', 'SVM RBF': 'yellow', 'Random Forest': 'green', 'Voronoi (1N KNN)': 'blue'}
 
-    # Separate data for Helix and Strand
-    helix_data = {}
-    strand_data = {}
-
-    for protein, structures in final_accuracy_report.items():
-        if 'Helix' in structures:
-            helix_data[protein] = {method: data.get('accuracy') for method, data in structures['Helix'].items()}
-        if 'Strand' in structures:
-            strand_data[protein] = {method: data.get('accuracy') for method, data in structures['Strand'].items()}
-
-    # A helper function to create each plot
-    def create_plot(data, title):
-        if not data:
-            print(f"No data available to plot for {title}.")
-            return
-
-        plt.figure(figsize=(20, 10))
-        
-        # Get a sorted list of protein names for the x-axis
-        protein_names = sorted(data.keys())
-        
-        min_accuracy = 1.0
-
-        # Plot a line for each method
-        for method in methods:
-            accuracies = [data[protein].get(method) for protein in protein_names]
+    # Calculate method-specific data for plotting
+    method_data = calculate_method_metrics(final_accuracy_report, metric)
+    
+    # Get sorted protein names for x-axis
+    proteins = sorted(combined_metrics.keys())
+    
+    plt.figure(figsize=(20, 10))
+    
+    min_metric = 100.0
+    
+    # Plot a line for each method
+    for method in methods:
+        if method in method_data and method_data[method]['values']:
+            # Group values by protein
+            protein_values = {}
+            for i, protein in enumerate(method_data[method]['proteins']):
+                if protein not in protein_values:
+                    protein_values[protein] = []
+                protein_values[protein].append(method_data[method]['values'][i])
             
-            # Find the overall minimum accuracy for setting the y-axis limit
-            # We filter out None values before finding the min
-            valid_accuracies = [acc for acc in accuracies if acc is not None]
-            if valid_accuracies:
-                current_min = min(valid_accuracies)
-                if current_min < min_accuracy:
-                    min_accuracy = current_min
+            # Average values for each protein (combining Helix and Strand)
+            method_averages = []
+            for protein in proteins:
+                if protein in protein_values:
+                    avg_value = sum(protein_values[protein]) / len(protein_values[protein])
+                    method_averages.append(avg_value / 100.0)  # Convert to 0-1 scale for plotting
+                    min_metric = min(min_metric, avg_value / 100.0)
+                else:
+                    method_averages.append(None)
+            
+            plt.plot(proteins, method_averages, marker='o', linestyle='-', 
+                    label=method, color=colors.get(method, 'black'), linewidth=2, markersize=6)
 
-            plt.plot(protein_names, accuracies, marker='o', linestyle='-', label=method, color=colors.get(method, 'black'))
+    # Chart Customization
+    metric_label = metric.replace('_', ' ').title() if metric != 'accuracy' else 'Accuracy'
+    plt.title(f'{metric_label} Performance by Protein', fontsize=20)
+    plt.xlabel('Protein', fontsize=15)
+    plt.ylabel(metric_label, fontsize=15)
+    
+    plt.xticks(rotation='vertical')
+    
+    plt.ylim(min_metric * 0.99, 1.01)
+    
+    plt.legend(fontsize=12)
+    plt.grid(True, which='both', linestyle='--', linewidth=0.5)
+    plt.tight_layout()
 
-        # --- Chart Customization ---
-        plt.title(title, fontsize=20)
-        plt.xlabel('Protein', fontsize=15)
-        plt.ylabel('Accuracy', fontsize=15)
-        
-        # Set x-axis labels vertically
-        plt.xticks(rotation='vertical')
-        
-        # Adjust y-axis to better visualize the results
-        plt.ylim(min_accuracy * 0.99, 1.01) # Start slightly below the min accuracy
-        
-        plt.legend(fontsize=12)
-        plt.grid(True, which='both', linestyle='--', linewidth=0.5)
-        plt.tight_layout() # Adjust layout to make room for labels
-
-        # --- Save the plot ---
-        file_name = f"{title.lower().replace(' ', '_')}_accuracy_chart.png"
-        plt.savefig(file_name)
-        print(f"Chart saved as {file_name}")
-        plt.close()
-
-
-    create_plot(helix_data, 'Helix')
-    create_plot(strand_data, 'Strand')
-
-def plot_and_save_confusion_matrices(report_dict, base_dir='confusion_matrices'):
-    """
-    Generates and saves confusion matrix plots from a nested dictionary.
-
-    This function creates a directory structure based on classification method
-    and secondary structure type, then saves a plot for each confusion matrix.
-
-    Args:
-        report_dict (dict): A nested dictionary with the structure:
-                            {protein_id: {structure_type: {method_name: 
-                            {'accuracy': float, 'confusion_matrix': np.array}}}}
-        base_dir (str): The root directory where plots will be saved.
-    """
-    # Loop through each protein in the main dictionary
-    for protein_id, structures in report_dict.items():
-        # Loop through 'Helix', 'Strand', etc. for that protein
-        for structure_type, methods in structures.items():
-            # Loop through 'SVM Linear', 'Random Forest', etc. for that structure
-            for method_name, results in methods.items():
-
-                # --- 1. Create the directory structure ---
-                # Define the path: base_dir/Method Name/Structure Type/
-                output_dir = os.path.join(base_dir, method_name, structure_type)
-                
-                # Create the directories if they don't already exist
-                os.makedirs(output_dir, exist_ok=True)
-
-                # --- 2. Extract data for plotting ---
-                cm = results['confusion_matrix']
-                accuracy = results['accuracy']
-                
-                # --- 3. Plot the confusion matrix ---
-                plt.figure(figsize=(8, 6))
-                sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
-                            xticklabels=['Predicted Negative', 'Predicted Positive'],
-                            yticklabels=['Actual Negative', 'Actual Positive'])
-                
-                # Add titles and labels for clarity
-                plt.title(f'Confusion Matrix: {protein_id} - {structure_type}\n({method_name})', fontsize=14)
-                plt.ylabel('True Label', fontsize=12)
-                plt.xlabel('Predicted Label', fontsize=12)
-                plt.suptitle(f'Accuracy: {accuracy:.4f}', fontsize=10, y=0.93)
-                
-                # --- 4. Save the plot ---
-                # Define the full file path for the image
-                file_path = os.path.join(output_dir, f'{protein_id}.png')
-                
-                # Save the figure and close the plot to free up memory
-                plt.savefig(file_path, bbox_inches='tight')
-                plt.close()
-
-    print(f"✅ Plotting complete! Check the '{base_dir}' directory.")
-
-
+    file_name = f"combined_{metric}_chart.png"
+    plt.savefig(file_name)
+    print(f"Combined chart saved as {file_name}")
+    plt.close()

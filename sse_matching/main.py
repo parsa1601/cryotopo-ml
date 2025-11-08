@@ -13,7 +13,6 @@ from protein_trainer import ProteinTrainer
 from config import CSV_DATASET, HELIX_PROTEIN_LIST, STRAND_PROTEIN_LIST
 from plot_results import (
     plot_accuracy_charts,
-    plot_and_save_confusion_matrices,
     plot_metrics_bar_chart,
     plot_error_rate_line_chart,
 )
@@ -43,9 +42,7 @@ def plot_charts_from_json(json_file_path="Final_Results.json"):
         print(f"Loaded data from {json_file_path}")
         print("Generating charts...")
 
-        # Generate all charts
-        plot_accuracy_charts(final_accuracy_report)
-        # plot_and_save_confusion_matrices(final_accuracy_report)
+        plot_accuracy_charts(final_accuracy_report, 'f1_measure')
         plot_metrics_bar_chart(final_accuracy_report)
         plot_error_rate_line_chart(final_accuracy_report)
 
@@ -87,10 +84,10 @@ def main():
     trainer.print_overall_direction_summary()
     trainer.find_globally_best_parameters()
 
-    plot_accuracy_charts(final_accuracy_report)
-    plot_and_save_confusion_matrices(final_accuracy_report)
+    plot_accuracy_charts(final_accuracy_report, 'f1_measure')
     plot_metrics_bar_chart(final_accuracy_report)
     plot_error_rate_line_chart(final_accuracy_report)
+    
     with open("Final_Results.json", "w") as json_file:
         json.dump(
             convert_dd_to_dict(final_accuracy_report),

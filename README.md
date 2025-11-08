@@ -105,5 +105,5 @@ After all proteins processed:
 
 ## Key Innovations
 - **Direct Coordinate Learning**: Achieves high SSE matching accuracy using only normalized alpha carbon coordinates without hand-crafted geometric features
-- **DTW-Based Direction Detection**: Combines ML classification with Dynamic Time Warping for robust, data-driven direction detection\
+- **DTW-Based Direction Detection**: Combines ML classification with Dynamic Time Warping for robust, data-driven direction detection
   

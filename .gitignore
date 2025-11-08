@@ -1,3 +1,7 @@
 Archive/*
 confusion_matrices/*
-__pycache__/*
+**/__pycache__/*
+latex/
+direction_analysis_report.txt
+helix_accuracy_chart.png
+strand_accuracy_chart.png

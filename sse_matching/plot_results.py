@@ -5,6 +5,126 @@ import matplotlib
 matplotlib.use('Agg') 
 import seaborn as sns
 
+def calculate_combined_metrics(final_accuracy_report):
+    """
+    Calculate combined metrics for each protein by averaging across all methods and structure types.
+    
+    Args:
+        final_accuracy_report (dict): Nested dictionary with structure 
+                                     {protein: {structure_type: {method: {metrics}}}}
+    
+    Returns:
+        dict: Combined metrics per protein {protein: {metric: value}}
+    """
+    combined_metrics = {}
+    
+    for protein, structures in final_accuracy_report.items():
+        total_precision = 0
+        total_recall = 0
+        total_f1 = 0
+        total_mismatch_rate = 0
+        count = 0
+        
+        for structure_type, methods in structures.items():
+            for method, results in methods.items():
+                if 'confusion_matrix_detailed' in results:
+                    detailed = results['confusion_matrix_detailed']
+                    total_precision += detailed.get('precision', 0)
+                    total_recall += detailed.get('recall', 0)
+                    total_f1 += detailed.get('f1_measure', 0)
+                    total_mismatch_rate += detailed.get('mismatch_rate', 0)
+                    count += 1
+        
+        if count > 0:
+            combined_metrics[protein] = {
+                'precision': total_precision / count,
+                'recall': total_recall / count,
+                'f1_measure': total_f1 / count,
+                'mismatch_rate': total_mismatch_rate / count
+            }
+    
+    return combined_metrics
+
+def plot_metrics_bar_chart(final_accuracy_report):
+    """
+    Plot bar chart showing Precision, Recall, and F1-measure for each protein.
+    
+    Args:
+        final_accuracy_report (dict): The complete accuracy report dictionary
+    """
+    combined_metrics = calculate_combined_metrics(final_accuracy_report)
+    
+    if not combined_metrics:
+        print("No data available for metrics bar chart.")
+        return
+    
+    proteins = sorted(combined_metrics.keys())
+    precision_values = [combined_metrics[p]['precision'] for p in proteins]
+    recall_values = [combined_metrics[p]['recall'] for p in proteins]
+    f1_values = [combined_metrics[p]['f1_measure'] for p in proteins]
+    
+    x = np.arange(len(proteins))
+    width = 0.25
+    
+    plt.figure(figsize=(10, 5))
+    
+    # Create bars
+    plt.bar(x - width, precision_values, width, label='Precision', color='blue', alpha=0.8)
+    plt.bar(x, recall_values, width, label='Recall', color='orange', alpha=0.8)
+    plt.bar(x + width, f1_values, width, label='F1-measure', color='green', alpha=0.8)
+    
+    # Customize the plot
+    plt.xlabel('PDB ID', fontsize=15)
+    plt.ylabel('Measurements', fontsize=15)
+    plt.xticks(x, proteins, rotation='vertical')
+    plt.ylim(0, 100)
+    plt.grid(True, axis='y', alpha=0.3)
+    plt.tight_layout()
+    
+    # Place the legend outside the plot, at the top center
+    plt.legend(fontsize=12, loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=3)
+    
+    # Save the plot
+    plt.savefig('protein_metrics_bar_chart.png', dpi=300, bbox_inches='tight')
+    print("Metrics bar chart saved as protein_metrics_bar_chart.png")
+    plt.close()
+
+def plot_error_rate_line_chart(final_accuracy_report):
+    """
+    Plot line chart showing Error rate (Mismatch Rate) for each protein.
+    
+    Args:
+        final_accuracy_report (dict): The complete accuracy report dictionary
+    """
+    combined_metrics = calculate_combined_metrics(final_accuracy_report)
+    
+    if not combined_metrics:
+        print("No data available for error rate line chart.")
+        return
+    
+    proteins = sorted(combined_metrics.keys())
+    error_rates = [combined_metrics[p]['mismatch_rate'] for p in proteins]
+    
+    # Reduce figure width to compress x-axis
+    plt.figure(figsize=(10, 5))
+    
+    # Create line plot with markers
+    plt.plot(proteins, error_rates, marker='o', linestyle='-', linewidth=2, 
+             markersize=8, color='orange', markerfacecolor='orange')
+    
+    # Customize the plot
+    plt.xlabel('PDB ID', fontsize=15)
+    plt.ylabel('Error rate (%)', fontsize=15)
+    plt.xticks(rotation='vertical')
+    plt.ylim(0, 100)
+    plt.grid(True, alpha=0.3)
+    plt.tight_layout()
+    
+    # Save the plot
+    plt.savefig('protein_error_rate_line_chart.png', dpi=300, bbox_inches='tight')
+    print("Error rate line chart saved as protein_error_rate_line_chart.png")
+    plt.close()
+
 def plot_accuracy_charts(final_accuracy_report):
     """
     Generates and saves two line charts (Helix and Strand) for protein classification accuracy.

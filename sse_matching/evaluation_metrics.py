@@ -87,7 +87,9 @@ class EvaluationMetrics:
 
         Returns:
             tuple: A tuple containing:
-                - dict: A dictionary with the counts for 'tp', 'tn', 'fp', 'fn'.
+                - dict: A dictionary with the counts and calculated metrics:
+                    'tp', 'tn', 'fp', 'fn' (counts)
+                    'precision', 'recall', 'f1_measure', 'mismatch_rate', 'accuracy' (percentages)
                 - np.array: The 2x2 confusion matrix [[TN, FP], [FN, TP]].
         """
         map_dict = {v: k for k, v in test_to_train_map.items()}
@@ -119,12 +121,24 @@ class EvaluationMetrics:
             else:
                 fn_count += count_in_train
 
-        # Assemble final results
+        precision = (tp_count / (tp_count + fp_count)) * 100 if (tp_count + fp_count) > 0 else 0
+        recall = (tp_count / (tp_count + fn_count)) * 100 if (tp_count + fn_count) > 0 else 0
+        f1_measure = ((2 * precision * recall) / (precision + recall)) if (precision + recall) > 0 else 0
+        
+        # Mismatch Rate = (FP + FN)/(Matched pairs + Unmatched pairs) * 100
+        matched_pairs = tp_count + tn_count
+        unmatched_pairs = fp_count + fn_count
+        mismatch_rate = ((fp_count + fn_count) / (matched_pairs + unmatched_pairs)) * 100 if (matched_pairs + unmatched_pairs) > 0 else 0
+
         metrics = {
             'tp': tp_count,
             'tn': tn_count,
             'fp': fp_count,
-            'fn': fn_count
+            'fn': fn_count,
+            'precision': precision,
+            'recall': recall,
+            'f1_measure': f1_measure,
+            'mismatch_rate': mismatch_rate,
         }
 
         confusion_matrix = np.array([

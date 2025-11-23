@@ -57,7 +57,10 @@ This will:
 After running the analysis, you'll find:
 - `Final_Results.json` - Complete results in JSON format
 - `analytical_report.txt` - Detailed performance metrics per algorithm
-- Various accuracy and performance charts
+- Various accuracy and performance charts:
+    - `f1_measure_chart.png`
+    - `protein_error_rate_line_chart.png`
+    - `protein_metrics_bar_chart.png`
 
 ### Direction analysis with the best algorithm (Helix + Strand)
 If you have the `Final_Results.json` file from a previous run, you can perform direction analysis using the best algorithm identified in the results:

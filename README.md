@@ -4,16 +4,71 @@
 
 This system implements a machine learning approach for detecting structural direction of protein secondary structure elements (SSEs) using alpha carbon coordinates and Dynamic Time Warping (DTW). The methodology demonstrates direct coordinate-based geometric learning for SSE matching in cryo-EM density maps.
 
-## Core Methodology
+## Quick Start
 
-- **Input**: Alpha carbon coordinates (3D Cα sequences) from helices/strands and SSETracer-detected segments
-- **Features**: Flattened 3N-dimensional coordinate vectors with normalization and fixed-length resampling (20-30 points)
-- **Learning**: Direct coordinate-based geometric learning without hand-crafted features
-- **Validation**: Two-stage filtering through ML accuracy and ground truth topology availability
+### Prerequisites
+- Python 3.8 or higher
 
-## System Architecture
+### Installation Steps
 
-### Key Components
+1. **Download the Repository**
+  Extract the source code ZIP file and cd to the extracted directory.
+
+2. **Create a Virtual Environment**
+   ```cmd
+   python -m venv venv
+   ```
+
+3. **Activate the Virtual Environment**
+   ```cmd
+   venv\Scripts\activate
+   ```
+   You should see `(venv)` prefix in your command prompt.
+
+4. **Install Required Dependencies**
+   ```cmd
+   pip install -r requirements.txt
+   ```
+
+### Configuration and Data Preparation
+
+Before running the analysis, ensure the following:
+
+1. **Specify Protein Lists**
+  - Edit `config.py` and adjust the `HELIX_PROTEIN_LIST` and `STRAND_PROTEIN_LIST` variables to include the protein IDs you wish to train and analyze.
+
+2. **Prepare Data Folder**
+  - Copy the `Archive` folder (containing your protein data) into the current working directory.
+  - The folder structure should match the format described in the [Data Structure and File Organization](#data-structure-and-file-organization) section above.
+  
+
+### Running the Analysis
+
+### Performance Analysis (Helix + Strand)
+```cmd
+python sse_matching/main.py
+```
+This will:
+- Train ML models on helix and strand data
+- Perform direction detection using DTW
+- Generate accuracy reports and visualizations
+
+#### Output Files
+After running the analysis, you'll find:
+- `Final_Results.json` - Complete results in JSON format
+- `analytical_report.txt` - Detailed performance metrics per algorithm
+- Various accuracy and performance charts
+
+### Direction analysis with the best algorithm (Helix + Strand)
+If you have the `Final_Results.json` file from a previous run, you can perform direction analysis using the best algorithm identified in the results:
+
+```cmd
+python sse_matching/main.py --direction-analysis
+```
+This will generate the `direction_analysis_report.txt` file. 
+
+
+## Key Components
 - **`protein_trainer.py`**: Main orchestrator coordinating the entire workflow
 - **`ml_classifiers.py`**: ML algorithms (SVM Linear/RBF, Random Forest, 1-NN KNN)
 - **`direction_analyzer.py`**: DTW-based direction detection
@@ -68,25 +123,8 @@ train_label,test_label,direction
   - `-1`: Opposite direction to the model structure
   - `NaN` or empty: No direction information available
 
-## Direction Detection Methodology
 
-The system uses Dynamic Time Warping (DTW) for direction detection:
-
-1. **Forward Test**: DTW distance between stick and model coordinates
-2. **Backward Test**: DTW distance between reversed stick and model coordinates
-3. **Direction Decision**: Lower DTW distance determines direction (1 = same, -1 = opposite)
-
-**Workflow**: Data loading → ML training → mapping prediction → DTW direction detection → validation against ground truth
-
-## Machine Learning Pipeline
-
-### Process
-1. Extract normalized Cα coordinates → flatten to 3N-dimensional vectors
-2. Train classifiers to map coordinate patterns to helix/strand IDs
-3. Classify stick coordinates and apply DTW direction detection
-4. Evaluate using classification accuracy and direction detection accuracy
-
-### Hyperparameter Optimization
+## Hyperparameter Optimization
 - **Grid Search Mode**: Exhaustive optimization across all algorithms and parameters
 ```
 For each protein:
@@ -102,8 +140,3 @@ After all proteins processed:
   - Save to JSON file for future use
 ```
 - **Pre-optimized Mode**: Uses saved best parameters from `best_hyperparameters.json`
-
-## Key Innovations
-- **Direct Coordinate Learning**: Achieves high SSE matching accuracy using only normalized alpha carbon coordinates without hand-crafted geometric features
-- **DTW-Based Direction Detection**: Combines ML classification with Dynamic Time Warping for robust, data-driven direction detection
-  

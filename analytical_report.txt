@@ -1,0 +1,42 @@
+
+============================================================
+ANALYTICAL REPORT - F1 MEASURE
+============================================================
+
+AVERAGE PERFORMANCE BY METHOD:
+----------------------------------------
+1. SVM RBF             :  95.25% (n=27)
+2. Voronoi (1N KNN)    :  95.11% (n=27)
+3. SVM Linear          :  94.69% (n=27)
+4. Random Forest       :  94.12% (n=27)
+
+CASE-BY-CASE COMPARISON:
+----------------------------------------
+Best method in individual cases (out of 86 cases):
+  SVM RBF             :  26 wins ( 30.2%)
+  Voronoi (1N KNN)    :  25 wins ( 29.1%)
+  SVM Linear          :  22 wins ( 25.6%)
+  Random Forest       :  13 wins ( 15.1%)
+
+STATISTICAL SUMMARY:
+----------------------------------------
+SVM Linear:
+  Min:  70.89%
+  Max: 100.00%
+  Std:   7.82%
+
+SVM RBF:
+  Min:  71.11%
+  Max: 100.00%
+  Std:   7.69%
+
+Random Forest:
+  Min:  74.30%
+  Max: 100.00%
+  Std:   7.00%
+
+Voronoi (1N KNN):
+  Min:  71.00%
+  Max: 100.00%
+  Std:   7.51%
+

@@ -193,6 +193,17 @@ def print_analytical_report(final_accuracy_report, metric='f1_measure'):
     for i, (method, avg) in enumerate(method_averages, 1):
         total_cases = len(method_data[method]['values'])
         report += f"{i}. {method:<20}: {avg:6.2f}% (n={total_cases})\n"
+
+    # Statistical summary
+    report += "\nSTATISTICAL SUMMARY:\n"
+    report += "-" * 40 + "\n"
+    for method in methods:
+        values = method_data[method]['values']
+        if values:
+            report += f"{method}:\n"
+            report += f"  Min: {min(values):6.2f}%\n"
+            report += f"  Max: {max(values):6.2f}%\n"
+            report += f"  Std: {np.std(values):6.2f}%\n\n"
     print(report)
 
 def plot_accuracy_charts(final_accuracy_report, metric='f1_measure'):

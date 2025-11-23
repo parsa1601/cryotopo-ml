@@ -25,13 +25,11 @@ def calculate_combined_metrics(final_accuracy_report, best_method="SVM RBF"):
         
         for structure_type, methods in structures.items():
             results = methods[best_method]
-            if 'confusion_matrix_detailed' in results:
-                detailed = results['confusion_matrix_detailed']
-                total_precision += detailed.get('precision', 0)
-                total_recall += detailed.get('recall', 0)
-                total_f1 += detailed.get('f1_measure', 0)
-                total_mismatch_rate += detailed.get('mismatch_rate', 0)
-                count += 1
+            total_precision += results.get('precision', 0)
+            total_recall += results.get('recall', 0)
+            total_f1 += results.get('f1_measure', 0)
+            total_mismatch_rate += results.get('mismatch_rate', 0)
+            count += 1
         
         if count > 0:
             combined_metrics[protein] = {
@@ -147,10 +145,8 @@ def calculate_method_metrics(final_accuracy_report, metric='f1_measure'):
                     results = methods_dict[method]
                     if metric == 'accuracy':
                         value = results.get('accuracy', 0) * 100  # Convert to percentage
-                    elif 'confusion_matrix_detailed' in results:
-                        value = results['confusion_matrix_detailed'].get(metric, 0)
                     else:
-                        continue
+                        value = results.get(metric, 0)
                     values.append(value)
             if values:
                 avg_value = sum(values) / len(values)

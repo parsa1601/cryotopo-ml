@@ -155,7 +155,7 @@ class ProteinTrainer:
                 ("Voronoi (1N KNN)", self.ml_classifiers.knn)
             ]
 
-            accuracies = {}
+            # Train and evaluate all algorithms, storing results
             for name, classifier in algorithms:
                 print(f"\n--- {name} Results ---")
 
@@ -165,52 +165,35 @@ class ProteinTrainer:
                 classifier.fit(X_train, y_train)
                 y_pred = classifier.predict(X_test)
 
-                accuracy = self.evaluation_metrics.calculate_mapped_accuracy(
-                    y_test, y_pred, test_to_train_map
+                confusion_matrix, metrics = self.evaluation_metrics.calculate_custom_metrics(
+                    y_test, y_pred, y_train, test_to_train_map
                 )
-                accuracies[name] = accuracy
-                print(f"Accuracy: {accuracy:.4f}")
-
-            best_algorithm = max(accuracies, key=accuracies.get)
-            print(
-                f"\nBest Algorithm: {best_algorithm} (Accuracy: {accuracies[best_algorithm]:.4f})"
-            )
-
-            if best_algorithm in best_params_dict:
-                print(
-                    f"Best parameters for {best_algorithm}: {best_params_dict[best_algorithm]}"
+                
+                # Store results in final accuracy report
+                self.ml_classifiers.final_accuracy_report[protein_name][structure_type][name][
+                    "confusion_matrix_detailed"
+                ] = confusion_matrix
+                self.ml_classifiers.final_accuracy_report[protein_name][structure_type][name].update(
+                    metrics
                 )
+                
+                print(f"Accuracy: {metrics['accuracy']:.4f}")
+                print(f"F1-measure: {metrics['f1_measure']:.4f}")
+                print(f"Precision: {metrics['precision']:.4f}")
+                print(f"Recall: {metrics['recall']:.4f}")
 
-            best_classifier = None
-            for name, classifier in algorithms:
-                if name == best_algorithm:
-                    best_classifier = classifier
-                    break
         else:
-            best_algorithm, best_classifier, accuracies = (
-                self.ml_classifiers.train_and_evaluate_algorithms(
-                    X_train,
-                    y_train,
-                    X_test,
-                    y_test,
-                    test_to_train_map,
-                    self.evaluation_metrics,
-                    structure_type,
-                    protein_name
-                )
+            # Train and evaluate all algorithms without selecting a best one yet
+            self.ml_classifiers.train_and_evaluate_algorithms(
+                X_train,
+                y_train,
+                X_test,
+                y_test,
+                test_to_train_map,
+                self.evaluation_metrics,
+                structure_type,
+                protein_name
             )
-
-        self.direction_analyzer.analyze_best_mappings(
-            protein_name,
-            best_algorithm,
-            best_classifier,
-            X_train,
-            y_train,
-            X_test,
-            y_test,
-            test_to_train_map,
-            direction_mapping,
-        )
 
     def print_overall_direction_summary(self):
         """Print overall direction detection summary."""
@@ -225,3 +208,91 @@ class ProteinTrainer:
         if self.use_grid_search and hasattr(self, "hyperparameter_optimizer"):
             return self.hyperparameter_optimizer.find_globally_best_parameters()
         return {}
+
+    def run_direction_analysis_with_best_algorithm(self, proteins_list, mode: str, best_algorithm: str):
+        """
+        Run direction analysis for all proteins using the specified best algorithm.
+        
+        Args:
+            proteins_list: List of protein names to analyze
+            mode: 'Helix' or 'Strand'
+            best_algorithm: Name of the best algorithm to use (e.g., 'SVM RBF')
+        """
+        print(f"\n{'='*60}")
+        print(f"RUNNING DIRECTION ANALYSIS WITH {best_algorithm}")
+        print(f"{'='*60}")
+        
+        # Get the classifier for the best algorithm
+        algorithms = self.ml_classifiers.get_algorithms()
+        best_classifier = None
+        for name, classifier in algorithms:
+            if name == best_algorithm:
+                best_classifier = classifier
+                break
+        
+        if best_classifier is None:
+            print(f"Error: Algorithm '{best_algorithm}' not found!")
+            return
+        
+        for protein in proteins_list:
+            if mode == "Helix":
+                try:
+                    result = self.data_loader.generate_protein_helix_stick(protein)
+                    if result is not None:
+                        mappings, direction_mapping = (
+                            self.data_loader.read_mapping_topology(protein, mode)
+                        )
+                        test_to_train_map = {
+                            test_label: train_label
+                            for train_label, test_label in mappings
+                        }
+                        X_train, X_test, y_train, y_test, num_train, num_test = result
+                        
+                        # Train the best algorithm on this protein
+                        best_classifier.fit(X_train, y_train)
+                        
+                        # Run direction analysis
+                        self.direction_analyzer.analyze_best_mappings(
+                            protein,
+                            best_algorithm,
+                            best_classifier,
+                            X_train,
+                            y_train,
+                            X_test,
+                            y_test,
+                            test_to_train_map,
+                            direction_mapping,
+                        )
+                except Exception as e:
+                    print(f"Error processing protein {protein}: {e}")
+            
+            elif mode == "Strand":
+                try:
+                    result = self.data_loader.generate_protein_strand_stick(protein)
+                    if result is not None:
+                        mappings, direction_mapping = (
+                            self.data_loader.read_mapping_topology(protein, mode)
+                        )
+                        test_to_train_map = {
+                            test_label: train_label
+                            for train_label, test_label in mappings
+                        }
+                        X_train, X_test, y_train, y_test, num_train, num_test = result
+                        
+                        # Train the best algorithm on this protein
+                        best_classifier.fit(X_train, y_train)
+                        
+                        # Run direction analysis
+                        self.direction_analyzer.analyze_best_mappings(
+                            protein,
+                            best_algorithm,
+                            best_classifier,
+                            X_train,
+                            y_train,
+                            X_test,
+                            y_test,
+                            test_to_train_map,
+                            direction_mapping,
+                        )
+                except Exception as e:
+                    print(f"Error processing protein {protein}: {e}")

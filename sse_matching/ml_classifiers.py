@@ -18,9 +18,7 @@ class MLClassifiers:
         self.visualizer = ProteinVisualizer()
         self._initialize_classifiers()
         self.final_accuracy_report = defaultdict(
-            lambda: defaultdict(
-                lambda: defaultdict(dict)
-            )
+            lambda: defaultdict(lambda: defaultdict(dict))
         )
 
     def _initialize_classifiers(self):
@@ -56,13 +54,19 @@ class MLClassifiers:
         ]
 
     def train_and_evaluate_algorithms(
-        self, X_train, y_train, X_test, y_test, 
-        test_to_train_map, evaluation_metrics, 
-        structure_type, protein_name
+        self,
+        X_train,
+        y_train,
+        X_test,
+        y_test,
+        test_to_train_map,
+        evaluation_metrics,
+        structure_type,
+        protein_name,
     ):
-        """Train and evaluate all algorithms, return results."""
+        """Train and evaluate all algorithms, store results."""
         algorithms = self.get_algorithms()
-        accuracies = {}
+        
         for name, classifier in algorithms:
             print(f"\n--- {name} Results ---")
 
@@ -71,34 +75,55 @@ class MLClassifiers:
 
             classifier.fit(X_train, y_train)
             y_pred = classifier.predict(X_test)
-            counts = evaluation_metrics.calculate_custom_metrics(y_test, y_pred, y_train, test_to_train_map)
-            accuracy = evaluation_metrics.calculate_mapped_accuracy(
-                y_test, y_pred, test_to_train_map
+            confusion_matrix, metrics = evaluation_metrics.calculate_custom_metrics(
+                y_test, y_pred, y_train, test_to_train_map
             )
-            accuracies[name] = accuracy
-            self.final_accuracy_report[protein_name][structure_type][name]['accuracy'] = accuracy
-            self.final_accuracy_report[protein_name][structure_type][name]['confusion_matrix_detailed'] = counts
-            print(f"Accuracy: {accuracy:.4f}")
-            print(f"Confusion Matrix: {counts}")
-
-        best_algorithm = max(accuracies, key=accuracies.get)
-        print(
-            f"\nBest Algorithm: {best_algorithm} (Accuracy: {accuracies[best_algorithm]:.4f})"
-        )
-
-        if best_algorithm in self.best_params:
-            print(
-                f"Best parameters for {best_algorithm}: {self.best_params[best_algorithm]}"
+            
+            self.final_accuracy_report[protein_name][structure_type][name][
+                "confusion_matrix_detailed"
+            ] = confusion_matrix
+            self.final_accuracy_report[protein_name][structure_type][name].update(
+                metrics
             )
-
-        print(f"Best Algorithm: {best_algorithm} ({accuracies[best_algorithm]:.4f})")
+            print(f"Accuracy: {metrics['accuracy']:.4f}")
+            print(f"F1-measure: {metrics['f1_measure']:.4f}")
+            print(f"Precision: {metrics['precision']:.4f}")
+            print(f"Recall: {metrics['recall']:.4f}")
 
         print("-" * 50)
 
-        best_classifier = None
-        for name, classifier in algorithms:
-            if name == best_algorithm:
-                best_classifier = classifier
-                break
-
-        return best_algorithm, best_classifier, accuracies
+    def get_best_algorithm_by_f1_measure(self):
+        """Calculate the best algorithm based on average F1-measure across all proteins."""
+        algorithm_f1_scores = defaultdict(list)
+        
+        # Collect all F1 scores for each algorithm across all proteins and structure types
+        for protein, structures in self.final_accuracy_report.items():
+            for structure_type, algorithms in structures.items():
+                for algorithm, metrics in algorithms.items():
+                    if 'f1_measure' in metrics:
+                        algorithm_f1_scores[algorithm].append(metrics['f1_measure'])
+        
+        # Calculate average F1 score for each algorithm
+        algorithm_averages = {}
+        for algorithm, f1_scores in algorithm_f1_scores.items():
+            if f1_scores:  # Make sure we have scores
+                algorithm_averages[algorithm] = sum(f1_scores) / len(f1_scores)
+        
+        # Find the algorithm with the highest average F1-measure
+        if algorithm_averages:
+            best_algorithm = max(algorithm_averages, key=algorithm_averages.get)
+            best_f1_score = algorithm_averages[best_algorithm]
+            
+            print(f"\n{'='*60}")
+            print("OVERALL BEST ALGORITHM SELECTION")
+            print(f"{'='*60}")
+            print("Average F1-measure by algorithm:")
+            for algorithm in sorted(algorithm_averages.keys()):
+                print(f"  {algorithm:<20}: {algorithm_averages[algorithm]:.4f}")
+            print(f"\nBest Algorithm Overall: {best_algorithm} (Avg F1-measure: {best_f1_score:.4f})")
+            print(f"{'='*60}")
+            
+            return best_algorithm, algorithm_averages
+        else:
+            print("No F1-measure data available for algorithm selection.")
+            return None, {}

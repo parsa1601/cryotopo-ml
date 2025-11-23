@@ -233,7 +233,7 @@ def plot_accuracy_charts(final_accuracy_report, metric='f1_measure'):
     # Get sorted protein names for x-axis
     proteins = sorted(combined_metrics.keys())
     
-    plt.figure(figsize=(20, 10))
+    plt.figure(figsize=(10, 5))
     
     min_metric = 100.0
     
@@ -274,7 +274,7 @@ def plot_accuracy_charts(final_accuracy_report, metric='f1_measure'):
     plt.grid(True, which='both', linestyle='--', linewidth=0.5)
     plt.tight_layout()
 
-    file_name = f"combined_{metric}_chart.png"
+    file_name = f"{metric}_chart.png"
     plt.savefig(file_name)
     print(f"Combined chart saved as {file_name}")
     plt.close()

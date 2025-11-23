@@ -86,11 +86,9 @@ class EvaluationMetrics:
             map_dict (dict): A dictionary mapping predicted values to expected true values.
 
         Returns:
-            tuple: A tuple containing:
-                - dict: A dictionary with the counts and calculated metrics:
+            dict: A dictionary with the counts and calculated metrics:
                     'tp', 'tn', 'fp', 'fn' (counts)
                     'precision', 'recall', 'f1_measure', 'mismatch_rate', 'accuracy' (percentages)
-                - np.array: The 2x2 confusion matrix [[TN, FP], [FN, TP]].
         """
         map_dict = {v: k for k, v in test_to_train_map.items()}
         # Helper logic to find matched and unmatched labels
@@ -141,9 +139,4 @@ class EvaluationMetrics:
             'mismatch_rate': mismatch_rate,
         }
 
-        confusion_matrix = np.array([
-            [tn_count, fp_count],
-            [fn_count, tp_count]
-        ])
-
-        return metrics, confusion_matrix
+        return metrics

@@ -131,7 +131,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    if not args.plot_only:
+    if args.plot_only:
         print("Generating charts from existing results...")
         plot_charts_from_json(args.json_file)
     else:

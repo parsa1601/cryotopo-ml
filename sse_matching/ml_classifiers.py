@@ -63,7 +63,6 @@ class MLClassifiers:
         """Train and evaluate all algorithms, return results."""
         algorithms = self.get_algorithms()
         accuracies = {}
-        confusion_matrices = {}
         for name, classifier in algorithms:
             print(f"\n--- {name} Results ---")
 
@@ -72,14 +71,12 @@ class MLClassifiers:
 
             classifier.fit(X_train, y_train)
             y_pred = classifier.predict(X_test)
-            counts, conf_matrix = evaluation_metrics.calculate_custom_metrics(y_test, y_pred, y_train, test_to_train_map)
+            counts = evaluation_metrics.calculate_custom_metrics(y_test, y_pred, y_train, test_to_train_map)
             accuracy = evaluation_metrics.calculate_mapped_accuracy(
                 y_test, y_pred, test_to_train_map
             )
             accuracies[name] = accuracy
-            confusion_matrices[name] = conf_matrix
             self.final_accuracy_report[protein_name][structure_type][name]['accuracy'] = accuracy
-            self.final_accuracy_report[protein_name][structure_type][name]['confusion_matrix'] = conf_matrix
             self.final_accuracy_report[protein_name][structure_type][name]['confusion_matrix_detailed'] = counts
             print(f"Accuracy: {accuracy:.4f}")
             print(f"Confusion Matrix: {counts}")
@@ -95,8 +92,6 @@ class MLClassifiers:
             )
 
         print(f"Best Algorithm: {best_algorithm} ({accuracies[best_algorithm]:.4f})")
-        print(f"---------------- Confusion Matrix: {confusion_matrices[best_algorithm]}")
-        #plot confusion matrix. Save it as protein name, add the header: Protein Name - Best Algorithm
 
         print("-" * 50)
 

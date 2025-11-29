@@ -133,7 +133,7 @@ def calculate_method_metrics(final_accuracy_report, metric='f1_measure'):
     Returns:
         dict: Method-specific data {method: {'values': [avg_per_protein], 'proteins': [proteins], 'avg': float}}
     """
-    methods = ['SVM Linear', 'SVM RBF', 'Random Forest', 'Voronoi (1N KNN)']
+    methods = ['SVM Linear', 'SVM RBF', 'Random Forest', 'Voronoi (1N KNN)', 'LPTD']
     method_data = {method: {'values': [], 'proteins': []} for method in methods}
     
     for protein, structures in final_accuracy_report.items():
@@ -173,10 +173,10 @@ def print_analytical_report(final_accuracy_report, metric='f1_measure'):
         str: Formatted analytical report
     """
     method_data = calculate_method_metrics(final_accuracy_report, metric)
-    methods = ['SVM Linear', 'SVM RBF', 'Random Forest', 'Voronoi (1N KNN)']
+    methods = ['SVM Linear', 'SVM RBF', 'Random Forest', 'Voronoi (1N KNN)', 'LPTD']
     
     # Calculate averages and sort methods by performance
-    method_averages = [(method, method_data[method]['avg']) for method in methods if method_data[method]['values']]
+    method_averages = [(method, method_data[method]['avg']) for method in methods if method in method_data and method_data[method]['values']]
     method_averages.sort(key=lambda x: x[1], reverse=True)
     
     report = f"\n{'='*60}\n"
@@ -194,12 +194,13 @@ def print_analytical_report(final_accuracy_report, metric='f1_measure'):
     report += "\nSTATISTICAL SUMMARY:\n"
     report += "-" * 40 + "\n"
     for method in methods:
-        values = method_data[method]['values']
-        if values:
-            report += f"{method}:\n"
-            report += f"  Min: {min(values):6.2f}%\n"
-            report += f"  Max: {max(values):6.2f}%\n"
-            report += f"  Std: {np.std(values):6.2f}%\n\n"
+        if method in method_data:
+            values = method_data[method]['values']
+            if values:
+                report += f"{method}:\n"
+                report += f"  Min: {min(values):6.2f}%\n"
+                report += f"  Max: {max(values):6.2f}%\n"
+                report += f"  Std: {np.std(values):6.2f}%\n\n"
     print(report)
 
 def plot_accuracy_charts(final_accuracy_report, metric='f1_measure'):
@@ -220,8 +221,8 @@ def plot_accuracy_charts(final_accuracy_report, metric='f1_measure'):
         return
     
     # Define the methods and their corresponding colors
-    methods = ['SVM Linear', 'SVM RBF', 'Random Forest', 'Voronoi (1N KNN)']
-    colors = {'SVM Linear': 'red', 'SVM RBF': 'yellow', 'Random Forest': 'green', 'Voronoi (1N KNN)': 'blue'}
+    methods = ['SVM Linear', 'SVM RBF', 'Random Forest', 'Voronoi (1N KNN)', 'LPTD']
+    colors = {'SVM Linear': 'red', 'SVM RBF': 'yellow', 'Random Forest': 'green', 'Voronoi (1N KNN)': 'blue', 'LPTD': 'purple'}
 
     # Calculate method-specific data for plotting
     method_data = calculate_method_metrics(final_accuracy_report, metric)

@@ -41,6 +41,35 @@ class EvaluationMetrics:
         return correct / total if total > 0 else 0
     
     @staticmethod
+    def group_datapoints(y_test, y_pred, y_train, test_to_train_map):
+        """
+        Groups datapoints by their SSE (Secondary Structure Element) based on the mapping.
+        Aggregates predictions using majority voting.
+        """
+        sse_groups = {}
+        for i, stick_id in enumerate(y_test):
+            sse_id = test_to_train_map.get(stick_id)
+            if sse_id is not None:
+                if sse_id not in sse_groups:
+                    sse_groups[sse_id] = []
+                sse_groups[sse_id].append(y_pred[i])
+        
+        new_y_test = []
+        new_y_pred = []
+        
+        for sse_id, predictions in sse_groups.items():
+            new_y_test.append(sse_id)
+            # Majority vote for prediction
+            counts = Counter(predictions)
+            most_common = counts.most_common(1)[0][0]
+            new_y_pred.append(most_common)
+            
+        new_y_train = list(set(y_train))
+        new_test_to_train_map = {sse: sse for sse in new_y_test}
+        
+        return np.array(new_y_test), np.array(new_y_pred), np.array(new_y_train), new_test_to_train_map
+
+    @staticmethod
     def calculate_custom_metrics(y_test, y_pred, y_train, test_to_train_map):
         """
         Calculates custom TP, TN, FP, FN counts and a confusion matrix.
@@ -90,6 +119,11 @@ class EvaluationMetrics:
                 - confusion_matrix (dict): Contains 'tp', 'tn', 'fp', 'fn' counts
                 - metrics (dict): Contains 'accuracy', 'precision', 'recall', 'f1_measure', 'mismatch_rate' (all as percentages except accuracy which is 0-1)
         """
+        # Group datapoints by SSE
+        y_test, y_pred, y_train, test_to_train_map = EvaluationMetrics.group_datapoints(
+            y_test, y_pred, y_train, test_to_train_map
+        )
+
         map_dict = {v: k for k, v in test_to_train_map.items()}
         # Helper logic to find matched and unmatched labels
         train_labels = set(np.unique(y_train))

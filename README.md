@@ -70,6 +70,18 @@ python sse_matching/main.py --direction-analysis
 ```
 This will generate the `direction_analysis_report.txt` file. 
 
+### LPTD Comparison (Helix + Strand)
+To compare the performance and runtime of the LPTD method against the best ML algorithm (SVM RBF):
+
+```cmd
+python sse_matching/main.py --lptd-comparison
+```
+This will:
+- Run the ML training pipeline to get baseline metrics
+- Run the LPTD method on the same dataset
+- Generate a runtime comparison chart (`runtime_comparison_chart.png`)
+- Generate accuracy charts including LPTD results
+
 
 ## Key Components
 - **`protein_trainer.py`**: Main orchestrator coordinating the entire workflow

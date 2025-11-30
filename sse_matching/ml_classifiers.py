@@ -8,6 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from protein_visualization import ProteinVisualizer
 from collections import defaultdict
+import time
 
 
 class MLClassifiers:
@@ -17,41 +18,34 @@ class MLClassifiers:
         self.best_params = best_params if best_params else {}
         self.visualizer = ProteinVisualizer()
         self._initialize_classifiers()
-        self.final_accuracy_report = defaultdict(
+        self.performance_report = defaultdict(
             lambda: defaultdict(lambda: defaultdict(dict))
         )
 
     def _initialize_classifiers(self):
         """Initialize classifiers with best parameters if available."""
+        self.classifiers = {}
+        
         if "SVM Linear" in self.best_params:
-            self.svm_linear = svm.SVC(**self.best_params["SVM Linear"])
+            self.classifiers["SVM Linear"] = svm.SVC(**self.best_params["SVM Linear"])
         else:
-            self.svm_linear = svm.SVC(kernel="linear")
+            self.classifiers["SVM Linear"] = svm.SVC(kernel="linear")
 
         if "SVM RBF" in self.best_params:
-            self.svm_rbf = svm.SVC(**self.best_params["SVM RBF"])
+            self.classifiers["SVM RBF"] = svm.SVC(**self.best_params["SVM RBF"])
         else:
-            self.svm_rbf = svm.SVC(kernel="rbf")
+            self.classifiers["SVM RBF"] = svm.SVC(kernel="rbf")
 
         if "Random Forest" in self.best_params:
-            self.random_forest = RandomForestClassifier(
+            self.classifiers["Random Forest"] = RandomForestClassifier(
                 random_state=42, **self.best_params["Random Forest"]
             )
         else:
-            self.random_forest = RandomForestClassifier(
+            self.classifiers["Random Forest"] = RandomForestClassifier(
                 n_estimators=100, random_state=42
             )
 
-        self.knn = KNeighborsClassifier(n_neighbors=1)
-
-    def get_algorithms(self):
-        """Return list of algorithm tuples (name, classifier)."""
-        return [
-            ("SVM Linear", self.svm_linear),
-            ("SVM RBF", self.svm_rbf),
-            ("Random Forest", self.random_forest),
-            ("Voronoi (1N KNN)", self.knn),
-        ]
+        self.classifiers["Voronoi (1N KNN)"] = KNeighborsClassifier(n_neighbors=1)
 
     def train_and_evaluate_algorithms(
         self,
@@ -64,31 +58,41 @@ class MLClassifiers:
         structure_type,
         protein_name,
     ):
-        """Train and evaluate all algorithms, store results."""
-        algorithms = self.get_algorithms()
-        
-        for name, classifier in algorithms:
+        """Train and evaluate all algorithms, store results."""        
+        for name, classifier in self.classifiers.items():
             print(f"\n--- {name} Results ---")
 
             if name in self.best_params:
                 print(f"Using optimized parameters: {self.best_params[name]}")
 
+            start_train = time.time()
             classifier.fit(X_train, y_train)
+            train_time = time.time() - start_train
+
+            start_test = time.time()
             y_pred = classifier.predict(X_test)
+            test_time = time.time() - start_test
+
             confusion_matrix, metrics = evaluation_metrics.calculate_custom_metrics(
                 y_test, y_pred, y_train, test_to_train_map
             )
             
-            self.final_accuracy_report[protein_name][structure_type][name][
+            # Add runtime metrics
+            metrics['train_time'] = train_time
+            metrics['test_time'] = test_time
+
+            self.performance_report[protein_name][structure_type][name][
                 "confusion_matrix_detailed"
             ] = confusion_matrix
-            self.final_accuracy_report[protein_name][structure_type][name].update(
+            self.performance_report[protein_name][structure_type][name].update(
                 metrics
             )
             print(f"Accuracy: {metrics['accuracy']:.4f}")
             print(f"F1-measure: {metrics['f1_measure']:.4f}")
             print(f"Precision: {metrics['precision']:.4f}")
             print(f"Recall: {metrics['recall']:.4f}")
+            print(f"Train Time: {train_time:.4f}s")
+            print(f"Test Time: {test_time:.4f}s")
 
         print("-" * 50)
 
@@ -97,7 +101,7 @@ class MLClassifiers:
         algorithm_f1_scores = defaultdict(list)
         
         # Collect all F1 scores for each algorithm across all proteins and structure types
-        for protein, structures in self.final_accuracy_report.items():
+        for protein, structures in self.performance_report.items():
             for structure_type, algorithms in structures.items():
                 for algorithm, metrics in algorithms.items():
                     if 'f1_measure' in metrics:

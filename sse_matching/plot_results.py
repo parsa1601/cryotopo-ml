@@ -3,12 +3,12 @@ import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('Agg') 
 
-def calculate_combined_metrics(final_accuracy_report, best_method="SVM RBF"):
+def calculate_combined_metrics(performance_report, best_method="SVM RBF"):
     """
     Calculate combined metrics for each protein by averaging across all methods and structure types.
     
     Args:
-        final_accuracy_report (dict): Nested dictionary with structure 
+        performance_report (dict): Nested dictionary with structure 
                                      {protein: {structure_type: {method: {metrics}}}}
     
     Returns:
@@ -16,7 +16,7 @@ def calculate_combined_metrics(final_accuracy_report, best_method="SVM RBF"):
     """
     combined_metrics = {}
     
-    for protein, structures in final_accuracy_report.items():
+    for protein, structures in performance_report.items():
         total_precision = 0
         total_recall = 0
         total_f1 = 0
@@ -41,14 +41,14 @@ def calculate_combined_metrics(final_accuracy_report, best_method="SVM RBF"):
     
     return combined_metrics
 
-def plot_metrics_bar_chart(final_accuracy_report):
+def plot_metrics_bar_chart(performance_report):
     """
     Plot bar chart showing Precision, Recall, and F1-measure for each protein.
     
     Args:
-        final_accuracy_report (dict): The complete accuracy report dictionary
+        performance_report (dict): The complete accuracy report dictionary
     """
-    combined_metrics = calculate_combined_metrics(final_accuracy_report)
+    combined_metrics = calculate_combined_metrics(performance_report)
     
     if not combined_metrics:
         print("No data available for metrics bar chart.")
@@ -85,14 +85,14 @@ def plot_metrics_bar_chart(final_accuracy_report):
     print("Metrics bar chart saved as protein_metrics_bar_chart.png")
     plt.close()
 
-def plot_error_rate_line_chart(final_accuracy_report):
+def plot_error_rate_line_chart(performance_report):
     """
     Plot line chart showing Error rate (Mismatch Rate) for each protein.
     
     Args:
-        final_accuracy_report (dict): The complete accuracy report dictionary
+        performance_report (dict): The complete accuracy report dictionary
     """
-    combined_metrics = calculate_combined_metrics(final_accuracy_report)
+    combined_metrics = calculate_combined_metrics(performance_report)
     
     if not combined_metrics:
         print("No data available for error rate line chart.")
@@ -121,12 +121,12 @@ def plot_error_rate_line_chart(final_accuracy_report):
     print("Error rate line chart saved as protein_error_rate_line_chart.png")
     plt.close()
 
-def calculate_method_metrics(final_accuracy_report, metric='f1_measure'):
+def calculate_method_metrics(performance_report, metric='f1_measure'):
     """
     Calculate metrics for each method across all proteins, averaging over structure types.
     
     Args:
-        final_accuracy_report (dict): Nested dictionary with structure 
+        performance_report (dict): Nested dictionary with structure 
                                      {protein: {structure_type: {method: {metrics}}}}
         metric (str): The metric to analyze ('f1_measure', 'precision', 'recall', 'accuracy')
     
@@ -136,7 +136,7 @@ def calculate_method_metrics(final_accuracy_report, metric='f1_measure'):
     methods = ['SVM Linear', 'SVM RBF', 'Random Forest', 'Voronoi (1N KNN)', 'LPTD']
     method_data = {method: {'values': [], 'proteins': []} for method in methods}
     
-    for protein, structures in final_accuracy_report.items():
+    for protein, structures in performance_report.items():
         # For each method, collect values for all structure_types, then average
         for method in methods:
             values = []
@@ -161,18 +161,18 @@ def calculate_method_metrics(final_accuracy_report, metric='f1_measure'):
     return method_data
 
 
-def print_analytical_report(final_accuracy_report, metric='f1_measure'):
+def print_analytical_report(performance_report, metric='f1_measure'):
     """
     Generate analytical report comparing methods.
     
     Args:
-        final_accuracy_report (dict): The complete accuracy report dictionary
+        performance_report (dict): The complete accuracy report dictionary
         metric (str): The metric to analyze ('f1_measure', 'precision', 'recall', 'accuracy')
     
     Returns:
         str: Formatted analytical report
     """
-    method_data = calculate_method_metrics(final_accuracy_report, metric)
+    method_data = calculate_method_metrics(performance_report, metric)
     methods = ['SVM Linear', 'SVM RBF', 'Random Forest', 'Voronoi (1N KNN)', 'LPTD']
     
     # Calculate averages and sort methods by performance
@@ -203,18 +203,18 @@ def print_analytical_report(final_accuracy_report, metric='f1_measure'):
                 report += f"  Std: {np.std(values):6.2f}%\n\n"
     print(report)
 
-def plot_accuracy_charts(final_accuracy_report, metric='f1_measure'):
+def plot_accuracy_charts(performance_report, metric='f1_measure'):
     """
     Generates and saves a combined line chart for protein classification metrics.
     Uses calculate_combined_metrics to combine Helix and Strand results.
 
     Args:
-        final_accuracy_report (dict): A 3-level nested dictionary with the structure:
+        performance_report (dict): A 3-level nested dictionary with the structure:
                                       {protein_name: {'Helix'/'Strand': {method: {'accuracy': float}}}}
         metric (str): The metric to plot ('f1_measure', 'precision', 'recall', 'accuracy')
     """
-    print_analytical_report(final_accuracy_report, metric)
-    combined_metrics = calculate_combined_metrics(final_accuracy_report)
+    print_analytical_report(performance_report, metric)
+    combined_metrics = calculate_combined_metrics(performance_report)
     
     if not combined_metrics:
         print("No data available for combined metrics chart.")
@@ -225,7 +225,7 @@ def plot_accuracy_charts(final_accuracy_report, metric='f1_measure'):
     colors = {'SVM Linear': 'red', 'SVM RBF': 'yellow', 'Random Forest': 'green', 'Voronoi (1N KNN)': 'blue', 'LPTD': 'purple'}
 
     # Calculate method-specific data for plotting
-    method_data = calculate_method_metrics(final_accuracy_report, metric)
+    method_data = calculate_method_metrics(performance_report, metric)
     
     # Get sorted protein names for x-axis
     proteins = sorted(combined_metrics.keys())
@@ -274,4 +274,66 @@ def plot_accuracy_charts(final_accuracy_report, metric='f1_measure'):
     file_name = f"{metric}_chart.png"
     plt.savefig(file_name)
     print(f"Combined chart saved as {file_name}")
+    plt.close()
+
+def plot_runtime_comparison(performance_report, best_method="SVM RBF"):
+    """
+    Plot runtime comparison between LPTD and the best ML method.
+    
+    Args:
+        performance_report (dict): The complete accuracy report dictionary
+        best_method (str): The name of the ML method to compare against
+    """
+    proteins = sorted(performance_report.keys())
+    lptd_times = []
+    ml_times = []
+    valid_proteins = []
+    
+    for protein in proteins:
+        structures = performance_report[protein]
+        
+        # Calculate average runtime for this protein across Helix/Strand
+        lptd_sum = 0
+        ml_sum = 0
+        count = 0
+        
+        for structure_type, methods in structures.items():
+            if "LPTD" in methods and best_method in methods:
+                # LPTD has 'runtime'
+                lptd_val = methods["LPTD"].get("runtime", 0)
+                
+                ml_val = methods[best_method].get("test_time", 0)
+                
+                if lptd_val > 0 or ml_val > 0:
+                    lptd_sum += lptd_val
+                    ml_sum += ml_val
+                    count += 1
+        
+        if count > 0:
+            lptd_times.append(lptd_sum / count)
+            ml_times.append(ml_sum / count)
+            valid_proteins.append(protein)
+            
+    if not valid_proteins:
+        print("No runtime data available for comparison.")
+        return
+
+    x = np.arange(len(valid_proteins))
+    width = 0.35
+    
+    plt.figure(figsize=(12, 6))
+    
+    plt.bar(x - width/2, lptd_times, width, label='LPTD', color='purple', alpha=0.8)
+    plt.bar(x + width/2, ml_times, width, label=f'{best_method} (Test Phase)', color='yellow', alpha=0.8)
+    
+    plt.xlabel('Protein', fontsize=15)
+    plt.ylabel('Runtime (seconds)', fontsize=15)
+    plt.title(f'Runtime Comparison: LPTD vs {best_method}', fontsize=20)
+    plt.xticks(x, valid_proteins, rotation='vertical')
+    plt.legend(fontsize=12)
+    plt.grid(True, axis='y', alpha=0.3)
+    plt.tight_layout()
+    
+    plt.savefig('runtime_comparison_chart.png', dpi=300, bbox_inches='tight')
+    print("Runtime comparison chart saved as runtime_comparison_chart.png")
     plt.close()

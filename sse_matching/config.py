@@ -69,6 +69,7 @@ STRAND_PROTEIN_LIST = [
     "5O8O",
     "6EM3",
     # "6UXW",
+    # "6UXW",
 ]
 
 DEFAULT_REPORT_FILE = "direction_analysis_report.txt"

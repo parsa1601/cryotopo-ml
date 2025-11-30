@@ -17,6 +17,7 @@ from plot_results import (
     plot_error_rate_line_chart,
 )
 from collections import defaultdict
+from run_lptd_comparison import run_lptd_comparison_workflow
 
 sys.path.append(f"{os.path.dirname(os.getcwd())}")
 warnings.filterwarnings("ignore")
@@ -37,14 +38,14 @@ def plot_charts_from_json(json_file_path="Final_Results.json"):
 
         # Load the JSON data
         with open(json_file_path, "r") as json_file:
-            final_accuracy_report = json.load(json_file)
+            performance_report = json.load(json_file)
 
         print(f"Loaded data from {json_file_path}")
         print("Generating charts...")
 
-        plot_accuracy_charts(final_accuracy_report, 'f1_measure')
-        plot_metrics_bar_chart(final_accuracy_report)
-        plot_error_rate_line_chart(final_accuracy_report)
+        plot_accuracy_charts(performance_report, 'f1_measure')
+        plot_metrics_bar_chart(performance_report)
+        plot_error_rate_line_chart(performance_report)
 
         print("All charts have been generated successfully!")
 
@@ -68,14 +69,14 @@ def run_direction_analysis_from_results(json_file_path="Final_Results.json"):
             return
 
         with open(json_file_path, "r") as json_file:
-            final_accuracy_report = json.load(json_file)
+            performance_report = json.load(json_file)
 
         print(f"Loaded data from {json_file_path}")
         
         # Calculate best algorithm based on F1-measure
         algorithm_f1_scores = defaultdict(list)
         
-        for protein, structures in final_accuracy_report.items():
+        for protein, structures in performance_report.items():
             for structure_type, algorithms in structures.items():
                 for algorithm, metrics in algorithms.items():
                     if 'f1_measure' in metrics:
@@ -106,7 +107,7 @@ def run_direction_analysis_from_results(json_file_path="Final_Results.json"):
             trainer.file_handler.reset_report_file()
             
             # Run for helices
-            helix_proteins = [p for p, data in final_accuracy_report.items() if 'Helix' in data]
+            helix_proteins = [p for p, data in performance_report.items() if 'Helix' in data]
             if helix_proteins:
                 trainer.file_handler.print_and_save(
                     f"\n\n{'='*60}\nDIRECTION ANALYSIS - HELIX (using {best_algorithm})\n{'='*60}"
@@ -117,7 +118,7 @@ def run_direction_analysis_from_results(json_file_path="Final_Results.json"):
                 trainer.print_overall_direction_summary()
             
             # Run for strands
-            strand_proteins = [p for p, data in final_accuracy_report.items() if 'Strand' in data]
+            strand_proteins = [p for p, data in performance_report.items() if 'Strand' in data]
             if strand_proteins:
                 trainer.file_handler.print_and_save(
                     f"\n\n{'='*60}\nDIRECTION ANALYSIS - STRAND (using {best_algorithm})\n{'='*60}"
@@ -153,7 +154,7 @@ def main():
     trainer.file_handler.print_and_save(
         "\n\n\n\n*************************HELIX RESULTS:**********************"
     )
-    final_accuracy_report = trainer.train_with_all_algorithms(
+    performance_report = trainer.train_with_all_algorithms(
         HELIX_PROTEIN_LIST, "Helix"
     )
     trainer.find_globally_best_parameters()
@@ -162,18 +163,18 @@ def main():
         "\n\n\n\n*************************STRAND RESULTS:**********************"
     )
 
-    final_accuracy_report = trainer.train_with_all_algorithms(
+    performance_report = trainer.train_with_all_algorithms(
         STRAND_PROTEIN_LIST, "Strand"
     )
     trainer.find_globally_best_parameters()
 
-    plot_accuracy_charts(final_accuracy_report, 'f1_measure')
-    plot_metrics_bar_chart(final_accuracy_report)
-    plot_error_rate_line_chart(final_accuracy_report)
+    plot_accuracy_charts(performance_report, 'f1_measure')
+    plot_metrics_bar_chart(performance_report)
+    plot_error_rate_line_chart(performance_report)
     
     with open("Final_Results.json", "w") as json_file:
         json.dump(
-            convert_dd_to_dict(final_accuracy_report),
+            convert_dd_to_dict(performance_report),
             json_file,
             indent=4,
             default=make_serializable,
@@ -212,6 +213,11 @@ if __name__ == "__main__":
         help="Run direction analysis using best algorithm from Final_Results.json",
     )
     parser.add_argument(
+        "--lptd-comparison",
+        action="store_true",
+        help="Run LPTD comparison using results from Final_Results.json",
+    )
+    parser.add_argument(
         "--json-file",
         default="Final_Results.json",
         help="Path to JSON results file (default: Final_Results.json)",
@@ -225,6 +231,9 @@ if __name__ == "__main__":
     elif args.direction_analysis:
         print("Running direction analysis with best algorithm from results...")
         run_direction_analysis_from_results(args.json_file)
+    elif args.lptd_comparison:
+        print("Running LPTD comparison workflow...")
+        run_lptd_comparison_workflow()
     else:
         print("Running full protein structure analysis...")
         main()

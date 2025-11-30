@@ -120,7 +120,7 @@ class ProteinTrainer:
                 except Exception as e:
                     print(f"Error processing protein {protein}: {e}")
 
-        return dict(self.ml_classifiers.final_accuracy_report)
+        return dict(self.ml_classifiers.performance_report)
 
     def train_and_evaluation(
         self,
@@ -170,10 +170,10 @@ class ProteinTrainer:
                 )
                 
                 # Store results in final accuracy report
-                self.ml_classifiers.final_accuracy_report[protein_name][structure_type][name][
+                self.ml_classifiers.performance_report[protein_name][structure_type][name][
                     "confusion_matrix_detailed"
                 ] = confusion_matrix
-                self.ml_classifiers.final_accuracy_report[protein_name][structure_type][name].update(
+                self.ml_classifiers.performance_report[protein_name][structure_type][name].update(
                     metrics
                 )
                 
@@ -223,9 +223,9 @@ class ProteinTrainer:
         print(f"{'='*60}")
         
         # Get the classifier for the best algorithm
-        algorithms = self.ml_classifiers.get_algorithms()
+        algorithms = self.ml_classifiers.classifiers
         best_classifier = None
-        for name, classifier in algorithms:
+        for name, classifier in algorithms.items():
             if name == best_algorithm:
                 best_classifier = classifier
                 break

@@ -302,7 +302,7 @@ def plot_runtime_comparison(performance_report, best_method="SVM RBF"):
                 # LPTD has 'runtime'
                 lptd_val = methods["LPTD"].get("runtime", 0)
                 
-                ml_val = methods[best_method].get("test_time", 0)
+                ml_val = methods[best_method].get("test_time", 0) + methods[best_method].get("train_time", 0)
                 
                 if lptd_val > 0 or ml_val > 0:
                     lptd_sum += lptd_val
@@ -324,7 +324,7 @@ def plot_runtime_comparison(performance_report, best_method="SVM RBF"):
     plt.figure(figsize=(12, 6))
     
     plt.bar(x - width/2, lptd_times, width, label='LPTD', color='purple', alpha=0.8)
-    plt.bar(x + width/2, ml_times, width, label=f'{best_method} (Test Phase)', color='yellow', alpha=0.8)
+    plt.bar(x + width/2, ml_times, width, label=best_method, color='yellow', alpha=0.8)
     
     plt.xlabel('Protein', fontsize=15)
     plt.ylabel('Runtime (seconds)', fontsize=15)

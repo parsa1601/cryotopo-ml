@@ -99,7 +99,7 @@ def run_lptd_comparison_workflow(best_ml_algorithm="SVM RBF"):
             )
             
             # Add LPTD to performance report
-            trainer.ml_classifiers.performance_report[protein][mode]["LPTD"]["runtime"] = lptd_runtime
+            trainer.ml_classifiers.performance_report[protein][mode]["LPTD"]["test_time"] = lptd_runtime
             trainer.ml_classifiers.performance_report[protein][mode]["LPTD"]["confusion_matrix_detailed"] = confusion_matrix_lptd
             trainer.ml_classifiers.performance_report[protein][mode]["LPTD"].update(metrics_lptd)
             
@@ -107,6 +107,13 @@ def run_lptd_comparison_workflow(best_ml_algorithm="SVM RBF"):
             print(f"Error processing {protein}: {e}")
             continue
     
+
+    ##Save LPTD results
+    import json
+    with open("lptd_report.json", "w") as f:
+        json.dump(trainer.ml_classifiers.performance_report, f, indent=4)
+
+
     # Generate Comparison Plot
     plot_runtime_comparison(trainer.ml_classifiers.performance_report, best_ml_algorithm)
     print("\nRuntime comparison chart generated successfully.")

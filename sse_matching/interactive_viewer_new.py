@@ -10,6 +10,7 @@ import os
 import sys
 import numpy as np
 import pandas as pd
+from sklearn import svm
 
 # Force Qt platform to prevent threading issues
 os.environ['QT_API'] = 'pyqt5'
@@ -50,6 +51,7 @@ except ImportError:
 
 # Import after Qt setup
 from protein_visualization import ProteinVisualizer
+from file_utils import FileHandler
 
 
 def create_simple_interactive_plot():
@@ -101,7 +103,7 @@ def interactive_protein_viewer():
         visualizer = ProteinVisualizer()
         
         # Load sample protein data
-        protein_name = "1A7D"
+        protein_name = "5I1M"
         csv_path = "Archive/"
         
         print(f"📊 Loading protein data for {protein_name}...")
@@ -115,13 +117,27 @@ def interactive_protein_viewer():
         helix_df = pd.read_csv(helix_records, header=None)
         X_train = helix_df.iloc[:, :3].to_numpy()
         y_train = helix_df.iloc[:, 3].to_numpy().astype(int)
+
+        # Load best hyperparameters and create SVM RBF model
+        file_handler = FileHandler()
+        best_params_file = "best_hyperparameters.json"
+        best_params = file_handler.load_best_parameters(best_params_file)
+        
+        # Create and train SVM RBF model
+        svm_model = svm.SVC(**best_params["SVM RBF"])
+        print(f"🤖 Training SVM RBF model with parameters: {best_params['SVM RBF']}")
+        svm_model.fit(X_train, y_train)
+        print("✓ SVM RBF model trained successfully")
         
         print(f"✓ Loaded {len(X_train)} data points")
         print(f"✓ Found {len(np.unique(y_train))} helices: {sorted(np.unique(y_train))}")
         
-        # Create 3D cylindrical visualization
-        print("\n🔬 Creating interactive 3D cylindrical visualization...")
-        visualizer.plot_3d_cylindrical_structures_with_svm(X_train, y_train, protein_name, "Helix")
+        # Create 3D cylindrical visualization with SVM
+        print("\n🔬 Creating interactive 3D cylindrical visualization with SVM...")
+        visualizer.plot_3d_cylindrical_structures_with_svm(
+            X_train, y_train, protein_name, "Helix", 
+            svm_model=svm_model, title_suffix="with RBF Kernel"
+        )
         
         # Interactive menu
         while True:
@@ -144,7 +160,17 @@ def interactive_protein_viewer():
                             new_df = pd.read_csv(new_file, header=None)
                             new_X = new_df.iloc[:, :3].to_numpy()
                             new_y = new_df.iloc[:, 3].to_numpy().astype(int)
-                            visualizer.plot_3d_cylindrical_structures_with_svm(new_X, new_y, new_protein, "Helix")
+                            
+                            # Train SVM model for the new protein
+                            new_svm_model = svm.SVC(**best_params["SVM RBF"])
+                            print(f"🤖 Training SVM RBF model for {new_protein}...")
+                            new_svm_model.fit(new_X, new_y)
+                            print("✓ SVM RBF model trained successfully")
+                            
+                            visualizer.plot_3d_cylindrical_structures_with_svm(
+                                new_X, new_y, new_protein, "Helix",
+                                svm_model=new_svm_model, title_suffix="with RBF Kernel"
+                            )
                         except FileNotFoundError:
                             print(f"❌ Data not found for {new_protein}")
                     else:

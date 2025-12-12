@@ -50,7 +50,7 @@ class DataLoader:
         strands_records = (
             f"{self.csv_path}STRANDS/{protein_name}/Sheet/{protein_name}_Strands.csv"
         )
-        stick_records = f"{self.csv_path}STRANDS/{protein_name}/Sheet/{protein_name}_Sticks_Strands.csv"
+        stick_records = f"{self.csv_path}STRANDS/{protein_name}/Sheet/{protein_name}_Generated_sticks_strands.csv"
 
         strand_df = pd.read_csv(strands_records, header=None)
         strands_datapoints = strand_df.iloc[:, :3].to_numpy()
@@ -80,6 +80,7 @@ class DataLoader:
             topology_df = pd.read_csv(topology_record, header=None)
 
         mapping = topology_df.iloc[:, :2].to_numpy()
+        mapping = {row[0].item(): row[1].item() for row in mapping}
 
         direction_mapping = {}
         for _, row in topology_df.iterrows():

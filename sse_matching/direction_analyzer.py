@@ -71,7 +71,7 @@ class DirectionAnalyzer:
             f"\n--- Direction Analysis for {protein_name} using {best_algorithm} ---"
         )
         test_to_train_map = {
-            test_label: train_label for train_label, test_label in mapping
+            test_label: train_label for train_label, test_label in mapping.items()
         }
 
         y_pred = best_classifier.predict(X_test)

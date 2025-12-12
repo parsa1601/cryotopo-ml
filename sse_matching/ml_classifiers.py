@@ -53,7 +53,7 @@ class MLClassifiers:
         y_train,
         X_test,
         y_test,
-        test_to_train_map,
+        mapping,
         evaluation_metrics,
         structure_type,
         protein_name,
@@ -73,8 +73,9 @@ class MLClassifiers:
             y_pred = classifier.predict(X_test)
             test_time = time.time() - start_test
 
+
             confusion_matrix, metrics = evaluation_metrics.calculate_custom_metrics(
-                y_test, y_pred, y_train, test_to_train_map
+                y_test, y_pred, mapping
             )
             
             # Add runtime metrics

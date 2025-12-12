@@ -5,3 +5,4 @@ latex/
 direction_analysis_report.txt
 helix_accuracy_chart.png
 strand_accuracy_chart.png
+data/*

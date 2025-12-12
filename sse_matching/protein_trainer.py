@@ -60,13 +60,9 @@ class ProteinTrainer:
                 try:
                     result = self.data_loader.generate_protein_helix_stick(protein)
                     if result is not None:
-                        mappings, direction_mapping = (
+                        mapping, direction_mapping = (
                             self.data_loader.read_mapping_topology(protein, mode)
                         )
-                        test_to_train_map = {
-                            test_label: train_label
-                            for train_label, test_label in mappings
-                        }
                         X_train, X_test, y_train, y_test, num_train, num_test = result
                         print(f"\nProtein: {protein}")
                         print(f"#Helices: (Train Classes): {num_train}")
@@ -76,7 +72,7 @@ class ProteinTrainer:
                             X_test,
                             y_train,
                             y_test,
-                            test_to_train_map,
+                            mapping,
                             direction_mapping,
                             protein,
                             "Helix",
@@ -92,13 +88,9 @@ class ProteinTrainer:
                 try:
                     result = self.data_loader.generate_protein_strand_stick(protein)
                     if result is not None:
-                        mappings, direction_mapping = (
+                        mapping, direction_mapping = (
                             self.data_loader.read_mapping_topology(protein, mode)
                         )
-                        test_to_train_map = {
-                            test_label: train_label
-                            for train_label, test_label in mappings
-                        }
                         X_train, X_test, y_train, y_test, num_train, num_test = result
                         print(f"\nProtein: {protein}")
                         print(f"#Strands: (Train Classes): {num_train}")
@@ -108,7 +100,7 @@ class ProteinTrainer:
                             X_test,
                             y_train,
                             y_test,
-                            test_to_train_map,
+                            mapping,
                             direction_mapping,
                             protein,
                             "Strand",
@@ -128,7 +120,7 @@ class ProteinTrainer:
         X_test,
         y_train,
         y_test,
-        test_to_train_map,
+        mapping,
         direction_mapping,
         protein_name="Unknown",
         structure_type="Helix",
@@ -145,7 +137,7 @@ class ProteinTrainer:
                     y_train,
                     X_test,
                     y_test,
-                    test_to_train_map,
+                    mapping,
                     protein_name,
                     self.evaluation_metrics,
                 )
@@ -166,7 +158,7 @@ class ProteinTrainer:
                 y_pred = classifier.predict(X_test)
 
                 confusion_matrix, metrics = self.evaluation_metrics.calculate_custom_metrics(
-                    y_test, y_pred, y_train, test_to_train_map
+                    y_test, y_pred, mapping
                 )
                 
                 # Store results in final accuracy report
@@ -189,10 +181,10 @@ class ProteinTrainer:
                 y_train,
                 X_test,
                 y_test,
-                test_to_train_map,
+                mapping,
                 self.evaluation_metrics,
                 structure_type,
-                protein_name
+                protein_name,
             )
 
     def print_overall_direction_summary(self):
@@ -239,20 +231,16 @@ class ProteinTrainer:
                 try:
                     result = self.data_loader.generate_protein_helix_stick(protein)
                     if result is not None:
-                        mappings, direction_mapping = (
+                        mapping, direction_mapping = (
                             self.data_loader.read_mapping_topology(protein, mode)
                         )
-                        test_to_train_map = {
-                            test_label: train_label
-                            for train_label, test_label in mappings
-                        }
                         X_train, X_test, y_train, y_test, num_train, num_test = result
                         
                         # Train the best algorithm on this protein
                         best_classifier.fit(X_train, y_train)
                         
                         # Run direction analysis
-                        self.direction_analyzer.analyze_best_mappings(
+                        self.direction_analyzer.analyze_best_mapping(
                             protein,
                             best_algorithm,
                             best_classifier,
@@ -260,7 +248,7 @@ class ProteinTrainer:
                             y_train,
                             X_test,
                             y_test,
-                            test_to_train_map,
+                            mapping,
                             direction_mapping,
                         )
                 except Exception as e:
@@ -270,20 +258,16 @@ class ProteinTrainer:
                 try:
                     result = self.data_loader.generate_protein_strand_stick(protein)
                     if result is not None:
-                        mappings, direction_mapping = (
+                        mapping, direction_mapping = (
                             self.data_loader.read_mapping_topology(protein, mode)
                         )
-                        test_to_train_map = {
-                            test_label: train_label
-                            for train_label, test_label in mappings
-                        }
                         X_train, X_test, y_train, y_test, num_train, num_test = result
                         
                         # Train the best algorithm on this protein
                         best_classifier.fit(X_train, y_train)
                         
                         # Run direction analysis
-                        self.direction_analyzer.analyze_best_mappings(
+                        self.direction_analyzer.analyze_best_mapping(
                             protein,
                             best_algorithm,
                             best_classifier,
@@ -291,7 +275,7 @@ class ProteinTrainer:
                             y_train,
                             X_test,
                             y_test,
-                            test_to_train_map,
+                            mapping,
                             direction_mapping,
                         )
                 except Exception as e:

@@ -51,7 +51,7 @@ class DirectionAnalyzer:
 
         return 1 if forward_distance <= backward_distance else -1
 
-    def analyze_best_mappings(
+    def analyze_best_mapping(
         self,
         protein_name,
         best_algorithm,
@@ -60,16 +60,19 @@ class DirectionAnalyzer:
         y_train,
         X_test,
         y_test,
-        test_to_train_map,
+        mapping,
         direction_mapping,
     ):
         """
-        This function analyzes the best mappings and determines the direction of the sticks.
+        This function analyzes the best mapping and determines the direction of the sticks.
         Also calculates and reports direction detection accuracy.
         """
         self.file_handler.print_and_save(
             f"\n--- Direction Analysis for {protein_name} using {best_algorithm} ---"
         )
+        test_to_train_map = {
+            test_label: train_label for train_label, test_label in mapping
+        }
 
         y_pred = best_classifier.predict(X_test)
 

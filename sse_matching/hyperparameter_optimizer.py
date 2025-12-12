@@ -29,7 +29,7 @@ class HyperparameterOptimizer:
         y_train,
         X_test,
         y_test,
-        test_to_train_map,
+        mapping,
         algorithm_name,
         protein_name,
         evaluation_metrics,
@@ -59,20 +59,20 @@ class HyperparameterOptimizer:
 
             y_pred = current_classifier.predict(X_test)
 
-            current_score = evaluation_metrics.calculate_mapped_accuracy(
-                y_test, y_pred, test_to_train_map
+            _, metrics = evaluation_metrics.calculate_custom_metrics(
+                y_test, y_pred, mapping
             )
 
             self.hyperparameter_scores[algorithm_name].append(
                 {
                     "protein": protein_name,
                     "params": params.copy(),
-                    "accuracy": current_score,
+                    "accuracy": metrics["accuracy"],
                 }
             )
 
-            if current_score > best_score:
-                best_score = current_score
+            if metrics["accuracy"] > best_score:
+                best_score = metrics["accuracy"]
                 best_params = params.copy()
                 best_estimator = current_classifier
 
@@ -147,7 +147,7 @@ class HyperparameterOptimizer:
         y_train,
         X_test,
         y_test,
-        test_to_train_map,
+        mapping,
         protein_name,
         evaluation_metrics,
     ):
@@ -175,7 +175,7 @@ class HyperparameterOptimizer:
                         y_train,
                         X_test,
                         y_test,
-                        test_to_train_map,
+                        mapping,
                         name,
                         protein_name,
                         evaluation_metrics,

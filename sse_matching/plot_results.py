@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('Agg') 
 
-def calculate_combined_metrics(performance_report, best_method="SVM RBF"):
+def calculate_combined_metrics(performance_report, best_method="Voronoi (1N KNN)"):
     """
     Calculate combined metrics for each protein by averaging across all methods and structure types.
     
@@ -276,7 +276,7 @@ def plot_accuracy_charts(performance_report, metric='f1_measure'):
     print(f"Combined chart saved as {file_name}")
     plt.close()
 
-def plot_runtime_comparison(performance_report, best_method="SVM RBF"):
+def plot_runtime_comparison(performance_report, best_method="Voronoi (1N KNN)"):
     """
     Plot runtime comparison between LPTD and the best ML method.
     

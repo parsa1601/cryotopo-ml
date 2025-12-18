@@ -164,7 +164,7 @@ def bresenham_line3d(p1, p2, precision=0):
         
     return points
 
-def lp_code(weight_matrix, use_glpk=False):
+def lp_code(weight_matrix, use_glpk=True):
     """
     Solves the assignment problem using GLPK LP solver (like MATLAB) or Hungarian algorithm.
     

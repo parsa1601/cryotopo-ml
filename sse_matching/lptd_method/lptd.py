@@ -1,6 +1,6 @@
 import numpy as np
 import time
-from .utils import imsd, lp_code, dtw
+from .utils import imsd, lp_code, dtw, bresenham_line3d
 
 class LPTDMethod:
     def __init__(self):
@@ -37,10 +37,13 @@ class LPTDMethod:
         stick_voxels = {}
         for sid in stick_ids:
             points = cryo_datapoints[sticks == sid]
-            # For strands, the data loader already provides generated voxels from
-            # the _Generated_sticks_strands.csv file (created by MATLAB's Bresenham).
-            # So we DON'T need to run Bresenham again here!
-            stick_voxels[sid] = points
+            if mode == "Strand":
+                p1 = points[0]
+                p2 = points[-1]
+                gen_points = bresenham_line3d(p1, p2)
+                stick_voxels[sid] = gen_points
+            else:
+                stick_voxels[sid] = points
 
         num_helices = len(helix_ids)
         num_sticks = len(stick_ids)

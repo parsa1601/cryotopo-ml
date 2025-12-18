@@ -50,7 +50,7 @@ class DataLoader:
         strands_records = (
             f"{self.csv_path}STRANDS/{protein_name}/Sheet/{protein_name}_Strands.csv"
         )
-        stick_records = f"{self.csv_path}STRANDS/{protein_name}/Sheet/{protein_name}_Generated_sticks_strands.csv"
+        stick_records = f"{self.csv_path}STRANDS/{protein_name}/Sheet/{protein_name}_Sticks_Strands.csv"
 
         strand_df = pd.read_csv(strands_records, header=None)
         strands_datapoints = strand_df.iloc[:, :3].to_numpy()

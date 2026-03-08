@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18911570.svg)](https://doi.org/10.5281/zenodo.18911570)
+
 # ML-based Secondary Structure Element (SSE) Matching and Direction Detection
 
 ## Overview

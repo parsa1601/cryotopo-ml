@@ -83,6 +83,49 @@ This will:
 - Generate accuracy charts including LPTD results
 
 
+## Visualizations & Plot Generation
+
+This repository includes a dedicated Jupyter Notebook, **all_figures.ipynb**, which serves as a centralized hub for generating all project figures and plots.
+
+### Key Features of the Notebook
+
+#### Automated Charting
+
+The notebook cells read directly from the generated output files (**Final_Results.json** and **Protein_List.xlsx**) to automatically create high-quality, formatted charts. These include:
+
+* Performance comparison charts
+* Runtime charts
+* Grouped bar charts for **F1-measures**
+
+#### 3D Protein Visualization (5I1M)
+
+The notebook includes dedicated cells for rendering **3D scatter and line plots** of the protein **5I1M**. This allows you to visually map and inspect both its extracted **helices** and **strands (sticks)** directly in your browser.
+
+### How to Use the Notebook
+
+1. Ensure your **virtual environment** is active and the required libraries are installed:
+
+```
+pip install pandas matplotlib jupyter
+```
+
+2. Launch the notebook environment:
+
+```
+jupyter notebook
+```
+
+or
+
+```
+jupyter lab
+```
+
+3. Open **all_figures.ipynb**.
+
+4. Run the notebook cells **sequentially** after your main analysis has finished exporting the **JSON** and **Excel** files.
+
+
 ## Key Components
 - **`protein_trainer.py`**: Main orchestrator coordinating the entire workflow
 - **`ml_classifiers.py`**: ML algorithms (SVM Linear/RBF, Random Forest, 1-NN KNN)

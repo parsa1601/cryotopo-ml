@@ -1,6 +1,7 @@
 import numpy as np
 import time
 from .utils import imsd, lp_code, dtw, bresenham_line3d
+from config import USE_BRESENHAM_FOR_LPTD
 
 class LPTDMethod:
     def __init__(self):
@@ -37,7 +38,7 @@ class LPTDMethod:
         stick_voxels = {}
         for sid in stick_ids:
             points = cryo_datapoints[sticks == sid]
-            if mode == "Strand":
+            if mode == "Strand" and USE_BRESENHAM_FOR_LPTD:
                 p1 = points[0]
                 p2 = points[-1]
                 gen_points = bresenham_line3d(p1, p2)

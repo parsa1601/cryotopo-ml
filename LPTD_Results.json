@@ -13,8 +13,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0024323463439941406,
-                "test_time": 0.0005724430084228516
+                "train_time": 0.0015513896942138672,
+                "test_time": 0.0003504753112792969
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -28,8 +28,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0019252300262451172,
-                "test_time": 0.0008783340454101562
+                "train_time": 0.0014691352844238281,
+                "test_time": 0.0004642009735107422
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -43,8 +43,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.27705931663513184,
-                "test_time": 0.01443171501159668
+                "train_time": 0.437969446182251,
+                "test_time": 0.01832294464111328
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -58,11 +58,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0009114742279052734,
-                "test_time": 0.0013966560363769531
+                "train_time": 0.0014622211456298828,
+                "test_time": 0.008120536804199219
             },
             "LPTD": {
-                "runtime": 0.03489875793457031,
+                "runtime": 0.036124467849731445,
                 "confusion_matrix_detailed": {
                     "tp": 3,
                     "tn": 1,
@@ -91,8 +91,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.001966714859008789,
-                "test_time": 0.0005323886871337891
+                "train_time": 0.002477884292602539,
+                "test_time": 0.000644683837890625
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -106,8 +106,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0020935535430908203,
-                "test_time": 0.0015370845794677734
+                "train_time": 0.0022382736206054688,
+                "test_time": 0.0012359619140625
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -121,8 +121,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.30428481101989746,
-                "test_time": 0.0146636962890625
+                "train_time": 0.368880033493042,
+                "test_time": 0.028225421905517578
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -136,11 +136,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0007860660552978516,
-                "test_time": 0.0013437271118164062
+                "train_time": 0.0014183521270751953,
+                "test_time": 0.01417684555053711
             },
             "LPTD": {
-                "runtime": 0.025378704071044922,
+                "runtime": 0.026792526245117188,
                 "confusion_matrix_detailed": {
                     "tp": 5,
                     "tn": 0,
@@ -169,8 +169,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0031499862670898438,
-                "test_time": 0.0007719993591308594
+                "train_time": 0.002960205078125,
+                "test_time": 0.0008649826049804688
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -184,8 +184,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0030624866485595703,
-                "test_time": 0.0009579658508300781
+                "train_time": 0.004048585891723633,
+                "test_time": 0.0013539791107177734
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -199,8 +199,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.2713472843170166,
-                "test_time": 0.0145721435546875
+                "train_time": 0.47916364669799805,
+                "test_time": 0.020560264587402344
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -214,11 +214,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008320808410644531,
-                "test_time": 0.001314401626586914
+                "train_time": 0.0011639595031738281,
+                "test_time": 0.006577253341674805
             },
             "LPTD": {
-                "runtime": 0.0439755916595459,
+                "runtime": 0.050139427185058594,
                 "confusion_matrix_detailed": {
                     "tp": 6,
                     "tn": 1,
@@ -247,8 +247,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0031974315643310547,
-                "test_time": 0.0005519390106201172
+                "train_time": 0.0029866695404052734,
+                "test_time": 0.0007793903350830078
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -262,8 +262,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.005224466323852539,
-                "test_time": 0.001444101333618164
+                "train_time": 0.007085323333740234,
+                "test_time": 0.002101421356201172
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -277,8 +277,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.3783071041107178,
-                "test_time": 0.01923823356628418
+                "train_time": 0.4701364040374756,
+                "test_time": 0.021685361862182617
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -292,11 +292,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0014810562133789062,
-                "test_time": 0.002318143844604492
+                "train_time": 0.0012500286102294922,
+                "test_time": 0.011160850524902344
             },
             "LPTD": {
-                "runtime": 0.08788561820983887,
+                "runtime": 0.09210395812988281,
                 "confusion_matrix_detailed": {
                     "tp": 9,
                     "tn": 2,
@@ -325,8 +325,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.003942251205444336,
-                "test_time": 0.0013606548309326172
+                "train_time": 0.006493806838989258,
+                "test_time": 0.001375436782836914
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -340,8 +340,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.01140451431274414,
-                "test_time": 0.002465963363647461
+                "train_time": 0.016057729721069336,
+                "test_time": 0.0047054290771484375
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -355,8 +355,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.36809468269348145,
-                "test_time": 0.01737809181213379
+                "train_time": 0.545583963394165,
+                "test_time": 0.03641009330749512
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -370,11 +370,11 @@
                 "recall": 94.73684210526315,
                 "f1_measure": 94.73684210526315,
                 "mismatch_rate": 9.090909090909092,
-                "train_time": 0.0008871555328369141,
-                "test_time": 0.0013852119445800781
+                "train_time": 0.0016219615936279297,
+                "test_time": 0.017937421798706055
             },
             "LPTD": {
-                "runtime": 0.39051127433776855,
+                "runtime": 0.4159510135650635,
                 "confusion_matrix_detailed": {
                     "tp": 19,
                     "tn": 2,
@@ -403,8 +403,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0017423629760742188,
-                "test_time": 0.0003514289855957031
+                "train_time": 0.001542806625366211,
+                "test_time": 0.0004737377166748047
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -418,8 +418,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0018036365509033203,
-                "test_time": 0.0008471012115478516
+                "train_time": 0.0019550323486328125,
+                "test_time": 0.0008800029754638672
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -433,8 +433,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.26352643966674805,
-                "test_time": 0.013976097106933594
+                "train_time": 0.3757340908050537,
+                "test_time": 0.018982648849487305
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -448,11 +448,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008039474487304688,
-                "test_time": 0.0012850761413574219
+                "train_time": 0.0009367465972900391,
+                "test_time": 0.0034224987030029297
             },
             "LPTD": {
-                "runtime": 0.031444549560546875,
+                "runtime": 0.030750036239624023,
                 "confusion_matrix_detailed": {
                     "tp": 4,
                     "tn": 2,
@@ -479,8 +479,8 @@
                 "recall": 85.71428571428571,
                 "f1_measure": 85.71428571428571,
                 "mismatch_rate": 25.0,
-                "train_time": 0.0025742053985595703,
-                "test_time": 0.0006396770477294922
+                "train_time": 0.0020499229431152344,
+                "test_time": 0.00026035308837890625
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -494,8 +494,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0021750926971435547,
-                "test_time": 0.0005562305450439453
+                "train_time": 0.0013499259948730469,
+                "test_time": 0.00028228759765625
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -509,8 +509,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.2612287998199463,
-                "test_time": 0.014105558395385742
+                "train_time": 0.3050205707550049,
+                "test_time": 0.018265724182128906
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -524,22 +524,28 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008184909820556641,
-                "test_time": 0.001234292984008789
+                "train_time": 0.0011763572692871094,
+                "test_time": 0.0036077499389648438
             },
             "LPTD": {
-                "runtime": 0.04533672332763672,
+                "runtime": 0.04897284507751465,
                 "confusion_matrix_detailed": {
-                    "tp": 7,
+                    "tp": 1,
+                    "tp": 1,
                     "tn": 0,
                     "fp": 0,
-                    "fn": 0
+                    "fn": 6
+                    "fn": 6
                 },
-                "accuracy": 1.0,
+                "accuracy": 0.14285714285714285,
+                "accuracy": 0.14285714285714285,
                 "precision": 100.0,
-                "recall": 100.0,
-                "f1_measure": 100.0,
-                "mismatch_rate": 0.0
+                "recall": 14.285714285714285,
+                "f1_measure": 25.0,
+                "mismatch_rate": 85.71428571428571
+                "recall": 14.285714285714285,
+                "f1_measure": 25.0,
+                "mismatch_rate": 85.71428571428571
             }
         }
     },
@@ -557,8 +563,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0018992424011230469,
-                "test_time": 0.0005044937133789062
+                "train_time": 0.0012331008911132812,
+                "test_time": 0.0003161430358886719
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -572,8 +578,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0016350746154785156,
-                "test_time": 0.0005426406860351562
+                "train_time": 0.0014410018920898438,
+                "test_time": 0.0004875659942626953
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -587,8 +593,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.26072096824645996,
-                "test_time": 0.01437830924987793
+                "train_time": 0.3301877975463867,
+                "test_time": 0.017325878143310547
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -602,11 +608,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008161067962646484,
-                "test_time": 0.0013113021850585938
+                "train_time": 0.0007646083831787109,
+                "test_time": 0.004765033721923828
             },
             "LPTD": {
-                "runtime": 0.03647780418395996,
+                "runtime": 0.04082942008972168,
                 "confusion_matrix_detailed": {
                     "tp": 6,
                     "tn": 0,
@@ -635,8 +641,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0018160343170166016,
-                "test_time": 0.00042057037353515625
+                "train_time": 0.001957416534423828,
+                "test_time": 0.0004458427429199219
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -650,8 +656,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0024607181549072266,
-                "test_time": 0.0009307861328125
+                "train_time": 0.003350496292114258,
+                "test_time": 0.0010068416595458984
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -665,8 +671,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.27506089210510254,
-                "test_time": 0.014800071716308594
+                "train_time": 0.39877891540527344,
+                "test_time": 0.018030881881713867
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -680,11 +686,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008401870727539062,
-                "test_time": 0.0012748241424560547
+                "train_time": 0.0011394023895263672,
+                "test_time": 0.005462646484375
             },
             "LPTD": {
-                "runtime": 0.0592343807220459,
+                "runtime": 0.06431221961975098,
                 "confusion_matrix_detailed": {
                     "tp": 7,
                     "tn": 2,
@@ -713,8 +719,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0019953250885009766,
-                "test_time": 0.0003654956817626953
+                "train_time": 0.0017404556274414062,
+                "test_time": 0.00047779083251953125
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -728,8 +734,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0013604164123535156,
-                "test_time": 0.0004787445068359375
+                "train_time": 0.001722097396850586,
+                "test_time": 0.0005006790161132812
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -743,8 +749,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.2655646800994873,
-                "test_time": 0.014224529266357422
+                "train_time": 0.3175089359283447,
+                "test_time": 0.01597881317138672
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -758,11 +764,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008044242858886719,
-                "test_time": 0.0012624263763427734
+                "train_time": 0.0008058547973632812,
+                "test_time": 0.004325151443481445
             },
             "LPTD": {
-                "runtime": 0.02948451042175293,
+                "runtime": 0.027146100997924805,
                 "confusion_matrix_detailed": {
                     "tp": 5,
                     "tn": 0,
@@ -789,8 +795,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0012888908386230469,
-                "test_time": 0.0002980232238769531
+                "train_time": 0.001256704330444336,
+                "test_time": 0.0005145072937011719
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -804,8 +810,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0009372234344482422,
-                "test_time": 0.00030303001403808594
+                "train_time": 0.001161336898803711,
+                "test_time": 0.0004382133483886719
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -819,8 +825,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.2612745761871338,
-                "test_time": 0.013827085494995117
+                "train_time": 0.2977416515350342,
+                "test_time": 0.014589071273803711
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -834,22 +840,28 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0007686614990234375,
-                "test_time": 0.0012316703796386719
+                "train_time": 0.0008807182312011719,
+                "test_time": 0.0017821788787841797
             },
             "LPTD": {
-                "runtime": 0.026216983795166016,
+                "runtime": 0.027492046356201172,
                 "confusion_matrix_detailed": {
-                    "tp": 4,
+                    "tp": 2,
+                    "tp": 2,
                     "tn": 1,
                     "fp": 0,
-                    "fn": 0
+                    "fn": 2
+                    "fn": 2
                 },
-                "accuracy": 1.0,
+                "accuracy": 0.6,
+                "accuracy": 0.6,
                 "precision": 100.0,
-                "recall": 100.0,
-                "f1_measure": 100.0,
-                "mismatch_rate": 0.0
+                "recall": 50.0,
+                "f1_measure": 66.66666666666667,
+                "mismatch_rate": 40.0
+                "recall": 50.0,
+                "f1_measure": 66.66666666666667,
+                "mismatch_rate": 40.0
             }
         }
     },
@@ -867,8 +879,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.009625673294067383,
-                "test_time": 0.0015156269073486328
+                "train_time": 0.007402896881103516,
+                "test_time": 0.0006432533264160156
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -882,8 +894,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.005946636199951172,
-                "test_time": 0.0016238689422607422
+                "train_time": 0.0037310123443603516,
+                "test_time": 0.0022487640380859375
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -897,8 +909,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.3097503185272217,
-                "test_time": 0.015611410140991211
+                "train_time": 0.35910749435424805,
+                "test_time": 0.01780986785888672
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -912,11 +924,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008757114410400391,
-                "test_time": 0.0013532638549804688
+                "train_time": 0.0008666515350341797,
+                "test_time": 0.008544206619262695
             },
             "LPTD": {
-                "runtime": 0.10859179496765137,
+                "runtime": 0.12189674377441406,
                 "confusion_matrix_detailed": {
                     "tp": 7,
                     "tn": 4,
@@ -945,8 +957,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.004271030426025391,
-                "test_time": 0.001138925552368164
+                "train_time": 0.0021507740020751953,
+                "test_time": 0.0007092952728271484
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -960,8 +972,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.003991365432739258,
-                "test_time": 0.0013747215270996094
+                "train_time": 0.003301382064819336,
+                "test_time": 0.0017580986022949219
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -975,8 +987,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.29556703567504883,
-                "test_time": 0.015978336334228516
+                "train_time": 0.33034467697143555,
+                "test_time": 0.01851654052734375
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -990,11 +1002,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008645057678222656,
-                "test_time": 0.0014233589172363281
+                "train_time": 0.0013763904571533203,
+                "test_time": 0.00923776626586914
             },
             "LPTD": {
-                "runtime": 0.16208219528198242,
+                "runtime": 0.1819934844970703,
                 "confusion_matrix_detailed": {
                     "tp": 14,
                     "tn": 0,
@@ -1023,8 +1035,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.00135040283203125,
-                "test_time": 0.0005598068237304688
+                "train_time": 0.0015187263488769531,
+                "test_time": 0.0006422996520996094
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -1038,8 +1050,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0019373893737792969,
-                "test_time": 0.00042366981506347656
+                "train_time": 0.0016324520111083984,
+                "test_time": 0.0005195140838623047
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -1053,8 +1065,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.25728893280029297,
-                "test_time": 0.013994932174682617
+                "train_time": 0.31133079528808594,
+                "test_time": 0.01537632942199707
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -1068,11 +1080,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008087158203125,
-                "test_time": 0.0012462139129638672
+                "train_time": 0.0008950233459472656,
+                "test_time": 0.004778146743774414
             },
             "LPTD": {
-                "runtime": 0.02620697021484375,
+                "runtime": 0.027990341186523438,
                 "confusion_matrix_detailed": {
                     "tp": 4,
                     "tn": 1,
@@ -1099,8 +1111,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0014412403106689453,
-                "test_time": 0.0003113746643066406
+                "train_time": 0.0013706684112548828,
+                "test_time": 0.0004324913024902344
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -1114,8 +1126,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008490085601806641,
-                "test_time": 0.0002815723419189453
+                "train_time": 0.0013511180877685547,
+                "test_time": 0.0004258155822753906
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -1129,8 +1141,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.25281691551208496,
-                "test_time": 0.013463258743286133
+                "train_time": 0.333324670791626,
+                "test_time": 0.013597488403320312
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -1144,11 +1156,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0007829666137695312,
-                "test_time": 0.0012459754943847656
+                "train_time": 0.0009119510650634766,
+                "test_time": 0.0024766921997070312
             },
             "LPTD": {
-                "runtime": 0.01124715805053711,
+                "runtime": 0.011251688003540039,
                 "confusion_matrix_detailed": {
                     "tp": 3,
                     "tn": 0,
@@ -1177,8 +1189,8 @@
                 "recall": 92.85714285714286,
                 "f1_measure": 92.85714285714286,
                 "mismatch_rate": 8.695652173913043,
-                "train_time": 0.0043811798095703125,
-                "test_time": 0.0011568069458007812
+                "train_time": 0.00420069694519043,
+                "test_time": 0.0010418891906738281
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -1192,8 +1204,8 @@
                 "recall": 92.85714285714286,
                 "f1_measure": 92.85714285714286,
                 "mismatch_rate": 8.695652173913043,
-                "train_time": 0.00822138786315918,
-                "test_time": 0.0017633438110351562
+                "train_time": 0.01018667221069336,
+                "test_time": 0.0031490325927734375
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -1207,8 +1219,8 @@
                 "recall": 92.85714285714286,
                 "f1_measure": 92.85714285714286,
                 "mismatch_rate": 8.695652173913043,
-                "train_time": 0.31058716773986816,
-                "test_time": 0.015896320343017578
+                "train_time": 0.3604450225830078,
+                "test_time": 0.017444133758544922
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -1222,11 +1234,11 @@
                 "recall": 92.85714285714286,
                 "f1_measure": 92.85714285714286,
                 "mismatch_rate": 8.695652173913043,
-                "train_time": 0.0008869171142578125,
-                "test_time": 0.0013279914855957031
+                "train_time": 0.0009400844573974609,
+                "test_time": 0.008472919464111328
             },
             "LPTD": {
-                "runtime": 0.3496818542480469,
+                "runtime": 0.3688240051269531,
                 "confusion_matrix_detailed": {
                     "tp": 12,
                     "tn": 7,
@@ -1255,8 +1267,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0024564266204833984,
-                "test_time": 0.000518798828125
+                "train_time": 0.0018546581268310547,
+                "test_time": 0.00047779083251953125
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -1270,8 +1282,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.003384828567504883,
-                "test_time": 0.0011243820190429688
+                "train_time": 0.002607107162475586,
+                "test_time": 0.0012311935424804688
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -1285,8 +1297,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.2855548858642578,
-                "test_time": 0.014851570129394531
+                "train_time": 0.4004838466644287,
+                "test_time": 0.0164947509765625
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -1300,11 +1312,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008561611175537109,
-                "test_time": 0.0013031959533691406
+                "train_time": 0.0008473396301269531,
+                "test_time": 0.006473064422607422
             },
             "LPTD": {
-                "runtime": 0.09206295013427734,
+                "runtime": 0.09878182411193848,
                 "confusion_matrix_detailed": {
                     "tp": 8,
                     "tn": 4,
@@ -1333,8 +1345,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0025517940521240234,
-                "test_time": 0.0006706714630126953
+                "train_time": 0.0024306774139404297,
+                "test_time": 0.000514984130859375
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -1348,8 +1360,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.004265785217285156,
-                "test_time": 0.0008325576782226562
+                "train_time": 0.0033164024353027344,
+                "test_time": 0.0007383823394775391
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -1363,8 +1375,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.2843592166900635,
-                "test_time": 0.015195608139038086
+                "train_time": 0.32831454277038574,
+                "test_time": 0.015774250030517578
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -1378,11 +1390,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008704662322998047,
-                "test_time": 0.0013988018035888672
+                "train_time": 0.0008177757263183594,
+                "test_time": 0.0044171810150146484
             },
             "LPTD": {
-                "runtime": 0.1130073070526123,
+                "runtime": 0.1175382137298584,
                 "confusion_matrix_detailed": {
                     "tp": 9,
                     "tn": 4,
@@ -1411,8 +1423,8 @@
                 "recall": 68.42105263157895,
                 "f1_measure": 78.7878787878788,
                 "mismatch_rate": 21.21212121212121,
-                "train_time": 0.015716075897216797,
-                "test_time": 0.002981901168823242
+                "train_time": 0.018264293670654297,
+                "test_time": 0.0027878284454345703
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -1426,8 +1438,8 @@
                 "recall": 68.42105263157895,
                 "f1_measure": 78.7878787878788,
                 "mismatch_rate": 21.21212121212121,
-                "train_time": 0.03214573860168457,
-                "test_time": 0.005488157272338867
+                "train_time": 0.03246593475341797,
+                "test_time": 0.006327390670776367
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -1441,8 +1453,8 @@
                 "recall": 68.42105263157895,
                 "f1_measure": 78.7878787878788,
                 "mismatch_rate": 21.21212121212121,
-                "train_time": 0.37930750846862793,
-                "test_time": 0.018705129623413086
+                "train_time": 0.4283170700073242,
+                "test_time": 0.019826173782348633
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -1456,11 +1468,11 @@
                 "recall": 68.42105263157895,
                 "f1_measure": 78.7878787878788,
                 "mismatch_rate": 21.21212121212121,
-                "train_time": 0.0010330677032470703,
-                "test_time": 0.0015430450439453125
+                "train_time": 0.0013628005981445312,
+                "test_time": 0.013211727142333984
             },
             "LPTD": {
-                "runtime": 0.8158495426177979,
+                "runtime": 0.8567814826965332,
                 "confusion_matrix_detailed": {
                     "tp": 12,
                     "tn": 12,
@@ -1489,8 +1501,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.001537322998046875,
-                "test_time": 0.0006723403930664062
+                "train_time": 0.0029931068420410156,
+                "test_time": 0.00046753883361816406
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -1504,8 +1516,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.001996278762817383,
-                "test_time": 0.0005290508270263672
+                "train_time": 0.0019123554229736328,
+                "test_time": 0.0006618499755859375
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -1519,8 +1531,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.2702317237854004,
-                "test_time": 0.014399528503417969
+                "train_time": 0.30476880073547363,
+                "test_time": 0.015523672103881836
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -1534,11 +1546,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008275508880615234,
-                "test_time": 0.0012652873992919922
+                "train_time": 0.0008685588836669922,
+                "test_time": 0.005470991134643555
             },
             "LPTD": {
-                "runtime": 0.03488612174987793,
+                "runtime": 0.037784576416015625,
                 "confusion_matrix_detailed": {
                     "tp": 6,
                     "tn": 0,
@@ -1565,8 +1577,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0017423629760742188,
-                "test_time": 0.0005059242248535156
+                "train_time": 0.0013432502746582031,
+                "test_time": 0.00044226646423339844
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -1580,8 +1592,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0007312297821044922,
-                "test_time": 0.00021314620971679688
+                "train_time": 0.0012502670288085938,
+                "test_time": 0.00022649765014648438
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -1595,8 +1607,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.24965381622314453,
-                "test_time": 0.013673067092895508
+                "train_time": 0.28938889503479004,
+                "test_time": 0.014931917190551758
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -1610,11 +1622,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0007140636444091797,
-                "test_time": 0.0012733936309814453
+                "train_time": 0.0007548332214355469,
+                "test_time": 0.0015900135040283203
             },
             "LPTD": {
-                "runtime": 0.0076940059661865234,
+                "runtime": 0.008650779724121094,
                 "confusion_matrix_detailed": {
                     "tp": 2,
                     "tn": 0,
@@ -1643,8 +1655,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.006024360656738281,
-                "test_time": 0.0010766983032226562
+                "train_time": 0.0032958984375,
+                "test_time": 0.0008027553558349609
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -1658,8 +1670,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0067691802978515625,
-                "test_time": 0.0017657279968261719
+                "train_time": 0.007906198501586914,
+                "test_time": 0.002931356430053711
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -1673,8 +1685,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.30037522315979004,
-                "test_time": 0.01607203483581543
+                "train_time": 0.33724212646484375,
+                "test_time": 0.016310453414916992
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -1688,11 +1700,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008442401885986328,
-                "test_time": 0.00136566162109375
+                "train_time": 0.0008385181427001953,
+                "test_time": 0.008178234100341797
             },
             "LPTD": {
-                "runtime": 0.2408144474029541,
+                "runtime": 0.25821352005004883,
                 "confusion_matrix_detailed": {
                     "tp": 14,
                     "tn": 3,
@@ -1721,8 +1733,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0020411014556884766,
-                "test_time": 0.0005292892456054688
+                "train_time": 0.001409292221069336,
+                "test_time": 0.00037097930908203125
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -1736,8 +1748,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.002295255661010742,
-                "test_time": 0.0006661415100097656
+                "train_time": 0.0014920234680175781,
+                "test_time": 0.0005209445953369141
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -1751,8 +1763,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.2625303268432617,
-                "test_time": 0.014417171478271484
+                "train_time": 0.301800012588501,
+                "test_time": 0.0150604248046875
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -1766,11 +1778,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008280277252197266,
-                "test_time": 0.001285552978515625
+                "train_time": 0.0008435249328613281,
+                "test_time": 0.00563359260559082
             },
             "LPTD": {
-                "runtime": 0.05055713653564453,
+                "runtime": 0.05548214912414551,
                 "confusion_matrix_detailed": {
                     "tp": 6,
                     "tn": 2,
@@ -1797,8 +1809,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0015833377838134766,
-                "test_time": 0.0003275871276855469
+                "train_time": 0.002209186553955078,
+                "test_time": 0.000308990478515625
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -1812,8 +1824,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0015900135040283203,
-                "test_time": 0.0003376007080078125
+                "train_time": 0.0017049312591552734,
+                "test_time": 0.00041747093200683594
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -1827,8 +1839,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.26250553131103516,
-                "test_time": 0.017161846160888672
+                "train_time": 0.29917311668395996,
+                "test_time": 0.015391349792480469
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -1842,22 +1854,28 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008993148803710938,
-                "test_time": 0.0013625621795654297
+                "train_time": 0.0008823871612548828,
+                "test_time": 0.002908945083618164
             },
             "LPTD": {
-                "runtime": 0.07632994651794434,
+                "runtime": 0.08895254135131836,
                 "confusion_matrix_detailed": {
-                    "tp": 9,
+                    "tp": 5,
+                    "tp": 5,
                     "tn": 1,
                     "fp": 0,
-                    "fn": 0
+                    "fn": 4
+                    "fn": 4
                 },
-                "accuracy": 1.0,
+                "accuracy": 0.6,
+                "accuracy": 0.6,
                 "precision": 100.0,
-                "recall": 100.0,
-                "f1_measure": 100.0,
-                "mismatch_rate": 0.0
+                "recall": 55.55555555555556,
+                "f1_measure": 71.42857142857143,
+                "mismatch_rate": 40.0
+                "recall": 55.55555555555556,
+                "f1_measure": 71.42857142857143,
+                "mismatch_rate": 40.0
             }
         }
     },
@@ -1875,8 +1893,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.002271890640258789,
-                "test_time": 0.000919342041015625
+                "train_time": 0.0014715194702148438,
+                "test_time": 0.0003387928009033203
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -1890,8 +1908,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0016677379608154297,
-                "test_time": 0.00044846534729003906
+                "train_time": 0.001218557357788086,
+                "test_time": 0.00029540061950683594
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -1905,8 +1923,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.2642707824707031,
-                "test_time": 0.014279603958129883
+                "train_time": 0.29062986373901367,
+                "test_time": 0.014022111892700195
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -1920,11 +1938,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008881092071533203,
-                "test_time": 0.0013153553009033203
+                "train_time": 0.0009913444519042969,
+                "test_time": 0.0028350353240966797
             },
             "LPTD": {
-                "runtime": 0.019895315170288086,
+                "runtime": 0.025174617767333984,
                 "confusion_matrix_detailed": {
                     "tp": 4,
                     "tn": 0,
@@ -1953,8 +1971,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.003973484039306641,
-                "test_time": 0.0012445449829101562
+                "train_time": 0.0033173561096191406,
+                "test_time": 0.0009684562683105469
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -1968,8 +1986,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.008979082107543945,
-                "test_time": 0.0019431114196777344
+                "train_time": 0.012773513793945312,
+                "test_time": 0.002319812774658203
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -1983,8 +2001,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.31256556510925293,
-                "test_time": 0.016526222229003906
+                "train_time": 0.34239625930786133,
+                "test_time": 0.01737380027770996
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -1998,11 +2016,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0009033679962158203,
-                "test_time": 0.001375436782836914
+                "train_time": 0.0009038448333740234,
+                "test_time": 0.010365009307861328
             },
             "LPTD": {
-                "runtime": 0.387007474899292,
+                "runtime": 0.4189884662628174,
                 "confusion_matrix_detailed": {
                     "tp": 20,
                     "tn": 0,
@@ -2031,8 +2049,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0027518272399902344,
-                "test_time": 0.0006120204925537109
+                "train_time": 0.0025463104248046875,
+                "test_time": 0.0005240440368652344
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -2046,8 +2064,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0052490234375,
-                "test_time": 0.002471446990966797
+                "train_time": 0.004230976104736328,
+                "test_time": 0.0019011497497558594
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -2061,8 +2079,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.2889976501464844,
-                "test_time": 0.0157625675201416
+                "train_time": 0.3251824378967285,
+                "test_time": 0.016796588897705078
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -2076,11 +2094,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0009613037109375,
-                "test_time": 0.001435995101928711
+                "train_time": 0.0009653568267822266,
+                "test_time": 0.010809659957885742
             },
             "LPTD": {
-                "runtime": 0.06279683113098145,
+                "runtime": 0.07223892211914062,
                 "confusion_matrix_detailed": {
                     "tp": 8,
                     "tn": 1,
@@ -2109,8 +2127,8 @@
                 "recall": 90.0,
                 "f1_measure": 90.0,
                 "mismatch_rate": 14.285714285714285,
-                "train_time": 0.002328634262084961,
-                "test_time": 0.0007293224334716797
+                "train_time": 0.0022628307342529297,
+                "test_time": 0.0007445812225341797
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -2124,8 +2142,8 @@
                 "recall": 90.0,
                 "f1_measure": 90.0,
                 "mismatch_rate": 14.285714285714285,
-                "train_time": 0.004802703857421875,
-                "test_time": 0.0007736682891845703
+                "train_time": 0.0028464794158935547,
+                "test_time": 0.0006413459777832031
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -2139,8 +2157,8 @@
                 "recall": 90.0,
                 "f1_measure": 90.0,
                 "mismatch_rate": 14.285714285714285,
-                "train_time": 0.2847156524658203,
-                "test_time": 0.015022993087768555
+                "train_time": 0.33720898628234863,
+                "test_time": 0.015425920486450195
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -2154,11 +2172,11 @@
                 "recall": 90.0,
                 "f1_measure": 90.0,
                 "mismatch_rate": 14.285714285714285,
-                "train_time": 0.0008263587951660156,
-                "test_time": 0.0012652873992919922
+                "train_time": 0.0008976459503173828,
+                "test_time": 0.004275083541870117
             },
             "LPTD": {
-                "runtime": 0.12543702125549316,
+                "runtime": 0.13433218002319336,
                 "confusion_matrix_detailed": {
                     "tp": 9,
                     "tn": 3,
@@ -2187,8 +2205,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0036950111389160156,
-                "test_time": 0.0006425380706787109
+                "train_time": 0.0023505687713623047,
+                "test_time": 0.0007193088531494141
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -2202,8 +2220,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0034379959106445312,
-                "test_time": 0.0008981227874755859
+                "train_time": 0.005039215087890625,
+                "test_time": 0.0018417835235595703
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -2217,8 +2235,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.2908623218536377,
-                "test_time": 0.015344619750976562
+                "train_time": 0.32295918464660645,
+                "test_time": 0.015832185745239258
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -2232,11 +2250,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008208751678466797,
-                "test_time": 0.0012712478637695312
+                "train_time": 0.0008423328399658203,
+                "test_time": 0.005440950393676758
             },
             "LPTD": {
-                "runtime": 0.18189597129821777,
+                "runtime": 0.1872713565826416,
                 "confusion_matrix_detailed": {
                     "tp": 11,
                     "tn": 3,
@@ -2265,8 +2283,8 @@
                 "recall": 93.75,
                 "f1_measure": 93.75,
                 "mismatch_rate": 9.090909090909092,
-                "train_time": 0.005966901779174805,
-                "test_time": 0.001993417739868164
+                "train_time": 0.003815174102783203,
+                "test_time": 0.0010097026824951172
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -2280,8 +2298,8 @@
                 "recall": 93.75,
                 "f1_measure": 93.75,
                 "mismatch_rate": 9.090909090909092,
-                "train_time": 0.00891876220703125,
-                "test_time": 0.0019540786743164062
+                "train_time": 0.011237621307373047,
+                "test_time": 0.0025174617767333984
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -2295,8 +2313,8 @@
                 "recall": 93.75,
                 "f1_measure": 93.75,
                 "mismatch_rate": 9.090909090909092,
-                "train_time": 0.31055378913879395,
-                "test_time": 0.016495466232299805
+                "train_time": 0.3584625720977783,
+                "test_time": 0.01755833625793457
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -2310,11 +2328,11 @@
                 "recall": 93.75,
                 "f1_measure": 93.75,
                 "mismatch_rate": 9.090909090909092,
-                "train_time": 0.0008695125579833984,
-                "test_time": 0.001384735107421875
+                "train_time": 0.0009183883666992188,
+                "test_time": 0.008833646774291992
             },
             "LPTD": {
-                "runtime": 0.33983874320983887,
+                "runtime": 0.3635091781616211,
                 "confusion_matrix_detailed": {
                     "tp": 16,
                     "tn": 5,
@@ -2343,8 +2361,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0034639835357666016,
-                "test_time": 0.0014252662658691406
+                "train_time": 0.003560304641723633,
+                "test_time": 0.0012521743774414062
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -2358,8 +2376,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.007349252700805664,
-                "test_time": 0.002868175506591797
+                "train_time": 0.006681919097900391,
+                "test_time": 0.004157304763793945
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -2373,8 +2391,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.29595088958740234,
-                "test_time": 0.01699662208557129
+                "train_time": 0.3352348804473877,
+                "test_time": 0.01766657829284668
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -2388,11 +2406,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008566379547119141,
-                "test_time": 0.0014052391052246094
+                "train_time": 0.0010151863098144531,
+                "test_time": 0.013611793518066406
             },
             "LPTD": {
-                "runtime": 0.1955878734588623,
+                "runtime": 0.20186901092529297,
                 "confusion_matrix_detailed": {
                     "tp": 13,
                     "tn": 0,
@@ -2419,8 +2437,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.001399993896484375,
-                "test_time": 0.0003216266632080078
+                "train_time": 0.001997232437133789,
+                "test_time": 0.0005688667297363281
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -2434,8 +2452,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0011234283447265625,
-                "test_time": 0.0002808570861816406
+                "train_time": 0.0014047622680664062,
+                "test_time": 0.0003643035888671875
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -2449,8 +2467,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.258251428604126,
-                "test_time": 0.013924598693847656
+                "train_time": 0.3031439781188965,
+                "test_time": 0.014637231826782227
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -2464,22 +2482,31 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0007369518280029297,
-                "test_time": 0.0012385845184326172
+                "train_time": 0.0007753372192382812,
+                "test_time": 0.0020928382873535156
             },
             "LPTD": {
-                "runtime": 0.05456948280334473,
+                "runtime": 0.0628807544708252,
                 "confusion_matrix_detailed": {
-                    "tp": 7,
-                    "tn": 1,
-                    "fp": 0,
-                    "fn": 0
+                    "tp": 2,
+                    "tn": 0,
+                    "fp": 1,
+                    "fn": 5
+                    "tp": 2,
+                    "tn": 0,
+                    "fp": 1,
+                    "fn": 5
                 },
-                "accuracy": 1.0,
-                "precision": 100.0,
-                "recall": 100.0,
-                "f1_measure": 100.0,
-                "mismatch_rate": 0.0
+                "accuracy": 0.25,
+                "precision": 66.66666666666666,
+                "recall": 28.57142857142857,
+                "f1_measure": 39.99999999999999,
+                "mismatch_rate": 75.0
+                "accuracy": 0.25,
+                "precision": 66.66666666666666,
+                "recall": 28.57142857142857,
+                "f1_measure": 39.99999999999999,
+                "mismatch_rate": 75.0
             }
         }
     },
@@ -2497,8 +2524,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0022454261779785156,
-                "test_time": 0.0004787445068359375
+                "train_time": 0.001600027084350586,
+                "test_time": 0.0004296302795410156
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -2512,8 +2539,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0013654232025146484,
-                "test_time": 0.0004184246063232422
+                "train_time": 0.0014634132385253906,
+                "test_time": 0.0004076957702636719
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -2527,8 +2554,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.25884461402893066,
-                "test_time": 0.014049291610717773
+                "train_time": 0.2912611961364746,
+                "test_time": 0.014577865600585938
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -2542,11 +2569,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0007255077362060547,
-                "test_time": 0.0013277530670166016
+                "train_time": 0.00095367431640625,
+                "test_time": 0.0031507015228271484
             },
             "LPTD": {
-                "runtime": 0.027363300323486328,
+                "runtime": 0.028381824493408203,
                 "confusion_matrix_detailed": {
                     "tp": 4,
                     "tn": 1,
@@ -2573,8 +2600,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0009779930114746094,
-                "test_time": 0.00025653839111328125
+                "train_time": 0.0014879703521728516,
+                "test_time": 0.0004425048828125
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -2588,8 +2615,8 @@
                 "recall": 66.66666666666666,
                 "f1_measure": 66.66666666666666,
                 "mismatch_rate": 50.0,
-                "train_time": 0.0010585784912109375,
-                "test_time": 0.0004150867462158203
+                "train_time": 0.0011410713195800781,
+                "test_time": 0.00037288665771484375
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -2603,8 +2630,8 @@
                 "recall": 66.66666666666666,
                 "f1_measure": 66.66666666666666,
                 "mismatch_rate": 50.0,
-                "train_time": 0.2501990795135498,
-                "test_time": 0.013770580291748047
+                "train_time": 0.3301889896392822,
+                "test_time": 0.01504826545715332
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -2618,22 +2645,28 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0007977485656738281,
-                "test_time": 0.0012264251708984375
+                "train_time": 0.0008828639984130859,
+                "test_time": 0.0017244815826416016
             },
             "LPTD": {
-                "runtime": 0.013472795486450195,
+                "runtime": 0.01712965965270996,
                 "confusion_matrix_detailed": {
-                    "tp": 3,
+                    "tp": 1,
+                    "tp": 1,
                     "tn": 0,
                     "fp": 0,
-                    "fn": 0
+                    "fn": 2
+                    "fn": 2
                 },
-                "accuracy": 1.0,
+                "accuracy": 0.3333333333333333,
+                "accuracy": 0.3333333333333333,
                 "precision": 100.0,
-                "recall": 100.0,
-                "f1_measure": 100.0,
-                "mismatch_rate": 0.0
+                "recall": 33.33333333333333,
+                "f1_measure": 50.0,
+                "mismatch_rate": 66.66666666666666
+                "recall": 33.33333333333333,
+                "f1_measure": 50.0,
+                "mismatch_rate": 66.66666666666666
             }
         }
     },
@@ -2651,8 +2684,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0019135475158691406,
-                "test_time": 0.0003039836883544922
+                "train_time": 0.0012679100036621094,
+                "test_time": 0.0003108978271484375
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -2666,8 +2699,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0011241436004638672,
-                "test_time": 0.00037384033203125
+                "train_time": 0.0015344619750976562,
+                "test_time": 0.0006113052368164062
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -2681,8 +2714,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.2671535015106201,
-                "test_time": 0.01439809799194336
+                "train_time": 0.2999413013458252,
+                "test_time": 0.014661073684692383
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -2696,11 +2729,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008234977722167969,
-                "test_time": 0.001276254653930664
+                "train_time": 0.0009009838104248047,
+                "test_time": 0.005202054977416992
             },
             "LPTD": {
-                "runtime": 0.035349130630493164,
+                "runtime": 0.036271095275878906,
                 "confusion_matrix_detailed": {
                     "tp": 5,
                     "tn": 1,
@@ -2729,8 +2762,8 @@
                 "recall": 82.35294117647058,
                 "f1_measure": 82.35294117647058,
                 "mismatch_rate": 27.27272727272727,
-                "train_time": 0.006364107131958008,
-                "test_time": 0.00159454345703125
+                "train_time": 0.005572080612182617,
+                "test_time": 0.0019474029541015625
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -2744,8 +2777,8 @@
                 "recall": 82.35294117647058,
                 "f1_measure": 82.35294117647058,
                 "mismatch_rate": 27.27272727272727,
-                "train_time": 0.01302647590637207,
-                "test_time": 0.0041086673736572266
+                "train_time": 0.018370628356933594,
+                "test_time": 0.006499767303466797
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -2759,8 +2792,8 @@
                 "recall": 82.35294117647058,
                 "f1_measure": 82.35294117647058,
                 "mismatch_rate": 27.27272727272727,
-                "train_time": 0.32866621017456055,
-                "test_time": 0.019045591354370117
+                "train_time": 0.3701193332672119,
+                "test_time": 0.01918482780456543
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -2774,11 +2807,11 @@
                 "recall": 88.23529411764706,
                 "f1_measure": 88.23529411764706,
                 "mismatch_rate": 19.047619047619047,
-                "train_time": 0.0009119510650634766,
-                "test_time": 0.0014507770538330078
+                "train_time": 0.0009093284606933594,
+                "test_time": 0.016635656356811523
             },
             "LPTD": {
-                "runtime": 0.3004443645477295,
+                "runtime": 0.3170959949493408,
                 "confusion_matrix_detailed": {
                     "tp": 17,
                     "tn": 2,
@@ -2807,8 +2840,8 @@
                 "recall": 96.42857142857143,
                 "f1_measure": 96.42857142857142,
                 "mismatch_rate": 5.88235294117647,
-                "train_time": 0.006430149078369141,
-                "test_time": 0.004641532897949219
+                "train_time": 0.007239818572998047,
+                "test_time": 0.0061686038970947266
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -2822,8 +2855,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.030317068099975586,
-                "test_time": 0.010890007019042969
+                "train_time": 0.03514599800109863,
+                "test_time": 0.01143789291381836
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -2837,8 +2870,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.36145615577697754,
-                "test_time": 0.022049427032470703
+                "train_time": 0.39231348037719727,
+                "test_time": 0.023681640625
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -2852,11 +2885,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0009248256683349609,
-                "test_time": 0.0016627311706542969
+                "train_time": 0.0010607242584228516,
+                "test_time": 0.022084474563598633
             },
             "LPTD": {
-                "runtime": 1.2009387016296387,
+                "runtime": 1.2804319858551025,
                 "confusion_matrix_detailed": {
                     "tp": 27,
                     "tn": 4,
@@ -2883,8 +2916,8 @@
                 "recall": 50.0,
                 "f1_measure": 59.09090909090909,
                 "mismatch_rate": 52.94117647058824,
-                "train_time": 0.0063669681549072266,
-                "test_time": 0.0011913776397705078
+                "train_time": 0.006601572036743164,
+                "test_time": 0.0014324188232421875
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -2898,8 +2931,8 @@
                 "recall": 50.0,
                 "f1_measure": 59.09090909090909,
                 "mismatch_rate": 52.94117647058824,
-                "train_time": 0.00532221794128418,
-                "test_time": 0.0015811920166015625
+                "train_time": 0.006479978561401367,
+                "test_time": 0.0012655258178710938
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -2913,8 +2946,8 @@
                 "recall": 53.84615384615385,
                 "f1_measure": 62.22222222222223,
                 "mismatch_rate": 50.0,
-                "train_time": 0.3795762062072754,
-                "test_time": 0.01555943489074707
+                "train_time": 0.3425276279449463,
+                "test_time": 0.01638197898864746
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -2928,22 +2961,31 @@
                 "recall": 53.84615384615385,
                 "f1_measure": 62.22222222222223,
                 "mismatch_rate": 50.0,
-                "train_time": 0.0007891654968261719,
-                "test_time": 0.001317739486694336
+                "train_time": 0.0009675025939941406,
+                "test_time": 0.0053005218505859375
             },
             "LPTD": {
-                "runtime": 0.9980342388153076,
+                "runtime": 1.0219035148620605,
                 "confusion_matrix_detailed": {
-                    "tp": 15,
-                    "tn": 3,
-                    "fp": 3,
-                    "fn": 11
+                    "tp": 2,
+                    "tn": 1,
+                    "fp": 5,
+                    "fn": 24
+                    "tp": 2,
+                    "tn": 1,
+                    "fp": 5,
+                    "fn": 24
                 },
-                "accuracy": 0.5625,
-                "precision": 83.33333333333334,
-                "recall": 57.692307692307686,
-                "f1_measure": 68.18181818181819,
-                "mismatch_rate": 43.75
+                "accuracy": 0.09375,
+                "precision": 28.57142857142857,
+                "recall": 7.6923076923076925,
+                "f1_measure": 12.121212121212121,
+                "mismatch_rate": 90.625
+                "accuracy": 0.09375,
+                "precision": 28.57142857142857,
+                "recall": 7.6923076923076925,
+                "f1_measure": 12.121212121212121,
+                "mismatch_rate": 90.625
             }
         }
     },
@@ -2961,8 +3003,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.002544879913330078,
-                "test_time": 0.0007774829864501953
+                "train_time": 0.004194736480712891,
+                "test_time": 0.0013425350189208984
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -2976,8 +3018,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.004853010177612305,
-                "test_time": 0.0016298294067382812
+                "train_time": 0.005892038345336914,
+                "test_time": 0.0028159618377685547
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -2991,8 +3033,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.2945234775543213,
-                "test_time": 0.01711583137512207
+                "train_time": 0.346362829208374,
+                "test_time": 0.017607450485229492
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -3006,11 +3048,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008118152618408203,
-                "test_time": 0.0014190673828125
+                "train_time": 0.0010576248168945312,
+                "test_time": 0.011452198028564453
             },
             "LPTD": {
-                "runtime": 0.1811199188232422,
+                "runtime": 0.18898773193359375,
                 "confusion_matrix_detailed": {
                     "tp": 14,
                     "tn": 1,
@@ -3037,8 +3079,8 @@
                 "recall": 91.66666666666666,
                 "f1_measure": 91.66666666666666,
                 "mismatch_rate": 15.384615384615385,
-                "train_time": 0.002009153366088867,
-                "test_time": 0.0003681182861328125
+                "train_time": 0.0017852783203125,
+                "test_time": 0.0005071163177490234
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -3052,8 +3094,8 @@
                 "recall": 91.66666666666666,
                 "f1_measure": 91.66666666666666,
                 "mismatch_rate": 15.384615384615385,
-                "train_time": 0.0016133785247802734,
-                "test_time": 0.00034809112548828125
+                "train_time": 0.0017812252044677734,
+                "test_time": 0.0003662109375
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -3067,8 +3109,8 @@
                 "recall": 91.66666666666666,
                 "f1_measure": 91.66666666666666,
                 "mismatch_rate": 15.384615384615385,
-                "train_time": 0.2645266056060791,
-                "test_time": 0.014142036437988281
+                "train_time": 0.32147717475891113,
+                "test_time": 0.014681816101074219
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -3082,22 +3124,28 @@
                 "recall": 91.66666666666666,
                 "f1_measure": 91.66666666666666,
                 "mismatch_rate": 15.384615384615385,
-                "train_time": 0.0008113384246826172,
-                "test_time": 0.0012454986572265625
+                "train_time": 0.0009613037109375,
+                "test_time": 0.0036230087280273438
             },
             "LPTD": {
-                "runtime": 0.11722254753112793,
+                "runtime": 0.128173828125,
                 "confusion_matrix_detailed": {
-                    "tp": 12,
+                    "tp": 10,
+                    "tp": 10,
                     "tn": 0,
                     "fp": 0,
-                    "fn": 0
+                    "fn": 2
+                    "fn": 2
                 },
-                "accuracy": 1.0,
+                "accuracy": 0.8333333333333334,
+                "accuracy": 0.8333333333333334,
                 "precision": 100.0,
-                "recall": 100.0,
-                "f1_measure": 100.0,
-                "mismatch_rate": 0.0
+                "recall": 83.33333333333334,
+                "f1_measure": 90.9090909090909,
+                "mismatch_rate": 16.666666666666664
+                "recall": 83.33333333333334,
+                "f1_measure": 90.9090909090909,
+                "mismatch_rate": 16.666666666666664
             }
         }
     },
@@ -3115,8 +3163,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0010845661163330078,
-                "test_time": 0.0003731250762939453
+                "train_time": 0.0016613006591796875,
+                "test_time": 0.0006325244903564453
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -3130,8 +3178,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0011475086212158203,
-                "test_time": 0.000316619873046875
+                "train_time": 0.002003192901611328,
+                "test_time": 0.00045680999755859375
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -3145,8 +3193,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.2533266544342041,
-                "test_time": 0.01377248764038086
+                "train_time": 0.2932472229003906,
+                "test_time": 0.015081405639648438
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -3160,11 +3208,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0007371902465820312,
-                "test_time": 0.0012695789337158203
+                "train_time": 0.0007703304290771484,
+                "test_time": 0.0038251876831054688
             },
             "LPTD": {
-                "runtime": 0.015130996704101562,
+                "runtime": 0.013092041015625,
                 "confusion_matrix_detailed": {
                     "tp": 3,
                     "tn": 0,
@@ -3191,8 +3239,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.005907773971557617,
-                "test_time": 0.0008699893951416016
+                "train_time": 0.006497859954833984,
+                "test_time": 0.000690460205078125
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -3206,8 +3254,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.007503509521484375,
-                "test_time": 0.001615762710571289
+                "train_time": 0.007875204086303711,
+                "test_time": 0.0018672943115234375
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -3221,8 +3269,8 @@
                 "recall": 94.73684210526315,
                 "f1_measure": 94.73684210526315,
                 "mismatch_rate": 9.090909090909092,
-                "train_time": 0.30126380920410156,
-                "test_time": 0.015334606170654297
+                "train_time": 0.34508585929870605,
+                "test_time": 0.01562047004699707
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -3236,22 +3284,31 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0007910728454589844,
-                "test_time": 0.0012731552124023438
+                "train_time": 0.0013496875762939453,
+                "test_time": 0.004333019256591797
             },
             "LPTD": {
-                "runtime": 0.4243175983428955,
+                "runtime": 0.5799036026000977,
                 "confusion_matrix_detailed": {
-                    "tp": 18,
-                    "tn": 3,
-                    "fp": 1,
-                    "fn": 1
+                    "tp": 11,
+                    "tn": 2,
+                    "fp": 0,
+                    "fn": 8
+                    "tp": 11,
+                    "tn": 2,
+                    "fp": 0,
+                    "fn": 8
                 },
-                "accuracy": 0.9130434782608695,
-                "precision": 94.73684210526315,
-                "recall": 94.73684210526315,
-                "f1_measure": 94.73684210526315,
-                "mismatch_rate": 8.695652173913043
+                "accuracy": 0.6190476190476191,
+                "precision": 100.0,
+                "recall": 57.89473684210527,
+                "f1_measure": 73.33333333333334,
+                "mismatch_rate": 38.095238095238095
+                "accuracy": 0.6190476190476191,
+                "precision": 100.0,
+                "recall": 57.89473684210527,
+                "f1_measure": 73.33333333333334,
+                "mismatch_rate": 38.095238095238095
             }
         }
     },
@@ -3269,8 +3326,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0014066696166992188,
-                "test_time": 0.0004527568817138672
+                "train_time": 0.0018668174743652344,
+                "test_time": 0.000492095947265625
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -3284,8 +3341,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.001470804214477539,
-                "test_time": 0.0004870891571044922
+                "train_time": 0.0016345977783203125,
+                "test_time": 0.00045943260192871094
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -3299,8 +3356,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.26481056213378906,
-                "test_time": 0.014270544052124023
+                "train_time": 0.3008863925933838,
+                "test_time": 0.015372991561889648
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -3314,11 +3371,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0007431507110595703,
-                "test_time": 0.001468658447265625
+                "train_time": 0.0008373260498046875,
+                "test_time": 0.004271268844604492
             },
             "LPTD": {
-                "runtime": 0.057233572006225586,
+                "runtime": 0.060743093490600586,
                 "confusion_matrix_detailed": {
                     "tp": 6,
                     "tn": 3,
@@ -3347,8 +3404,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.001493215560913086,
-                "test_time": 0.00042128562927246094
+                "train_time": 0.0009829998016357422,
+                "test_time": 0.00037550926208496094
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -3362,8 +3419,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0020751953125,
-                "test_time": 0.0009906291961669922
+                "train_time": 0.0009608268737792969,
+                "test_time": 0.0002853870391845703
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -3377,8 +3434,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.2532789707183838,
-                "test_time": 0.013525009155273438
+                "train_time": 0.2836122512817383,
+                "test_time": 0.013939619064331055
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -3392,11 +3449,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0007333755493164062,
-                "test_time": 0.0012440681457519531
+                "train_time": 0.0007300376892089844,
+                "test_time": 0.002649068832397461
             },
             "LPTD": {
-                "runtime": 0.011542320251464844,
+                "runtime": 0.010948896408081055,
                 "confusion_matrix_detailed": {
                     "tp": 3,
                     "tn": 0,
@@ -3423,8 +3480,8 @@
                 "recall": 83.33333333333334,
                 "f1_measure": 83.33333333333334,
                 "mismatch_rate": 22.22222222222222,
-                "train_time": 0.0020554065704345703,
-                "test_time": 0.0005669593811035156
+                "train_time": 0.0014119148254394531,
+                "test_time": 0.0002925395965576172
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -3438,8 +3495,8 @@
                 "recall": 83.33333333333334,
                 "f1_measure": 83.33333333333334,
                 "mismatch_rate": 22.22222222222222,
-                "train_time": 0.002062559127807617,
-                "test_time": 0.00043201446533203125
+                "train_time": 0.0012586116790771484,
+                "test_time": 0.00033402442932128906
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -3453,8 +3510,8 @@
                 "recall": 83.33333333333334,
                 "f1_measure": 83.33333333333334,
                 "mismatch_rate": 22.22222222222222,
-                "train_time": 0.27336931228637695,
-                "test_time": 0.013910770416259766
+                "train_time": 0.2941005229949951,
+                "test_time": 0.014615535736083984
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -3468,22 +3525,31 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0008165836334228516,
-                "test_time": 0.001249551773071289
+                "train_time": 0.0007872581481933594,
+                "test_time": 0.0020117759704589844
             },
             "LPTD": {
-                "runtime": 0.05453181266784668,
+                "runtime": 0.05363583564758301,
                 "confusion_matrix_detailed": {
-                    "tp": 6,
-                    "tn": 2,
-                    "fp": 0,
-                    "fn": 0
+                    "tp": 5,
+                    "tn": 1,
+                    "fp": 1,
+                    "fn": 1
+                    "tp": 5,
+                    "tn": 1,
+                    "fp": 1,
+                    "fn": 1
                 },
-                "accuracy": 1.0,
-                "precision": 100.0,
-                "recall": 100.0,
-                "f1_measure": 100.0,
-                "mismatch_rate": 0.0
+                "accuracy": 0.75,
+                "precision": 83.33333333333334,
+                "recall": 83.33333333333334,
+                "f1_measure": 83.33333333333334,
+                "mismatch_rate": 25.0
+                "accuracy": 0.75,
+                "precision": 83.33333333333334,
+                "recall": 83.33333333333334,
+                "f1_measure": 83.33333333333334,
+                "mismatch_rate": 25.0
             }
         }
     },
@@ -3501,8 +3567,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0029544830322265625,
-                "test_time": 0.00112152099609375
+                "train_time": 0.003268718719482422,
+                "test_time": 0.0008139610290527344
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -3516,8 +3582,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.004759311676025391,
-                "test_time": 0.0010755062103271484
+                "train_time": 0.004095554351806641,
+                "test_time": 0.0010907649993896484
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -3531,8 +3597,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.2813291549682617,
-                "test_time": 0.01539468765258789
+                "train_time": 0.31791210174560547,
+                "test_time": 0.027772188186645508
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -3546,11 +3612,11 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0007989406585693359,
-                "test_time": 0.001383066177368164
+                "train_time": 0.001306295394897461,
+                "test_time": 0.013651371002197266
             },
             "LPTD": {
-                "runtime": 0.12764811515808105,
+                "runtime": 0.13358044624328613,
                 "confusion_matrix_detailed": {
                     "tp": 10,
                     "tn": 1,
@@ -3579,8 +3645,8 @@
                 "recall": 88.88888888888889,
                 "f1_measure": 88.88888888888889,
                 "mismatch_rate": 17.142857142857142,
-                "train_time": 0.0069692134857177734,
-                "test_time": 0.0042345523834228516
+                "train_time": 0.009733200073242188,
+                "test_time": 0.0072443485260009766
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -3594,8 +3660,8 @@
                 "recall": 81.48148148148148,
                 "f1_measure": 81.48148148148148,
                 "mismatch_rate": 27.027027027027028,
-                "train_time": 0.03322148323059082,
-                "test_time": 0.008701324462890625
+                "train_time": 0.053966522216796875,
+                "test_time": 0.020273208618164062
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -3609,8 +3675,8 @@
                 "recall": 92.5925925925926,
                 "f1_measure": 92.59259259259261,
                 "mismatch_rate": 11.76470588235294,
-                "train_time": 0.3497457504272461,
-                "test_time": 0.02131938934326172
+                "train_time": 0.46670103073120117,
+                "test_time": 0.021244287490844727
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -3624,11 +3690,11 @@
                 "recall": 85.18518518518519,
                 "f1_measure": 85.18518518518519,
                 "mismatch_rate": 22.22222222222222,
-                "train_time": 0.000896453857421875,
-                "test_time": 0.0016491413116455078
+                "train_time": 0.0009405612945556641,
+                "test_time": 0.022129058837890625
             },
             "LPTD": {
-                "runtime": 1.1558575630187988,
+                "runtime": 1.2476985454559326,
                 "confusion_matrix_detailed": {
                     "tp": 21,
                     "tn": 5,
@@ -3655,8 +3721,8 @@
                 "recall": 37.5,
                 "f1_measure": 46.15384615384615,
                 "mismatch_rate": 63.63636363636363,
-                "train_time": 0.0025262832641601562,
-                "test_time": 0.0002810955047607422
+                "train_time": 0.0014858245849609375,
+                "test_time": 0.00037932395935058594
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -3670,8 +3736,8 @@
                 "recall": 50.0,
                 "f1_measure": 57.14285714285714,
                 "mismatch_rate": 50.0,
-                "train_time": 0.0010836124420166016,
-                "test_time": 0.0003590583801269531
+                "train_time": 0.001392364501953125,
+                "test_time": 0.0006923675537109375
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -3685,8 +3751,8 @@
                 "recall": 50.0,
                 "f1_measure": 57.14285714285714,
                 "mismatch_rate": 50.0,
-                "train_time": 0.25555896759033203,
-                "test_time": 0.013866186141967773
+                "train_time": 0.3066725730895996,
+                "test_time": 0.014763355255126953
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -3700,22 +3766,31 @@
                 "recall": 50.0,
                 "f1_measure": 57.14285714285714,
                 "mismatch_rate": 50.0,
-                "train_time": 0.0007483959197998047,
-                "test_time": 0.0012373924255371094
+                "train_time": 0.0009806156158447266,
+                "test_time": 0.0024261474609375
             },
             "LPTD": {
-                "runtime": 0.07617068290710449,
+                "runtime": 0.10481619834899902,
                 "confusion_matrix_detailed": {
-                    "tp": 6,
-                    "tn": 1,
-                    "fp": 1,
-                    "fn": 2
+                    "tp": 2,
+                    "tn": 0,
+                    "fp": 2,
+                    "fn": 6
+                    "tp": 2,
+                    "tn": 0,
+                    "fp": 2,
+                    "fn": 6
                 },
-                "accuracy": 0.7,
-                "precision": 85.71428571428571,
-                "recall": 75.0,
-                "f1_measure": 80.0,
-                "mismatch_rate": 30.0
+                "accuracy": 0.2,
+                "precision": 50.0,
+                "recall": 25.0,
+                "f1_measure": 33.333333333333336,
+                "mismatch_rate": 80.0
+                "accuracy": 0.2,
+                "precision": 50.0,
+                "recall": 25.0,
+                "f1_measure": 33.333333333333336,
+                "mismatch_rate": 80.0
             }
         }
     },
@@ -3733,8 +3808,8 @@
                 "recall": 92.85714285714286,
                 "f1_measure": 92.85714285714286,
                 "mismatch_rate": 11.76470588235294,
-                "train_time": 0.0028791427612304688,
-                "test_time": 0.0007004737854003906
+                "train_time": 0.0031249523162841797,
+                "test_time": 0.0004534721374511719
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -3748,8 +3823,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0029175281524658203,
-                "test_time": 0.0007786750793457031
+                "train_time": 0.003262042999267578,
+                "test_time": 0.0009562969207763672
             },
             "Random Forest": {
                 "confusion_matrix_detailed": {
@@ -3763,8 +3838,8 @@
                 "recall": 92.85714285714286,
                 "f1_measure": 92.85714285714286,
                 "mismatch_rate": 11.76470588235294,
-                "train_time": 0.27896642684936523,
-                "test_time": 0.014681339263916016
+                "train_time": 0.3116583824157715,
+                "test_time": 0.01527094841003418
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -3778,22 +3853,28 @@
                 "recall": 92.85714285714286,
                 "f1_measure": 92.85714285714286,
                 "mismatch_rate": 11.76470588235294,
-                "train_time": 0.0008325576782226562,
-                "test_time": 0.0012326240539550781
+                "train_time": 0.0008788108825683594,
+                "test_time": 0.003215789794921875
             },
             "LPTD": {
-                "runtime": 0.20674848556518555,
+                "runtime": 0.2170705795288086,
                 "confusion_matrix_detailed": {
-                    "tp": 14,
+                    "tp": 3,
+                    "tp": 3,
                     "tn": 2,
                     "fp": 0,
-                    "fn": 0
+                    "fn": 11
+                    "fn": 11
                 },
-                "accuracy": 1.0,
+                "accuracy": 0.3125,
+                "accuracy": 0.3125,
                 "precision": 100.0,
-                "recall": 100.0,
-                "f1_measure": 100.0,
-                "mismatch_rate": 0.0
+                "recall": 21.428571428571427,
+                "f1_measure": 35.29411764705882,
+                "mismatch_rate": 68.75
+                "recall": 21.428571428571427,
+                "f1_measure": 35.29411764705882,
+                "mismatch_rate": 68.75
             }
         }
     },
@@ -3811,8 +3892,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.002284526824951172,
-                "test_time": 0.0003294944763183594
+                "train_time": 0.0028228759765625,
+                "test_time": 0.0006835460662841797
             },
             "SVM RBF": {
                 "confusion_matrix_detailed": {
@@ -3826,7 +3907,7 @@
                 "recall": 90.0,
                 "f1_measure": 90.0,
                 "mismatch_rate": 16.666666666666664,
-                "train_time": 0.0019321441650390625,
+                "train_time": 0.0029065608978271484,
                 "test_time": 0.0004286766052246094
             },
             "Random Forest": {
@@ -3841,8 +3922,8 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.2768993377685547,
-                "test_time": 0.01654982566833496
+                "train_time": 0.30045032501220703,
+                "test_time": 0.014609575271606445
             },
             "Voronoi (1N KNN)": {
                 "confusion_matrix_detailed": {
@@ -3856,22 +3937,29 @@
                 "recall": 100.0,
                 "f1_measure": 100.0,
                 "mismatch_rate": 0.0,
-                "train_time": 0.0007581710815429688,
-                "test_time": 0.0012409687042236328
+                "train_time": 0.0008368492126464844,
+                "test_time": 0.0024487972259521484
             },
             "LPTD": {
-                "runtime": 0.0920262336730957,
+                "runtime": 0.10886526107788086,
                 "confusion_matrix_detailed": {
-                    "tp": 9,
+                    "tp": 6,
+                    "tp": 6,
                     "tn": 0,
                     "fp": 1,
-                    "fn": 1
+                    "fn": 4
+                    "fn": 4
                 },
-                "accuracy": 0.8181818181818182,
-                "precision": 90.0,
-                "recall": 90.0,
-                "f1_measure": 90.0,
-                "mismatch_rate": 18.181818181818183
+                "accuracy": 0.5454545454545454,
+                "precision": 85.71428571428571,
+                "recall": 60.0,
+                "f1_measure": 70.58823529411764,
+                "mismatch_rate": 45.45454545454545
+                "accuracy": 0.5454545454545454,
+                "precision": 85.71428571428571,
+                "recall": 60.0,
+                "f1_measure": 70.58823529411764,
+                "mismatch_rate": 45.45454545454545
             }
         }
     }

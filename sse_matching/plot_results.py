@@ -81,7 +81,7 @@ def plot_metrics_bar_chart(performance_report):
     plt.legend(fontsize=12, loc='upper center', bbox_to_anchor=(0.5, 1.15), ncol=3)
     
     # Save the plot
-    plt.savefig('protein_metrics_bar_chart.png', dpi=300, bbox_inches='tight')
+    plt.savefig('artifacts/protein_metrics_bar_chart.png', dpi=300, bbox_inches='tight')
     print("Metrics bar chart saved as protein_metrics_bar_chart.png")
     plt.close()
 
@@ -117,7 +117,7 @@ def plot_error_rate_line_chart(performance_report):
     plt.tight_layout()
     
     # Save the plot
-    plt.savefig('protein_error_rate_line_chart.png', dpi=300, bbox_inches='tight')
+    plt.savefig('artifacts/protein_error_rate_line_chart.png', dpi=300, bbox_inches='tight')
     print("Error rate line chart saved as protein_error_rate_line_chart.png")
     plt.close()
 
@@ -271,7 +271,7 @@ def plot_accuracy_charts(performance_report, metric='f1_measure'):
     plt.grid(True, which='both', linestyle='--', linewidth=0.5)
     plt.tight_layout()
 
-    file_name = f"{metric}_chart.png"
+    file_name = f"artifacts/{metric}_chart.png"
     plt.savefig(file_name)
     print(f"Combined chart saved as {file_name}")
     plt.close()
@@ -334,6 +334,6 @@ def plot_runtime_comparison(performance_report, best_method="Voronoi (1N KNN)"):
     plt.grid(True, axis='y', alpha=0.3)
     plt.tight_layout()
     
-    plt.savefig('runtime_comparison_chart.png', dpi=300, bbox_inches='tight')
+    plt.savefig('artifacts/runtime_comparison_chart.png', dpi=300, bbox_inches='tight')
     print("Runtime comparison chart saved as runtime_comparison_chart.png")
     plt.close()

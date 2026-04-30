@@ -9,7 +9,7 @@ from hyperparameter_optimizer import HyperparameterOptimizer
 from direction_analyzer import DirectionAnalyzer
 from evaluation_metrics import EvaluationMetrics
 from file_utils import FileHandler
-from config import PARAM_GRIDS
+from config import PARAM_GRIDS, DEFAULT_REPORT_FILE, DEFAULT_BEST_PARAMS_FILE
 
 
 class ProteinTrainer:
@@ -18,9 +18,9 @@ class ProteinTrainer:
     def __init__(
         self,
         csv_path="Archive/",
-        report_file="direction_analysis_report.txt",
+        report_file=DEFAULT_REPORT_FILE,
         use_grid_search=False,
-        best_params_file="best_hyperparameters.json",
+        best_params_file=DEFAULT_BEST_PARAMS_FILE,
     ):
         self.csv_path = csv_path
         self.use_grid_search = use_grid_search

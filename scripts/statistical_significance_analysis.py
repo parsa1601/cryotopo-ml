@@ -199,7 +199,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--json-file",
         type=Path,
-        default=Path(__file__).parent / "LPTD_Results.json",
+        default=Path(__file__).parent / 'artifacts' / "LPTD_Results.json",
         help="Path to input results JSON (default: LPTD_Results.json).",
     )
     parser.add_argument(
@@ -218,7 +218,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output-prefix",
         type=Path,
-        default=Path(__file__).parent / "statistical_significance_report",
+        default=Path(__file__).parent / 'artifacts' / "statistical_significance_report",
         help="Output prefix for generated report files.",
     )
     return parser.parse_args()

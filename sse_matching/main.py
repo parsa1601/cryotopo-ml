@@ -23,7 +23,7 @@ sys.path.append(f"{os.path.dirname(os.getcwd())}")
 warnings.filterwarnings("ignore")
 
 
-def plot_charts_from_json(json_file_path="Final_Results.json"):
+def plot_charts_from_json(json_file_path):
     """
     Load results from JSON file and generate all charts.
 
@@ -55,7 +55,7 @@ def plot_charts_from_json(json_file_path="Final_Results.json"):
         print(f"Error generating charts: {e}")
 
 
-def run_direction_analysis_from_results(json_file_path="Final_Results.json"):
+def run_direction_analysis_from_results(json_file_path):
     """
     Load results from JSON file, determine best overall algorithm,
     and run direction analysis using that algorithm.
@@ -141,7 +141,7 @@ def run_direction_analysis_from_results(json_file_path="Final_Results.json"):
         traceback.print_exc()
 
 
-def main():
+def main(json_file_path):
     """
     Main function to run the protein structure analysis.
     The first list contains proteins with records of Helix
@@ -172,14 +172,14 @@ def main():
     plot_metrics_bar_chart(performance_report)
     plot_error_rate_line_chart(performance_report)
     
-    with open("Final_Results.json", "w") as json_file:
+    with open("artifacts/Final_Results.json", "w") as json_file:
         json.dump(
             convert_dd_to_dict(performance_report),
             json_file,
             indent=4,
             default=make_serializable,
         )
-    print("\nResults saved to: Final_Results.json")
+    print("\nResults saved to: artifacts/Final_Results.json")
     print("\nTo run direction analysis with the best algorithm, use:")
     print("  python main.py --direction-analysis")
 
@@ -219,8 +219,8 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--json-file",
-        default="Final_Results.json",
-        help="Path to JSON results file (default: Final_Results.json)",
+        default="artifacts/Final_Results.json",
+        help="Path to JSON results file (default: artifacts/Final_Results.json)",
     )
 
     args = parser.parse_args()
@@ -236,4 +236,4 @@ if __name__ == "__main__":
         run_lptd_comparison_workflow()
     else:
         print("Running full protein structure analysis...")
-        main()
+        main(json_file_path=args.json_file)

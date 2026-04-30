@@ -84,6 +84,6 @@ STRAND_PROTEIN_LIST = [
     "6UXW",
 ]
 
-DEFAULT_REPORT_FILE = "direction_analysis_report.txt"
-DEFAULT_BEST_PARAMS_FILE = "best_hyperparameters.json"
+DEFAULT_REPORT_FILE = "artifacts/direction_analysis_report.txt"
+DEFAULT_BEST_PARAMS_FILE = "artifacts/best_hyperparameters.json"
 USE_BRESENHAM_FOR_LPTD = False

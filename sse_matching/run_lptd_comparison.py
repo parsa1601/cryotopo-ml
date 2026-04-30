@@ -116,13 +116,13 @@ def run_lptd_comparison_workflow(best_ml_algorithm="SVM RBF"):
     plot_metrics_bar_chart(trainer.ml_classifiers.performance_report)
     print("Accuracy charts generated successfully.")
 
-    with open("LPTD_Results.json", "w") as json_file:
+    with open("artifacts/LPTD_Results.json", "w") as json_file:
         json.dump(
             trainer.ml_classifiers.performance_report,
             json_file,
             indent=4,
         )
-    print("\nResults saved to: LPTD_Results.json")
+    print("\nResults saved to: artifacts/LPTD_Results.json")
 
 if __name__ == "__main__":
     run_lptd_comparison_workflow()

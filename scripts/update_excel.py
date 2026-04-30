@@ -130,8 +130,8 @@ def update_proteins_excel(json_file_path, excel_file_path):
 
 def main():
     # Define file paths
-    json_file = Path(__file__).parent / 'LPTD_Results.json'
-    excel_file = Path(__file__).parent / 'proteins_list.xlsx'
+    json_file = Path(__file__).parent / 'artifacts' / 'LPTD_Results.json'
+    excel_file = Path(__file__).parent / 'artifacts' / 'proteins_list.xlsx'
     
     # Check if files exist
     if not json_file.exists():

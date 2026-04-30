@@ -10,7 +10,7 @@ import os
 class FileHandler:
     """Handles file I/O operations for the protein analysis system."""
 
-    def __init__(self, report_file="direction_analysis_report.txt"):
+    def __init__(self, report_file="artifacts/direction_analysis_report.txt"):
         self.report_file = report_file
 
     def print_and_save(self, message):

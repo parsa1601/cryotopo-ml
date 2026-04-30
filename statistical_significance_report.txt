@@ -1,0 +1,29 @@
+Statistical Significance Analysis
+====================================
+Metric: f1_measure
+Methods: Voronoi (1N KNN), SVM Linear, Random Forest, SVM RBF, LPTD
+Proteins total: 38
+Proteins used (paired): 38
+
+Full pairwise paired t-test matrix (raw p-values + significance labels)
+--------------------------------------------------------------
+                 Voronoi (1N KNN) SVM Linear Random Forest   SVM RBF      LPTD
+Voronoi (1N KNN)                -   0.110 ns      0.242 ns  0.184 ns  <0.001 s
+SVM Linear               0.110 ns          -      0.943 ns  0.695 ns   0.001 s
+Random Forest            0.242 ns   0.943 ns             -  0.602 ns   0.002 s
+SVM RBF                  0.184 ns   0.695 ns      0.602 ns         -   0.003 s
+LPTD                     <0.001 s    0.001 s       0.002 s   0.003 s         -
+
+Detailed pairwise paired t-test results
+----------------------------------------
+        method_a      method_b  ttest_stat  ttest_p_raw significance
+Voronoi (1N KNN)    SVM Linear    1.638984     0.109694           ns
+Voronoi (1N KNN) Random Forest    1.189996     0.241628           ns
+Voronoi (1N KNN)       SVM RBF    1.354743     0.183714           ns
+Voronoi (1N KNN)          LPTD    3.647722     0.000810            s
+      SVM Linear Random Forest    0.071840     0.943116           ns
+      SVM Linear       SVM RBF    0.394830     0.695236           ns
+      SVM Linear          LPTD    3.448104     0.001424            s
+   Random Forest       SVM RBF    0.526152     0.601922           ns
+   Random Forest          LPTD    3.377835     0.001731            s
+         SVM RBF          LPTD    3.220731     0.002665            s

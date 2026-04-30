@@ -27,7 +27,6 @@ class ProteinTrainer:
 
         self.file_handler = FileHandler(report_file)
         self.data_loader = DataLoader(csv_path)
-        self.evaluation_metrics = EvaluationMetrics()
         self.direction_analyzer = DirectionAnalyzer(self.file_handler)
 
         if not use_grid_search:
@@ -139,7 +138,6 @@ class ProteinTrainer:
                     y_test,
                     mapping,
                     protein_name,
-                    self.evaluation_metrics,
                 )
             )
 
@@ -157,7 +155,7 @@ class ProteinTrainer:
                 classifier.fit(X_train, y_train)
                 y_pred = classifier.predict(X_test)
 
-                confusion_matrix, metrics = self.evaluation_metrics.calculate_custom_metrics(
+                confusion_matrix, metrics = EvaluationMetrics.calculate_custom_metrics(
                     y_test, y_pred, mapping
                 )
                 
@@ -182,7 +180,6 @@ class ProteinTrainer:
                 X_test,
                 y_test,
                 mapping,
-                self.evaluation_metrics,
                 structure_type,
                 protein_name,
             )

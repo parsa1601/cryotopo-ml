@@ -18,14 +18,14 @@ This system implements a machine learning approach for detecting structural dire
 
 2. **Create a Virtual Environment**
    ```cmd
-   python -m venv venv
+   python -m venv .venv
    ```
 
 3. **Activate the Virtual Environment**
    ```cmd
-   venv\Scripts\activate
+   .venv\Scripts\activate
    ```
-   You should see `(venv)` prefix in your command prompt.
+   You should see `(.venv)` prefix in your command prompt.
 
 4. **Install Required Dependencies**
    ```cmd

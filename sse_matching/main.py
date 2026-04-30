@@ -107,8 +107,6 @@ def run_direction_analysis_from_results(json_file_path):
 def main(json_file_path):
     """
     Main function to run the protein structure analysis.
-    The first list contains proteins with records of Helix
-    The second list contains proteins with records of Strand
     """
 
     trainer = ProteinTrainer(csv_path=CSV_DATASET, use_grid_search=False)

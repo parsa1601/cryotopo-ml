@@ -8,6 +8,7 @@ from itertools import product
 from sklearn import svm
 from sklearn.ensemble import RandomForestClassifier
 
+from evaluation_metrics import EvaluationMetrics
 
 class HyperparameterOptimizer:
     """Handles hyperparameter optimization using grid search."""
@@ -32,7 +33,6 @@ class HyperparameterOptimizer:
         mapping,
         algorithm_name,
         protein_name,
-        evaluation_metrics,
     ):
         """
         Evaluate different hyperparameter combinations for a classifier using our mapped accuracy.
@@ -59,7 +59,7 @@ class HyperparameterOptimizer:
 
             y_pred = current_classifier.predict(X_test)
 
-            _, metrics = evaluation_metrics.calculate_custom_metrics(
+            _, metrics = EvaluationMetrics.calculate_custom_metrics(
                 y_test, y_pred, mapping
             )
 
@@ -149,7 +149,6 @@ class HyperparameterOptimizer:
         y_test,
         mapping,
         protein_name,
-        evaluation_metrics,
     ):
         """Optimize hyperparameters for all algorithms."""
         algorithms_for_grid_search = [
@@ -178,7 +177,6 @@ class HyperparameterOptimizer:
                         mapping,
                         name,
                         protein_name,
-                        evaluation_metrics,
                     )
                 )
                 optimized_algorithms.append((name, best_classifier))

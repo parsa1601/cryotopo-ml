@@ -9,6 +9,8 @@ from sklearn.neighbors import KNeighborsClassifier
 from collections import defaultdict
 import time
 
+from evaluation_metrics import EvaluationMetrics
+
 
 class MLClassifiers:
     """Handles machine learning classifiers and training operations."""
@@ -52,7 +54,6 @@ class MLClassifiers:
         X_test,
         y_test,
         mapping,
-        evaluation_metrics,
         structure_type,
         protein_name,
     ):
@@ -72,7 +73,7 @@ class MLClassifiers:
             test_time = time.time() - start_test
 
 
-            confusion_matrix, metrics = evaluation_metrics.calculate_custom_metrics(
+            confusion_matrix, metrics = EvaluationMetrics.calculate_custom_metrics(
                 y_test, y_pred, mapping
             )
             

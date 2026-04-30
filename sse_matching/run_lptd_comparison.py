@@ -10,7 +10,6 @@ if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
 from sse_matching.lptd_method.lptd import LPTDMethod
-from sse_matching.plot_results import plot_runtime_comparison, plot_accuracy_charts, plot_metrics_bar_chart
 from sse_matching.config import HELIX_PROTEIN_LIST, STRAND_PROTEIN_LIST, CSV_DATASET
 from sse_matching.protein_trainer import ProteinTrainer
 
@@ -105,16 +104,6 @@ def run_lptd_comparison_workflow(best_ml_algorithm="SVM RBF"):
         except Exception as e:
             print(f"Error processing {protein}: {e}")
             continue
-
-    # Generate Comparison Plot
-    plot_runtime_comparison(trainer.ml_classifiers.performance_report, best_ml_algorithm)
-    print("\nRuntime comparison chart generated successfully.")
-    
-    # Generate Accuracy Charts including LPTD
-    print("\nGenerating accuracy charts including LPTD...")
-    plot_accuracy_charts(trainer.ml_classifiers.performance_report, "f1_measure")
-    plot_metrics_bar_chart(trainer.ml_classifiers.performance_report)
-    print("Accuracy charts generated successfully.")
 
     with open("artifacts/LPTD_Results.json", "w") as json_file:
         json.dump(

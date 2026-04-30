@@ -11,48 +11,11 @@ import numpy as np
 
 from protein_trainer import ProteinTrainer
 from config import CSV_DATASET, HELIX_PROTEIN_LIST, STRAND_PROTEIN_LIST
-from plot_results import (
-    plot_accuracy_charts,
-    plot_metrics_bar_chart,
-    plot_error_rate_line_chart,
-)
 from collections import defaultdict
 from run_lptd_comparison import run_lptd_comparison_workflow
 
 sys.path.append(f"{os.path.dirname(os.getcwd())}")
 warnings.filterwarnings("ignore")
-
-
-def plot_charts_from_json(json_file_path):
-    """
-    Load results from JSON file and generate all charts.
-
-    Args:
-        json_file_path (str): Path to the Final_Results.json file
-    """
-    try:
-        # Check if file exists
-        if not os.path.exists(json_file_path):
-            print(f"Error: {json_file_path} not found!")
-            return
-
-        # Load the JSON data
-        with open(json_file_path, "r") as json_file:
-            performance_report = json.load(json_file)
-
-        print(f"Loaded data from {json_file_path}")
-        print("Generating charts...")
-
-        plot_accuracy_charts(performance_report, 'f1_measure')
-        plot_metrics_bar_chart(performance_report)
-        plot_error_rate_line_chart(performance_report)
-
-        print("All charts have been generated successfully!")
-
-    except json.JSONDecodeError as e:
-        print(f"Error decoding JSON file: {e}")
-    except Exception as e:
-        print(f"Error generating charts: {e}")
 
 
 def run_direction_analysis_from_results(json_file_path):
@@ -167,10 +130,6 @@ def main(json_file_path):
         STRAND_PROTEIN_LIST, "Strand"
     )
     trainer.find_globally_best_parameters()
-
-    plot_accuracy_charts(performance_report, 'f1_measure')
-    plot_metrics_bar_chart(performance_report)
-    plot_error_rate_line_chart(performance_report)
     
     with open("artifacts/Final_Results.json", "w") as json_file:
         json.dump(
@@ -202,11 +161,7 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description="Protein Structure Analysis")
-    parser.add_argument(
-        "--plot-only",
-        action="store_true",
-        help="Generate charts from existing Final_Results.json file only",
-    )
+
     parser.add_argument(
         "--direction-analysis",
         action="store_true",
@@ -225,10 +180,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    if args.plot_only:
-        print("Generating charts from existing results...")
-        plot_charts_from_json(args.json_file)
-    elif args.direction_analysis:
+    if args.direction_analysis:
         print("Running direction analysis with best algorithm from results...")
         run_direction_analysis_from_results(args.json_file)
     elif args.lptd_comparison:

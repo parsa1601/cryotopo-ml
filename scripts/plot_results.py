@@ -1,7 +1,11 @@
+import json
+import os
+
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('Agg') 
+
 
 def calculate_combined_metrics(performance_report, best_method="Voronoi (1N KNN)"):
     """
@@ -337,3 +341,50 @@ def plot_runtime_comparison(performance_report, best_method="Voronoi (1N KNN)"):
     plt.savefig('artifacts/runtime_comparison_chart.png', dpi=300, bbox_inches='tight')
     print("Runtime comparison chart saved as runtime_comparison_chart.png")
     plt.close()
+
+def plot_charts_from_json(json_file_path):
+    """
+    Load results from JSON file and generate all charts.
+
+    Args:
+        json_file_path (str): Path to the Final_Results.json file
+    """
+    try:
+        # Check if file exists
+        if not os.path.exists(json_file_path):
+            print(f"Error: {json_file_path} not found!")
+            return
+
+        # Load the JSON data
+        with open(json_file_path, "r") as json_file:
+            performance_report = json.load(json_file)
+
+        print(f"Loaded data from {json_file_path}")
+        print("Generating charts...")
+
+        plot_accuracy_charts(performance_report, 'f1_measure')
+        plot_metrics_bar_chart(performance_report)
+        plot_error_rate_line_chart(performance_report)
+
+        print("All charts have been generated successfully!")
+
+    except json.JSONDecodeError as e:
+        print(f"Error decoding JSON file: {e}")
+    except Exception as e:
+        print(f"Error generating charts: {e}")
+
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Plot results from Final_Results.json")
+
+    parser.add_argument(
+        "--json-file",
+        default="artifacts/Final_Results.json",
+        help="Path to JSON results file (default: artifacts/Final_Results.json)",
+    )
+
+    args = parser.parse_args()
+
+    plot_charts_from_json(args.json_file)

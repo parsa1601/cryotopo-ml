@@ -34,15 +34,8 @@ This system implements a machine learning approach for detecting structural dire
 
 ### Configuration and Data Preparation
 
-Before running the analysis, ensure the following:
+Before running the analysis, you can edit `config.py` to adjust the `HELIX_PROTEIN_LIST` and `STRAND_PROTEIN_LIST` variables to include the protein IDs you wish to train and analyze.
 
-1. **Specify Protein Lists**
-  - Edit `config.py` and adjust the `HELIX_PROTEIN_LIST` and `STRAND_PROTEIN_LIST` variables to include the protein IDs you wish to train and analyze.
-
-2. **Prepare Data Folder**
-  - Copy the `Archive` folder (containing your protein data) into the current working directory.
-  - The folder structure should match the format described in the [Data Structure and File Organization](#data-structure-and-file-organization) section above.
-  
 
 ### Running the Analysis
 
@@ -53,16 +46,13 @@ python sse_matching/main.py
 This will:
 - Train ML models on helix and strand data
 - Perform direction detection using DTW
-- Generate accuracy reports and visualizations
+- Generate detailed performance report
 
 #### Output Files
 After running the analysis, you'll find:
-- `Final_Results.json` - Complete results in JSON format
-- `analytical_report.txt` - Detailed performance metrics per algorithm
-- Various accuracy and performance charts:
-    - `f1_measure_chart.png`
-    - `protein_error_rate_line_chart.png`
-    - `protein_metrics_bar_chart.png`
+- `artifacts/Final_Results.json` - Complete results in JSON format
+- `artifacts/analytical_report.txt` - Detailed performance metrics per algorithm
+
 
 ### Direction analysis with the best algorithm (Helix + Strand)
 If you have the `Final_Results.json` file from a previous run, you can perform direction analysis using the best algorithm identified in the results:
@@ -73,7 +63,7 @@ python sse_matching/main.py --direction-analysis
 This will generate the `direction_analysis_report.txt` file. 
 
 ### LPTD Comparison (Helix + Strand)
-To compare the performance and runtime of the LPTD method against the best ML algorithm (SVM RBF):
+To compare the performance and runtime of the LPTD method against ML algorithms:
 
 ```cmd
 python sse_matching/main.py --lptd-comparison
@@ -82,50 +72,13 @@ This will:
 - Run the ML training pipeline to get baseline metrics
 - Run the LPTD method on the same dataset
 - Generate a runtime comparison chart (`runtime_comparison_chart.png`)
-- Generate accuracy charts including LPTD results
+- Generate a detailed performance report including LPTD results (`artifacts/LPTD_Results.json`)
 
 
 ## Visualizations & Plot Generation
 
-This repository includes a dedicated Jupyter Notebook, **all_figures.ipynb**, which serves as a centralized hub for generating all project figures and plots.
-
-### Key Features of the Notebook
-
-#### Automated Charting
-
-The notebook cells read directly from the generated output files (**Final_Results.json** and **Protein_List.xlsx**) to automatically create high-quality, formatted charts. These include:
-
-* Performance comparison charts
-* Runtime charts
-* Grouped bar charts for **F1-measures**
-
-#### 3D Protein Visualization (5I1M)
-
-The notebook includes dedicated cells for rendering **3D scatter and line plots** of the protein **5I1M**. This allows you to visually map and inspect both its extracted **helices** and **strands (sticks)** directly in your browser.
-
-### How to Use the Notebook
-
-1. Ensure your **virtual environment** is active and the required libraries are installed:
-
-```
-pip install pandas matplotlib jupyter
-```
-
-2. Launch the notebook environment:
-
-```
-jupyter notebook
-```
-
-or
-
-```
-jupyter lab
-```
-
-3. Open **all_figures.ipynb**.
-
-4. Run the notebook cells **sequentially** after your main analysis has finished exporting the **JSON** and **Excel** files.
+For reproducing the paper's charts and figures, first run the main analysis then use these files:
+`scripts/plot_results.py`, `scripts/all_figures.ipynb` and `scripts/plot_performance_vs_length.py`.
 
 
 ## Key Components

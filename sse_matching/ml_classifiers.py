@@ -6,7 +6,6 @@ Contains the ML algorithms and training logic for protein structure analysis.
 from sklearn import svm
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
-from protein_visualization import ProteinVisualizer
 from collections import defaultdict
 import time
 
@@ -16,7 +15,6 @@ class MLClassifiers:
 
     def __init__(self, best_params=None):
         self.best_params = best_params if best_params else {}
-        self.visualizer = ProteinVisualizer()
         self._initialize_classifiers()
         self.performance_report = defaultdict(
             lambda: defaultdict(lambda: defaultdict(dict))
